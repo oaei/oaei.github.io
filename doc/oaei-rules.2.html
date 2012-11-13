@@ -1,0 +1,121 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../2008/style.css" />
+<style type="text/css">
+span.incorrect { color:#C00 }
+span.correct { color:#0A2 }
+</style>
+<title>Ontology Alignment Evaluation Initiative::Deontology</title>
+</head>
+<body bgcolor="white" face="tahoma, arial">
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/">Ontology
+  Alignment Evaluation Initiative - Participation rules</a><a href="http://oaei.ontologymatching.org/"><img src="../oaeismall.jpg" alt="OAEI"
+		   style="float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+
+<!--
+<div class="yellowbar">
+Evaluation campaign is over! Preliminary results <a href="results/index.html">here</a>
+</div>
+-->
+
+
+<h1>Rules when participating to an evaluation</h1>
+
+<p>
+Until 2011, OAEI participation rules were usually defined within the individual
+OAEI calls. We tried to collect them and to clarify them here since
+they seem to be difficult to understand.
+</p>
+
+<p>
+The goal of OAEI is to forster the advancement of ontology matching
+technology. So, it aims at evaluating ontology matchers, not "OAEI
+ontology" matchers. This means that any effort made to look good at
+OAEI, as opposed to, improve a matcher, is not well seen.
+</p>
+
+<p>
+The basic rules are as follows:
+<ul>
+<li>Participants should use one system over all tracks,</li>
+<li>with one single set of parameters,</li>
+<li>with whichever resources that are not specifically designed to be
+  adapted to the OAEI data sets.</li>
+</ul>
+This means that, unless explicitely stated the contrary:
+<ul>
+<li>General purpose resources are authorised; OAEI taylored resources
+  are prohibited.</li>
+<li>The program of the matcher should not be tweaked for passing (or
+  even recognising) the tests;</li>
+<li>Using network connection for accessing a general purpose resource
+  (Wikipedia) is authorised; accessing a specific resources made for
+  OAEI is prohibited;</li>
+<li>Using published OAEI tests (with or without reference alignments)
+  for learning should be considered as prohibited;</li>
+<li>The program should not be used for storing data about the OAEI
+  test set or to rely on users;</li>
+<li>It is authorised for a system to behave differently depending on
+  the input which is provided as long as it is not to recognise OAEI
+  data sets.</li>
+<!--li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li-->
+</ul>
+</p>
+
+<p>
+In case, they want to clarify compliance, organisers reserve the right
+to ask relevant questions to participants and, if answers are not
+satisfactory, to ask them for their source code. Participant may
+decide or not to disclose their code, Organisers reserve the right to
+not publish results.
+</p>
+
+<h1>How to interpret OAEI rules</h1>
+
+<p>It is not always easy to see whether a certain aspect of a matching system implementation is valid against the rules. To enable a better understanding, we present a list of typical examples together with short explanations.
+</p>
+
+
+<h2>Examples breaking the rules</h2>
+
+
+<dl>
+	<dt><span class="incorrect">Machine learning techniques are used on subsets of (or complete) OAEI datasets to find an optimal weighting of different similarity measures.</span></dt><dd>
+	Why incorrect: OAEI datasets cover different types of matching tasks, however, this choice is not representative. Learning with these examples results in an inacceptable overfitting. In machine learning there has to be a clear distinction between test data and training data.</dd>
+	
+	<dt><span class="incorrect">Several predefined configurations that are activated by detecting certain namespaces, e.g. it is checked for the occurence of a specific string like "benchmark".</span></dt><dd>
+	Why incorrect: No need for an explanation.</i></dd>
+	<dt><span class="incorrect">A system is trained on OAEI datasets to automatically choose from a set of predefined settings.</span></dt><dd>
+	Why incorrect: Such a strategy does not take into account that this approach can result in learning something that works very well for OAEI datasets, but the results of the learning process might nevertheless be completely unreasonable. Moreover, see the general remark on machine learning from above.</dd>
+</dl>
+
+
+
+<h2>Examples not breaking the rules</h2>
+
+
+<dl>
+	<dt><span class="correct">A specific large-scale ontology matching strategy is automatically activated, if the ontologies to be matched have more than 1000 concepts.</span></dt><dd>
+	Why correct: This rule of thumb is intended to work well for both OAEI testcases and other ontology matching problems. It is in general, a reasonable distinction that is guided by detecting a characteristic of the matching problem, which is relevant for solving it.</dd>
+	<dt><span class="correct">The similarity of the ontologies to be matched is measured prior to the core matching process. The higher the similarity is, the more weight you put to smilarity flooding.</span></dt><dd>
+	Why correct: See remark above.</i></dd>
+	<dt><span class="correct">Labels are analzed in a preprocessing step. If biomedical terms are detected, activate UMLS is activated as background knowledge.</span></dt><dd>Why correct: Again, the same argument as above holds. Given a non OAEI matching problem, it can be argued that the conditional usage of UMLS will have no negative effects on matching non-biomedical ontologies and probably a positive effect on matching biomedical ontologies.</dd>
+</dl>
+
+<p>This listing is for sure not complete. Please contact OAEI organizers if you are thinking about an issue that is not clarified by this listing.
+</p>
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/doc/oaei-rules.2.html</div>
+</div>
+$Id: oaei-rules.1.html,v 1.1 2012/07/04 08:40:06 euzenat Exp $
+</body>
+</html>
