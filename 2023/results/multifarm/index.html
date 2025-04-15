@@ -1,0 +1,168 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Ontology Alignment Evaluation Initiative::MultiFarm</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=W7QU-D5MCGAzKAWgUpg1o9DblvpG9--nCRa-XrqHWxX07ApTbaKMbsV8ASKllgUR4kF6hxcd-mBiay9rgIuoYd6x0MxdfhNr7GkTaOTFSLEgrp21UMIbJkmY2biK8Agk" charset="UTF-8"></script></head>
+
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2023/">
+Ontology Alignment Evaluation Initiative - OAEI 2023 Campaign</a>
+<a href="http://oaei.ontologymatching.org/">
+        <img width="120px" src="oaeismall.jpg" style="float:right; margin-left: 15pt; border-style:none;">
+</a>
+
+<a href="http://web.informatik.uni-mannheim.de/multifarm/">
+        <img width="120px" src="mf-logo.jpg" style="clear:right;float:right; margin-left: 15pt; border-style:none;">
+</a>
+ 
+</div>
+
+<h1>MultiFarm Results for OAEI 2023</h1>
+
+<p>
+<i>In this page, we report the results of the OAEI 2023 campaign for the MultiFarm track. 
+The details on this data set can be found at the <a href="http://web.informatik.uni-mannheim.de/multifarm/">MultiFarm web page</a>.
+</i></p><p><i>
+
+</i></p><p><i>
+<font color="red">If you notice any kind of error (wrong numbers, incorrect information on a matching system, etc.)
+do not hesitate to contact us (for the mail see below in the last paragraph on this page).</font> </i>
+</p>
+
+<h2>Experimental setting</h2>
+
+<p>
+We have conducted an evaluation based on the blind data set. This data set includes the matching tasks involving the edas and ekaw ontologies (resulting in 55 x 24 tasks). Participants were able to test their systems on the open subset of tasks. The open subset counts on 45 x 25 tasks and it does not include Italian translations. 
+</p>
+
+<p>We distinguish two types of matching tasks : </p>
+<ol type="i">
+  <li> those tasks where two different ontologies (edas-ekaw, for instance) have been translated into two different languages;</li>
+  <li> those tasks where the same ontology (edas-edas) has been translated into two different languages.</li>
+</ol>
+
+<p>As we could observe in previous evaluations, for the tasks of type (ii) which is similar ontologies, good results are not directly related to the use of specific techniques for dealing with cross-lingual ontologies, but on the ability to exploit the fact that both ontologies have an identical structure. This year, we report the results on different ontologies (i). 
+</p>
+
+<h2>Participants</h2>
+
+<p>This year, 4 systems have registered to participate in the MultiFarm track: LSMatch Multilingual, LogMap, LogMapLt, and Matcha. The number of participating tools is similar with respect to the last 4 campaigns (5 in 2022, 6 in 2021, 6 in 2020, 5 in 2019, 6 in 2018, 8 in 2017, 7 in 2016, 5 in 2015, 3 in 2014, 7 in 2013, and 7 in 2012). This year, we lost the participation of CIDER-LM. But we received new participation from Matcha. The reader can refer to the OAEI papers for a detailed description of the strategies adopted by each system.</p>
+
+<h2>Evaluation results</h2>
+
+<h4>Execution setting and runtime</h4>
+
+<p>The systems have been executed on a Ubuntu Linux machine configured with 32GB of RAM running under a Intel Core CPU 2.00GHz x8 processors. All measurements are based on a single run. As for each campaign, we observed large differences in the time required for a system to complete the 55 x 24 matching tasks: LSMatch Multilingual (46 min), LogMap (9 minutes), LogMapLt (227 minutes), and Matcha (2 minutes). When we compare the times to the last year's campaign, we can see that LogMap has the stable 9 min execution whereas LogMapLt saw a decline in timing from 175 min to 227 min, and LSMatch Multilingual improved the timing from 69 min to 46 min. Since the other tools are participating first time their timings are not comparable. These measurements are only indicative of the time the systems require for finishing the task in a common environment.
+</p>
+
+<h3>Overall results</h3>
+
+<p> The table below presents the aggregated results for the matching tasks. MultiFarm aggregated results per matcher for different ontologies. Time is measured in minutes (for completing the 55x24 matching tasks).</p>
+
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center">
+</colgroup><colgroup align="center">
+</colgroup><colgroup align="center">
+	<colgroup align="center">
+</colgroup>
+</colgroup><thead valign="top">
+
+<tr>
+  <th></th> 
+  <th></th> 
+  <th colspan="4">Different ontologies (i)</th>
+</tr>
+</thead><tbody>
+<tr class="header"><th>System
+    </th><th>Time(Min)
+    </th><th>Prec.
+    </th><th>F-m.
+    </th><th>Rec.
+</th></tr>
+
+<!-- ****************************** -->
+<tr class="even">
+<td>LogMap</td>
+<td  style="text-align:center" >~9</td>   <!--time-->
+
+<td  style="text-align:center" >.72 </td> <!--p-->
+<td  style="text-align:center" >.44 </td> <!--f-->
+<td  style="text-align:center" >.31 </td> <!--r-->
+</tr>
+
+
+<!-- ****************************** -->
+<tr class="odd">
+<td>LogMapLt</td>
+<td  style="text-align:center" >~227</td>   <!--time-->
+
+<td  style="text-align:center" >.24 </td> <!--p-->
+<td  style="text-align:center" >.038 </td> <!--f-->
+<td  style="text-align:center" >.02 </td> <!--r-->
+
+</tr>
+
+<!-- ****************************** -->
+<tr class="even">
+<td>LSMatch Multilingual</td>
+<td  style="text-align:center" >~46</td> <!--time-->
+
+<td  style="text-align:center" >.68 </td> <!--p-->
+<td  style="text-align:center" >.47 </td> <!--f-->
+<td  style="text-align:center" >.36 </td> <!--r-->
+
+</tr>
+
+
+<!-- ****************************** -->
+<tr class="odd">
+<td>Matcha</td>
+<td  style="text-align:center" >~2</td> <!--time-->
+
+<td  style="text-align:center" >.37 </td> <!--p-->
+<td  style="text-align:center" >.08 </td> <!--f-->
+<td  style="text-align:center" >.04 </td> <!--r-->
+
+</tr>
+
+
+</tbody>
+<caption> </caption>
+</table>
+
+<p>LSMatch Multilingual, LogMap, LogMapLt, and Matcha have participated this year. </p>
+
+
+<p>Figure below presents the aggregated results for the matching tasks. They have been computed using the MELT framework. We haven't applied any threshold on the results. They are measured in terms of macro precision and recall. We do not report the results of non-specific systems here, as we could observe in the last campaigns that they can have intermediate results in tests of type ii) and poor performance in tests i). </p>  
+
+<img src="results.png"  width="722"  height="330" />
+
+<p>LSMatch Multilingual outperforms all other systems in terms of F-measure (0.47) and recall (0.36), and LogMap outperforms all other systems in terms of Precision (0.72). </p>
+
+<p>In terms of runtime, Matcha takes the lead followed by LogMap.</p>
+
+<img src="time.png" width="608"  height="356" />
+
+<p>Comparing the results from last year, all the systems maintain their performance. </p>
+
+<img src="evolution.png" width="608"  height="356" />
+
+
+<h2>Conclusions</h2>
+
+<p>It is seen that similar number of different systems are participating each year to the campaign through the years. However, there is a dynamicity of the tools, such that, each year participating tools vary. In 2022, we had 7 systems participating to the campaign where 5 of them were new systems and 2 of them were long-term participating systems. As observed in several campaigns, still, all systems privilege precision in detriment to recall (recall below 0.50) and the results are below the ones obtained for the Conference original dataset.</p>
+
+<h3>References</h3>
+
+<p>[1] Christian Meilicke, Raul Garcia-Castro, Fred Freitas, Willem Robert van Hage, Elena Montiel-Ponsoda, Ryan Ribeiro de Azevedo, Heiner Stuckenschmidt, Ondrej Svab-Zamazal, Vojtech Svatek, Andrei Tamilin, Cassia Trojahn, Shenghui Wang. MultiFarm: A Benchmark for Multilingual Ontology Matching. Accepted for publication at the Journal of Web Semantics. </p>
+
+<p>An authors version of the paper can be found at the <a href="http://www.irit.fr/recherches/MELODI/multifarm/">MultiFarm homepage</a>, where the data set is described in details.</p>
+
+<p></p><h3>Contact</h3>
+
+<p>This track is organized by Beyza Yaman and Cassia Trojahn dos Santos. If you have any problems working with the ontologies, any questions or suggestions, feel free to write an email to beyza [.] yaman [at] adaptcentre [.] ie, jasarika [at] nitkkr [.] ac [.] in, and cassia [.] trojahn [at] irit [.] fr.</p>
+
+
+
+</body></html>

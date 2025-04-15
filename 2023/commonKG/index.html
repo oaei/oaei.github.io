@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::Common Knowledge Graphs</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2023/">Ontology
+  Alignment Evaluation Initiative - OAEI-2023 Campaign</a>
+<a href="http://oaei.ontologymatching.org/">
+<img src="oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;">
+</a>
+</div>
+
+
+<h1>Common Knowledge Graphs</h1>
+
+<p>
+This track evaluates the ability of matching systems to map the schema (classes) of large common knowledge graphs such as DBpedia, YAGO and NELL. Publicly available knowledge graphs are highly complementary, and known for sharing data about real-world entities such as person, organization and place.
+The goal of this task is to align classes from highly influential and domain-independent knowledge graphs.
+</p>
+
+<a name="schedule"/> 
+<h2>Schedule</h2> 
+
+<p>The schedule is that of <a href="../index.html#schedule">OAEI 2023</a></p> 
+
+
+<a name="results"/> 
+<h2>Evaluation campaign results</h2>
+
+<!--
+<p>The results of the OAEI 2023, for the Common Knowledge Graphs track are available <a href="../results/commonKG/index.html">here</a>
+
+-->
+
+<a name="datasets"/> 
+<h2>Dataset</h2>
+<p>
+The Common Knowledge Graphs dataset composed of two knowledge graphs extracted from DBpedia and NELL, which is a semi-automatically constructed knowledge graph. The process of creating the gold standard is discussed in [1]. The second dataset mapps classes from Yago and Wikidata. Details about the two datasets are shared in the following table. 
+</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-7btt">Knowledge Graph</th>
+    <th class="tg-7btt"># Classes</th>
+    <th class="tg-7btt"># Instances</th>
+    <th class="tg-7btt">Avg #instance per class</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-7btt">NELL </td>
+    <td class="tg-c3ow">134</td>
+    <td class="tg-c3ow">1,184,377</td>
+    <td class="tg-c3ow">8,905</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">DBpedia</td>
+    <td class="tg-c3ow">138</td>
+    <td class="tg-c3ow">631,461</td>
+    <td class="tg-c3ow">4,576</td>
+  </tr>
+    <tr>
+    <td class="tg-7btt">Yago</td>
+    <td class="tg-c3ow">304</td>
+    <td class="tg-c3ow">5,149,594</td>
+    <td class="tg-c3ow">33,691</td>
+  </tr>
+    <tr>
+    <td class="tg-7btt">Wikidata</td>
+    <td class="tg-c3ow">304</td>
+    <td class="tg-c3ow">2,160,102</td>
+    <td class="tg-c3ow">12,576</td>
+  </tr>
+</tbody>
+</table>
+
+<p>
+The dataset is available <a href="https://github.com/OmaimaFallatah/KG_GoldeStandard">here</a> and <a href="https://github.com/OmaimaFallatah/YagoWikiData">here</a> to download in order to test your matcher locally. Also, you can test your matcher on this task by using MELT platform (see <a href="https://dwslab.github.io/melt/matcher-evaluation/client">MELT evaluation instructions</a>). This year, we have three test cases:
+<ul>
+  <li> nell-dbpedia-v1 </li>
+  <li> yago-wikidata-v1  </li>
+  <li> yago-wikidata-v1-small  same as the previous one but with fewer instances per class </li>
+</ul>
+
+
+</p>
+<div class="testsuite">
+<span class="title">MELT track repository:</span></br>
+<ul>
+	<li>Track CommonKGTrack = TrackRepository.commonkg;</li>
+	<li>TestCase CommonKGTestCase = TrackRepository.commonkg.nell-dbpedia-v1;</li>
+</ul>
+
+
+<p>
+</div>
+For running the Common Knowledge Graph test suite in SEALS, you will have to specify the following input parameters:
+<div class="testsuite">
+<span class="title">Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">commonkg</span></li>
+	<li>Version-ID: <span class="testsuiteid">nell-dbpedia-v1 or yago-wikidata-v1 or yago-wikidata-v1-small</span></li> 
+	
+
+</ul>
+</div>
+</p>
+
+
+
+<h2>Evaluation Modalities</h2>
+<p>
+The class alignments resulting from each matcher will be evaluated based on precision, recall, and f-measure. The gold standard of the NELL and DBpedia test case is only a partial gold standard. Therefore, our evaluation does not over-penalized systems that may discover reasonable matches that are not coded in the gold standard.
+</p>
+
+<!--, and to avoid over-penalising systems that may discover reasonable matches that are not coded in our gold standard, we ignore any predicted matches if neither of the classes in that pair is present as a true positive pair with another class in our gold standard. As an example, for a class an we only consider the alignment (a_n, b_n) as a false positive, if the gold standard has a true positive pair containing either an or bn but not both in the same pair.
+-->
+ 
+
+
+
+<h2><a name="organizer"/>Organizers</h2>
+
+<p>This track is organized by: </p>
+<ul>
+<li> Omaima Fallatah (Umm Al-Qura University - Department of Information Systems)</li>
+</ul>
+<p>For any questions or suggestions about the track please email: oafallatah at uqu dot edu dot sa </p>
+
+
+<h2><a name"references"/>References</h2>
+<p>
+[1] Fallatah, O., Zhang, Z., Hopfgartner, F. A gold standard dataset for large knowledge graphs matching, Proceedings of the 15th Ontology Matching workshop (2020). [<a href="http://disi.unitn.it/~pavel/om2020/papers/om2020_LTpaper3.pdf">pdf</a>] 
+</p>
+
+
+<div class="address">
+<div class="footer"> <a href="index.html">Common Knowledge Graphs Track</div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::2023</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style type="text/css">
+span.important { color:red; }
+span.news { color:green; }
+</style>
+</head>
+<body>
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2023/">Ontology
+  Alignment Evaluation Initiative - MELT evaluation for OAEI 2023
+  Campaign</a>
+<a href="http://oaei.ontologymatching.org/2023">
+  <img src="../../oaeismall.jpg" style="float: right; margin-left: 10pt; margin-right: 10pt; margin-bottom: 10pt; border-style: none;" width="175px"></a>
+</div>
+
+<h1>MELT evaluation for OAEI 2023</h1>
+
+<p>
+<a href="https://dwslab.github.io/melt/">MELT</a> is a powerful maven framework for developing, tuning, evaluating, and packaging ontology matching systems. 
+Please consider <a href="https://dwslab.github.io/melt/cite-melt">citing MELT</a> in your academic work.
+</p>
+
+
+<h2>Instructions for participants</h2>
+
+Developers have two options to participate in the OAEI 2023:
+
+<ul>
+<li><b>Create a Web-based package</b>: this is the preferred option. MELT will automatically wrap a server around the matcher and put it all in a docker container. 
+See <a href="https://dwslab.github.io/melt/matcher-packaging/web">documentation</a> 
+and an <a href="https://github.com/dwslab/melt/tree/master/examples/simpleWebMatcher">example matcher</a>. For developers not using Java, MELT can also be used 
+to facilitate the wrapping (see example <b>python</b> matcher <a href="https://github.com/dwslab/melt/tree/master/examples/externalPythonMatcherWeb">here</a>). 
+Note that you still need Java and Maven installed to create the package (via command <i>maven package</i>).
+</li>
+<br>
+
+<ul>
+<li>LogMap's Web-based wrapping (Java): <a href="https://github.com/ernestojimenezruiz/logmap-melt">logmap-melt</a> (extending <i>MactherURL</i> or <i>MatcherYAAAOwlApi</i>)</li>
+</ul>
+
+
+<br>
+
+<li><b>Create a SEALS-based package</b>: to provide backwards compatibility and also participation in the Interactive track, SEALS-packages 
+(especially from previous years) using MELT will also be accepted. See documentation <a href="https://dwslab.github.io/melt/matcher-packaging/seals">here</a>. 
+</li>
+<br>
+
+<li><b>Create a Web service</b>: alternatively one can also provide the URL of a system running as a remote service. 
+One should follow similar instructions as for a Web-based package. This option should be motivated by hardware and/or software requirements. 
+</ul>
+
+<p>
+See other packaging examples <a href="https://github.com/dwslab/melt/tree/master/examples">here</a>.
+</p>
+
+
+<h3>Matching process</h3>
+
+<p>Alignment systems in the OAEI are expected to accept as input two ontologies (or their URL reference) and should provide as output an alignment file in RDF Alignment format (or its URL reference). 
+Options to produce the alignment in the expected OAEI format: </p>
+<ul>
+<li>Use the <i>Alignment</i> class from the MELT framework (see example packages).</li>
+<li>Rely on the <a href="https://moex.gitlabpages.inria.fr/alignapi/">Alignment API</a>.</li>
+<li>Create your own script/class to generate the mappings as done in <a href="https://github.com/ernestojimenezruiz/logmap-matcher/blob/master/src/main/java/uk/ac/ox/krr/logmap2/io/OAEIAlignmentOutput.java">LogMap</a>.
+</ul>
+
+
+  
+
+
+<h2>Evaluation instructions for participants and organisers</h2>
+
+<p>
+Participants are encouraged to evaluate their wrapped system before submission.
+</p>
+
+<p>Evaluation instructions are available <a href="https://dwslab.github.io/melt/matcher-evaluation">here</a>. MELT can evaluate built-in matchers, 
+matchers wrapped as a Web service (<i>MatcherDockerFile</i>), SEALS-based matchers (<i>MatcherSeals</i>), 
+and matchers accessible via a running remote service (see details <a href="https://dwslab.github.io/melt/matcher-packaging/web">here</a>).
+This is done using Java. See also the test class included in <a href="https://github.com/ernestojimenezruiz/logmap-melt">LogMap's Web-based wrapping</a>. 
+</p>
+
+<p> 
+A <a href="https://dwslab.github.io/melt/matcher-evaluation/client">command line client</a> is also available to facilitate the system evaluation for non-java developers. 
+</p>
+
+<p>
+MELT includes several built-in evaluation tracks: <a href="https://dwslab.github.io/melt/track-repository">built-in datasets</a>. 
+One can also evaluate systems with local tracks or with just a pair of ontologies (see details <a href="https://dwslab.github.io/melt/matcher-evaluation/local-track">here</a>).
+</p>
+
+<p>
+New organisers can perform the evaluation via a <a href="https://dwslab.github.io/melt/matcher-evaluation/local-track">Local Track</a> or contacting the <a href="../organization.html">platform chairs</a> to create a new built-in track.
+</p>
+
+
+
+<!-- 
+<h2>Contacts</h2>
+<p>
+
+
+</p>
+
+<h3>Acknowledgement</h3>
+
+<p>
+</p>
+
+ -->
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2023/melt/</div>
+</div>
+</body>
+</html>
