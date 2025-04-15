@@ -1,0 +1,392 @@
+<html><head><title>Ontology Alignment Evaluation Initiative::Biodiv track|evaluation</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024
+  Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+</div>
+
+<h1>Evaluation results for the Biodiv track at OAEI 2024</h1>
+
+<h2><a name="participants">Participants</a></h2><a name="participants">
+<p>
+In our preliminary evaluation, only 4 systems (LogMap, LogMapLt, LogMapKG and Matcha) managed to generate an 
+output for at least one of the track tasks.
+</p>
+
+<h2>Experimental setting</h2>
+
+<p>
+We conducted experiments using the MELT client. We executed each system in its standard 
+settings and we calculated precision, recall and f-measure. The execution times are calculated considering the
+whole process pipeline, starting 
+from ontologies upload and environment preparation.
+</p><p>
+We have run the evaluation on: a Windows 10 
+(64-bit) desktop with an Intel Core i7-4770 CPU @ 3.40GHz x 4, 
+allocating 16GB of RAM.
+</p>
+
+
+<h2>Results</h2>
+
+
+<p></p><h3><p>1. Results for the ENVO-SWEET matching task</p></h3>
+
+<!--
+<p>Five systems could handle this task. 
+The systems with the highest precision (LogMapLt and ATMatcher) 
+achieved the lowest recall. AML generated a bigger alignment set with a high number
+ of subsumption mappings, it still achieved the best F-measure for the 
+task. It is worth nothing that due the specific structure of the SWEET 
+ontology, a lot of the false positives come from homonyms. KGMatcher generated non meaningful mappings with a very low measure.</p>
+-->
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+
+</tr><tr class="odd">
+<td class="text">LogMap</td>
+<td> 00:00:21 </td><td> 683 </td>
+<td> 0.776 </td> <td> 0.659 </td> <td class="bold"> 0.713 </td>
+
+</tr><tr class="even">
+<td class="text">LogMapKG</td>
+<td> 00:00:24 </td><td> 683 </td>
+<td> 0.775 </td> <td> 0.658 </td> <td class="bold"> 0.711 </td>
+
+</tr><tr class="odd">
+<td class="text">LogMapLt</td>
+<td> 00:04:47 </td><td> 595 </td>
+<td> 0.803 </td> <td> 0.595 </td> <td class="bold"> 0.683 </td>
+
+</tr></tbody><caption><b>Table 1:</b> Results for ENVO-SWEET.</caption>
+</table>
+
+<p> 
+
+</p><h3><p>2. Results for the MACROALGAE-MACROZOOBENTHOS matching task</p></h3>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS) </td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+<tr class="even">
+<td class="text">LogMapLt</td>
+<td> 00:00:00 </td><td> 9 </td>
+<td> 0.667 </td> <td> 0.333 </td> <td class="bold"> 0.444 </td>
+
+<tr class="odd">
+  <td class="text">LogMap</td>
+  <td> 00:00:02 </td><td> 29 </td>
+  <td> 0.276 </td> <td> 0.444 </td> <td class="bold"> 0.340 </td>
+  
+<tr class="even">
+  <td class="text">LogMapKG</td>
+  <td> 00:00:03 </td><td> 29 </td>
+  <td> 0.276 </td> <td> 0.444 </td> <td class="bold"> 0.340 </td>
+  
+<tr class="odd">
+  <td class="text">Matcha</td>
+  <td> 00:00:05 </td><td> 45 </td>
+  <td> 0.200 </td> <td> 0.500 </td> <td class="bold"> 0.286 </td>
+  
+</tr></tbody><caption><b>Table 2:</b> Results for MACROALGAE-MACROZOOBENTHOS.</caption>
+</table>
+
+
+</p><h3><p>3. Results for the FISH-ZOOPLANKTON matching task</p></h3>
+<!--
+<p>
+This task has been managed only by AML. All other systems failed in 
+generating mappings on both the SKOS and OWL versions of the thesauri. 
+AML achieves good results and a very high recall. It generated a 
+higher number of mappings than the curated reference 
+alignment. We performed a manual assessment of a subset of those 
+mappings to reevaluate the precision and f-measure. This years results are slightly better than those of last years evaluation. 
+</p>
+-->
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS) </td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+<tr class="even">
+<td class="text">LogMapLt</td>
+<td> 00:00:00 </td><td> 10 </td>
+<td> 0.800 </td> <td> 0.533 </td> <td class="bold"> 0.640 </td>
+
+<tr class="odd">
+  <td class="text">Matcha</td>
+  <td> 00:00:08 </td><td> 47 </td>
+  <td> 0.277 </td> <td> 0.867 </td> <td class="bold"> 0.419 </td>
+  
+<tr class="even">
+  <td class="text">LogMapKG</td>
+  <td> 00:00:03 </td><td> 55 </td>
+  <td> 0.218 </td> <td> 0.800 </td> <td class="bold"> 0.343 </td>
+
+<tr class="odd">
+  <td class="text">LogMap</td>
+  <td> 00:00:02 </td><td> 32 </td>
+  <td> 0.094 </td> <td> 0.200 </td> <td class="bold"> 0.128 </td>
+
+
+</tr></tbody><caption><b>Table 3:</b> Results for FISH-ZOOPLANKTON.</caption>
+</table>
+
+<p></p><h3><p>4. Results for the  NCBITAXON-TAXREFLD matching task</p></h3>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+</tr><tr class="even">
+  <td class="text">Matcha</td>
+  <td> 00:01:18 </td><td> 71008 </td>
+  <td> 0.675 </td> <td> 0.994 </td> <td class="bold"> 0.804 </td>
+
+</tr><tr class="odd">
+  <td class="text">LogMapLt</td>
+  <td> 13:56:54 </td><td> 72010 </td>
+  <td> 0.665 </td> <td> 0.993 </td> <td class="bold"> 0.797 </td>
+
+</tr><tr class="even">
+  <td class="text">LogMap</td>
+  <td> 00:06:31 </td><td> 72899 </td>
+  <td> 0.661 </td> <td> 0.999 </td> <td class="bold"> 0.795 </td>
+
+</tr><tr class="odd">
+  <td class="text">LogMapKG</td>
+  <td> 00:06:13 </td><td> 72898 </td>
+  <td> 0.661 </td> <td> 0.999 </td> <td class="bold"> 0.795 </td>
+
+
+
+</tr></tbody><caption><b>Table 4:</b> Results for NCBITAXON-TAXREFLD Animalia.</caption>
+</table>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+</tr><tr class="even">
+  <td class="text">LogMapLt</td>
+  <td> 00:00:00 </td><td> 290 </td>
+  <td> 0.6 </td> <td> 0.994 </td> <td class="bold"> 0.748 </td>
+
+</tr><tr class="odd">
+<td class="text">Matcha</td>
+<td> 00:00:04 </td><td> 303 </td>
+<td> 0.578 </td> <td> 1.0 </td> <td class="bold"> 0.732 </td>
+
+</tr><tr class="even">
+<td class="text">LogMap</td>
+<td> 00:00:00 </td><td> 304 </td>
+<td> 0.576 </td> <td> 1.0 </td> <td class="bold"> 0.731 </td>
+
+</tr><tr class="odd">
+<td class="text">LogMapKG</td>
+<td> 00:00:00 </td><td> 304 </td>
+<td> 0.576 </td> <td> 1 </td> <td class="bold"> 0.731 </td>
+
+</tr></tbody><caption><b>Table 5:</b> Results for NCBITAXON-TAXREFLD Bacteria.</caption>
+</table>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+
+</tr><tr class="even">
+  <td class="text">LogMapLt</td>
+  <td> 00:00:00 </td><td> 2165 </td>
+  <td> 0.637 </td> <td> 0.982 </td> <td class="bold"> 0.773 </td>
+  
+</tr><tr class="odd">
+<td class="text">LogMap</td>
+<td> 00:00:02 </td><td> 2218 </td>
+<td> 0.624 </td> <td> 0.985 </td> <td class="bold"> 0.764 </td>
+
+</tr><tr class="even">
+<td class="text">LogMapKG</td>
+<td> 00:00:02 </td><td> 2218 </td>
+<td> 0.624 </td> <td> 0.985 </td> <td class="bold"> 0.764 </td>
+
+</tr><tr class="odd">
+<td class="text">Matcha</td>
+<td> 00:00:14 </td><td> 2219 </td>
+<td> 0.623 </td> <td> 0.984 </td> <td class="bold"> 0.763 </td>
+
+
+</tr></tbody><caption><b>Table 6:</b> Results for NCBITAXON-TAXREFLD Chromista.</caption>
+</table>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+</tr><tr class="even">
+<td class="text">Matcha</td>
+<td> 00:00:36 </td><td> 12936 </td>
+<td> 0.785 </td> <td> 0.998 </td> <td class="bold"> 0.879 </td>
+
+</tr><tr class="odd">
+<td class="text">LogMap</td>
+<td> 00:00:25 </td><td> 12949 </td>
+<td> 0.784 </td> <td> 0.998 </td> <td class="bold"> 0.878 </td>
+
+</tr><tr class="even">
+<td class="text">LogMapKG</td>
+<td> 00:00:24 </td><td> 12949 </td>
+<td> 0.784 </td> <td> 0.998 </td> <td class="bold"> 0.878 </td>
+
+</tr><tr class="odd">
+<td class="text">LogMapLt</td>
+<td> 00:00:03 </td><td> 12929 </td>
+<td> 0.784 </td> <td> 0.997 </td> <td class="bold"> 0.878 </td>
+
+</tr></tbody><caption><b>Table 7:</b> Results for NCBITAXON-TAXREFLD Fungi.</caption>
+</table>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+</tr><tr class="even">
+<td class="text">LogMapLt</td>
+<td> 00:00:06 </td><td> 26359 </td>
+<td> 0.746 </td> <td> 0.987 </td> <td class="bold"> 0.850 </td>
+
+</tr><tr class="odd">
+  <td class="text">Matcha</td>
+  <td> 00:01:01 </td><td> 26675 </td>
+  <td> 0.741 </td> <td> 0.993 </td> <td class="bold"> 0.849 </td>
+
+</tr><tr class="even">
+  <td class="text">LogMap</td>
+  <td> 00:01:00 </td><td> 26912 </td>
+  <td> 0.731 </td> <td> 0.988 </td> <td class="bold"> 0.841 </td>
+
+</tr><tr class="odd">
+  <td class="text">LogMapKG</td>
+  <td> 00:00:55 </td><td> 26910 </td>
+  <td> 0.732 </td> <td> 0.988 </td> <td class="bold"> 0.841 </td>
+
+</tr></tbody><caption><b>Table 8:</b> Results for NCBITAXON-TAXREFLD Plantae.</caption>
+</table>
+
+<table cellspacing="0" cellpadding="4">
+
+<tbody><tr class="header">
+<td class="header" rowspan="2"> System </td>
+<td class="header" rowspan="2" colspan="1"> Time (HH:MM:SS)</td>
+<td class="header" rowspan="2" colspan="1"> # Mappings </td> 
+<td class="header" colspan="3"> Scores </td>
+</tr>
+<tr class="header">
+<td class="header"> Precision </td><td class="header"> &nbsp;Recall&nbsp; </td> <td class="header"> F-measure </td>
+</tr>
+
+
+</tr><tr class="even">
+  <td class="text">LogMapLt</td>
+  <td> 00:00:00 </td><td> 477 </td>
+  <td> 0.746 </td> <td> 0.997 </td> <td class="bold"> 0.854 </td>
+  
+</tr><tr class="odd">
+<td class="text">Matcha</td>
+<td> 00:00:11 </td><td> 494 </td>
+<td> 0.723 </td> <td> 1.0 </td> <td class="bold"> 0.839 </td>
+
+</tr><tr class="even">
+<td class="text">LogMap</td>
+<td> 00:00:00 </td><td> 496 </td>
+<td> 0.720 </td> <td> 1.0 </td> <td class="bold"> 0.837 </td>
+
+</tr><tr class="odd">
+<td class="text">LogMapKG</td>
+<td> 00:00:01 </td><td> 496 </td>
+<td> 0.720 </td> <td> 1.0 </td> <td class="bold"> 0.837 </td>
+
+</tr></tbody><caption><b>Table 9:</b> Results for NCBITAXON-TAXREFLD Protozoa.</caption>
+</table>
+
+<h3>Contact</h3>
+
+<p>This evaluation has been run by Naouel Karam and Alsayed Algergawy. If you have any problems working with the ontologies, any questions 
+related to tool wrapping, or any suggestions related to the Biodiv track, feel free to write an email to: karam [at] infai [.] org</p>
+
+
+</a></body></html>

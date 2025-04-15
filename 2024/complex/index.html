@@ -1,0 +1,228 @@
+<html><head><title>Ontology Alignment Evaluation Initiative::Complex track</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css"></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024
+  Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="../../oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  <a href="http://www.seals-project.eu/">
+  <img  width="200px" src="../../seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<!--<div class="yellowbar">The results of the OAEI 2024, for the Complex track are available <a href="../results/complex/index.html">here</a></div>-->
+
+
+<h1>Complex track</h1>
+
+<h2>General description</h2>
+
+<p>Complex alignments are more expressive than simple alignments as their correspondences can contain logical constructors or transformation functions of literal values.</p>
+For example, given two ontologies <i>o1</i> and <i>o2</i>:
+<ul>
+<li>A correspondence stating that: <i>Forall x, o1:AcceptedPaper(x) = Exists y, o2:acceptedBy(x,y)</i> is a complex correspondence with a logical constructor (property restriction);</li>
+<li>A correspondence stating that: <i>Forall x,y, o1:authorOf(x,y) = o2:writtenBy(y,x)</i> is a complex correspondence with a logical constructor (inverse property);</li>
+<li>A correspondence stating that: The values of the <i>o1:fullName</i> property can be obtained by concatenating the values of <i>o2:firstName</i> and <i>o2:lastName</i> is a complex correspondence with a transformation function of literal values (string concatenation).</li>
+</ul>
+
+<p>With this track, we evaluate systems which can generate such correspondences.</p>
+
+<p>The complex track contains 2 datasets from the conference domain: <a href="#conference">Conference</a> and <a href="#popconf">Populated Conference</a>. Each of the datasets and corresponding evaluation methods are presented below.</p>
+
+<p>The participants of the track should output their (complex) correspondences in the <a href="http://alignapi.gforge.inria.fr/edoal.html">EDOAL</a> format. This format is supported by <a href="http://alignapi.gforge.inria.fr/edoal.html#sec:support">the Alignment API</a>. The evaluation will be supported by the MELT framwork this year. The participants have to wrap their tool as described at <a href="https://github.com/dwslab/melt">MELT framework</a>. For executing the tasks in each dataset the parameters are listed in boxes below (repository, suite-id, version-id).</p>
+
+<p>The number of ontologies, simple (1:1) and complex (1:n), (m:n) correspondences for each dataset of this track are summarized in the following table.</p>
+
+<table border="1" cellspacing="0">
+  <tr>
+    <th>Dataset</th>
+    <th>#Ontologies</th>
+    <th>#(1:1)</th>
+    <th>#(1:n)</th>
+    <th>#(m:n)</th>
+  </tr>
+  <tr>
+    <td>Conference</td>
+    <td>3</td>
+    <td>78</td>
+    <td>79</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Populated Conference</td>
+    <td>5</td>
+    <td>111</td>
+    <td>86</td>
+    <td>98</td>
+  </tr>
+ <!-- <tr>
+    <td>Taxon</td>
+    <td>4</td>
+    <td>6</td>
+    <td>17</td>
+    <td>3</td>
+  </tr>-->
+</table>
+
+<a name="schedule"><h2>Schedule</h2></a>
+
+The schedule is available at the <a href="../index.html#schedule">OAEI main page</a>.
+
+<a name="datasets"><h2>Datasets and Evaluation Modalities</h2></a>
+
+<a name="conference"><h3>Conference dataset</h3></a>
+
+<h4>Ontologies and correspondences</h4>
+<p>This dataset is based on the OntoFarm dataset [1] used in the <a href="http://oaei.ontologymatching.org/2018/conference/index.html">Conference track</a> of the OAEI campaigns. It is composed of 16 ontologies on the conference organisation domain and simple reference alignments between 7 of them. Here, we consider 3 out of the 7 ontologies from the reference alignments (<a href="../conference/data/cmt.owl"><i>cmt</i></a>, <a href="../conference/data/Conference.owl"><i>conference</i></a> and <a href="../conference/data/ekaw.owl"><i>ekaw</i></a>), resulting in 3 alignment pairs.</p>
+
+<p>
+<div class="testsuite">
+<span class="title">Conference Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">conference</span></li>
+	<li>Version-ID: <span class="testsuiteid">conference-v1</span></li>
+</ul>
+</div>
+</p>
+
+<p>The correspondences were manually curated by 3 experts following the query rewriting methodology in [2]. For each pair o1-o2 of ontologies, the following steps were applied:</p>
+<ul>
+<li>Create a simple equivalence consensus alignment: ra1 was slightly modified.</li>
+<li>For each entity e1 of o1 not in a simple equivalence correspondence, find a semantically equivalent construction from o2 entities. If no equivalence can be found, look for the closest entity or construction from o2 subsumed by e1.</li>
+<li>Repeat previous step for each entity of o2 (constructions from o1 entities)</li>
+</ul>
+<p>4 experts assessed the curated correspondences to reach a consensus.</p>
+
+
+<!--p>Data set is available from this web-page (see below). You can either download them and try them on your own or you can directly use SEALS platform. Both options are possible, however finally you have to wrap your tool against the SEALS client provided via the <a href="../index.html#schedule">OAEI main page</a> and run this client against the Conference testsuite. For running the Conference testsuite you will have to specify the following input parameters:</p>
+
+<p>
+<div class="testsuite">
+<span class="title">Conference Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://repositories.seals-project.eu/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">conference</span></li>
+	<li>Version-ID: <span class="testsuiteid">conference-v1</span></li>
+</ul>
+</div>
+</p-->
+
+<h4>Evaluation modalities</h4>
+<p>The complex correspondences output by the systems will be manually compared to the ones of the consensus alignment.</p>
+<p>For this first evaluation, only <i>equivalence</i> correspondences will be evaluated and the confidence of the correspondenes will not be taken into account. </p>
+<p>The systems can take the ra1 simple alignments as input. The ra1 alignments can be downloaded <a href="../conference/data/reference-alignment.zip">here</a>.</p>
+
+
+<a name="popconf"><h3>Populated Conference dataset</h3></a>
+<p>In order to allow matchers which rely on instances to participate over the Conference complex track, we propose a populated version of the Conference dataset. 5 ontologies have been populated with more or less common instances resulting in 6 datasets: (6 versions on the repository: v0, v20, v40, v60, v80 and v100). </p>
+
+<p>
+<div class="testsuite">
+<span class="title">Populated Conference Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">popconf</span></li>
+	<li>Version-ID: <span class="testsuiteid">popconf-v0, popconf-v20, popconf-v40, popconf-v60, popconf-v80, popconf-v100</span></li>
+</ul>
+</div>
+</p>
+
+<h4>Evaluation modalities</h4>
+
+<p>The alignments will be evaluated based on Competency Questions for Alignment: basic queries that the alignment should be able to cover [6].</p>
+
+<p>The queries are automatically rewritten using 2 systems:
+<ul>
+<li>that from [7] which covers (1:n) correspondences with EDOAL expressions.</li>
+<li>a system which compares the answers (sets of instances or sets of pairs of instances) of the source query and the source member of the correspondences and which outputs the target member if both sets are identical.</li>
+</ul>
+</p>
+<p>The best rewritten query scores are kept.</p>
+
+<p>A precision score will be given by comparing the instances described by the source and target members of the correspondences. </p>
+
+</p>Details on the population and evaluation modalities are given at: <a href="https://framagit.org/IRIT_UT2J/conference-dataset-population"/>https://framagit.org/IRIT_UT2J/conference-dataset-population</a>.
+
+
+<!--
+<a name="taxonomy"><h3>Taxon dataset</h3></a>
+
+<h4> Dataset description</h4>
+
+<p>The OAEI Taxon dataset is composed of four taxonomic registers represented as knowledge bases, that contain knowledge about plant taxonomy: AgronomicTaxon, AGROVOC, TAXREF-LD and DBpedia, each having somewhat different geographical or domain coverage. Let us note that the taxonomy domain is not easy to understand for non-experts. A taxon is a scientific hypothesis stating that a set of specimens (biological individuals) belong to the same taxonomic group (that is to say the taxon) due to some common characteristics, such as similar physical traits. Some scientific names are associated to a taxon. However the scientific consensus about taxonomy constantly evolves. In light of new scientific evidence, multiple types of recombinations may occur: two taxa could be merged into a single one, an existing taxon may be split into two separate taxa, or a species (a taxon rank) could move to different genus (the parent rank of species). For example, taxonomists decided that “Delphinus capensis Gray, 1828” and “Delphinus delphis Linnaeus, 1758” are the same biological entity, based on morphological or molecular data. In addition to this, the Code of zoological nomenclature (nomenclature is the set of rules governing scientific names) specifies that this species must be called “Delphinus delphis Linnaeus, 1758” as per the principle of priority. Therefore, a taxon may have a prefered name, the one used to denote the taxon at a certain time, and some synonyms that record changes. All the names and their recombinations are published in scientific literature.
+</p>
+
+
+<h4>Ontologies</h4>
+
+<p>The Taxon dataset is composed of 4 ontologies which describe the classification of species: <a href="http://ontology.irstea.fr/pmwiki.php/Site/AgronomicTaxon?userlang=en">AgronomicTaxon</a>, <a href="http://aims.fao.org/standards/agrovoc/access-agrovoc">Agrovoc</a>, <a href="https://wiki.dbpedia.org/">DBpedia</a> and <a href="http://agroportal.lirmm.fr/ontologies/TAXREF-LD">TaxRef-LD</a>. All the ontologies are populated. The common scope of these ontologies is plant taxonomy. This dataset extends the one proposed in [3] by adding the TaxRef-LD ontology.</p>
+
+<p>The four taxonomic registers in the OAEI Taxon dataset adopt somewhat different approaches to model nomenclatural and/or taxonomic information using the Semantic Web standards. TAXREF-LD models the taxon as an OWL class and the scientific names as instances of skos:Concept. Agrovoc and AgronomicTaxon mix taxonomy and nomenclature, representing the taxon and only its prefered scientific name with the same instance of skos:Concept (they propose an extension of the SKOS model to record taxon information and scientific name information). DBpedia models taxa in various and often inconsistent manners. A species may be an instance of class Species, its synonym names are given by a specific property. For more information about theise different models see [3] and [10]. </p>
+
+<p>To conclude, two main challenges make the alignment task difficult:</p>
+
+<ul>
+<li>Challenge C1: The modelling discrepancies described above entail that alignments should be able to "cross" modelling perspectives, e.g. aligning an OWL class with an instance of skos:Concept.
+</li>
+<li>Challenge C2:  Situations occur where all taxonomic registers are not on the same page regarding taxonomic consensus. For instance, a register A may retain name X as the reference name, while register B may consider name X as a synonym of name Y. Therefore, an ideal alignment system should detect that taxon X in register A is closely related to taxon Y in register B.</li>
+</ul>
+
+
+<!--
+SPARQL endpoints
+<ul>
+<li>AgronomicTaxon: <a href="http://ontology.irstea.fr/agronomictaxon/sparql">http://ontology.irstea.fr/agronomictaxon/sparql</a></li>
+<li>Agrovoc: <a href="http://agrovoc.uniroma2.it:3030/agrovoc/sparql">http://agrovoc.uniroma2.it:3030/agrovoc/sparql</a> </li>
+<li>DBpedia: <a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a></li>
+<li>TaxRef-LD: <a href="http://taxref.mnhn.fr/sparql</a></li>
+</ul>
+
+<h4>Evaluation modalities</h4>
+<p>In 2024, we will manually evaluate the generated correspondences. The evaluation is blind.</p>
+-->
+
+<h2>Organizers</h2>
+
+<ul>
+
+<!--<li>Florence Amardeilh (Elzeard.co, France),  florence [.] amardeilh [at] elzeard [.] co</li>
+<li>Franck Michel (Université Côte d'Azur, CNRS, Inria, France),  fmichel [at] i3s [.] unice [.] fr</li>
+<li>Catherine Roussey (INRAE Centre Clermont-ARA, laboratoire TSCF, France),  catherine [.] roussey [at] inrae [.] fr</li>-->
+<li>Cassia Trojahn (IRIT, Toulouse, France), cassia [.] trojahn [at] irit [.] fr</li>
+<li>Ondřej Zamazal (University of Economics, Prague), ondrej [.] zamazal [at] vse [.] cz</li>
+<li>Marta Silva (University of Lisbon), mcdsilva [at] fc [.] ul [.] pt</li>
+<li>Guilheme Sousa (IRIT, Toulouse, France), Guilherme [.] Santos [-] Sousa [at] irit.fr</li>
+<!-- <li>Lu Zhou (Kansas State University, USA), kbzhoulu [at] gmail [.] com</li> -->
+</ul>
+
+<h2>References</h2>
+
+<p>[1] Ondřej Zamazal, Vojtěch Svátek. The Ten-Year OntoFarm and its Fertilization within the Onto-Sphere. Web Semantics: Science, Services and Agents on the World Wide Web, 43, 46-53. 2017.</p>
+
+<p>[2] Élodie Thiéblin, Ollivier Haemmerlé, Nathalie Hernandez, Cassia Trojahn. Task-Oriented Complex Ontology Alignment: Two Alignment Evaluation Sets. In : European Semantic Web Conference. Springer, Cham, 655-670, 2018.</p>
+
+<p>[3] Élodie Thiéblin, Fabien Amarger, Nathalie Hernandez, Catherine Roussey, Cassia Trojahn. Cross-querying LOD datasets using complex alignments: an application to agronomic taxa. In: Research Conference on Metadata and Semantics Research. Springer, Cham, 25-37, 2017.</p>
+
+<p>[4] Lu Zhou, Michelle Cheatham, Adila Krisnadhi, Pascal Hitzler. A Complex Alignment Benchamark: GeoLink Dataset. In: International Semantic Web Conference. Springer, Proceedings, Part II, pp. 273-288, 2018.</p>
+
+<p>[5] Marc Ehrig, and Jérôme Euzenat. "Relaxed precision and recall for ontology matching." K-CAP 2005 Workshop on Integrating Ontologies, Banff, Canada, 2005.</p>
+
+<p>[6] Élodie Thiéblin. Do competency questions for alignment help fostering complex correspondences?. In EKAW Doctoral Consortium, 2018.</p>
+
+<p>[7] Élodie Thiéblin, Fabien Amarger, Ollivier Haemmerlé, Nathalie Hernandez, Cassia Trojahn. Rewriting SELECT SPARQL queries from 1:n complex correspondences. In: Ontology Matching, pp. 49-60, 2016.</p>
+
+<!--
+<p>[8] Lu Zhou, Michelle Cheatham, Adila Krisnadhi, Pascal Hitzler. GeoLink DataSet: A Complex Alignment Benchmark from Real-world Ontology. In: Data Intellegence. MIT Press, Proceedings, 2019.</p>
+
+<p>[9] Lu Zhou, Cogan Shimizu, Pascal Hitzler, Alicia M. Sheill, Seila Gonzalez Estrecha, Catherine Foley, Duncan Tarr, Dean Rehberger. The Enslaved Dataset: A Real-world Complex Ontology Alignment Benchmark using Wikibase. In: Conference on Information and Knowledge Management, ACM, 2020.</p>
+
+<p>[10] F. Michel, O. Gargominy, S. Tercerie, C. Faron. A Model to Represent Nomenclatural and Taxonomic Information as Linked Data. Application to the French Taxonomic Register, TAXREF. In Proceedings of the ISWC2017 workshop on Semantics for Biodiversity (S4BioDiv), Vol. 1933. Vienna, Austria: CEUR, 2017.</p>-->
+
+
+<div class="address">
+<div class="footer"><a href="http://oaei.ontologymatching.org/2024/complex/index.html">http://oaei.ontologymatching.org/2024/complex</a></div>
+<!--$Id$-->
+</div>
+</body></html>

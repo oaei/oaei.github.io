@@ -1,0 +1,218 @@
+<html><head><title>Ontology Alignment Evaluation Initiative::Conference track</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css"></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024
+  Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="../../oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  <!--
+  <a href="http://www.seals-project.eu/">
+  <img  width="200px" src="../../seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+  -->
+</div>
+
+<h1>Conference track</h1>
+
+<p>Conference track contains 16 ontologies from the same domain (conference organization). These ontologies are suitable for ontology matching task because of their heterogenous character of origin. 
+<!-- This year we will get the support from the MELT framework to facilitate the SEALS wrapping and evaluation (see <a href="http://oaei.ontologymatching.org/2024/melt/index.html">MELT evaluation for OAEI 2024</a>). -->
+This year we will get the support from the MELT framework (see <a href="http://oaei.ontologymatching.org/2024/melt/index.html">MELT evaluation for OAEI 2024</a>).
+For list of planned evaluation methods see section <a href="#modalities">below</a>. Seven ontologies are involved in the reference alignment: Cmt, ConfTool, Edas, Ekaw, Iasted, Sigkdd, Sofsem.</p>
+<!-- realistic cases of heterogeneity -->
+
+<!--<p><i>News: Ontologies from this track are from the OntoFarm collection. If you use the conference (OntoFarm) ontologies in your work, please cite new paper about OntoFarm [4]:
+Zamazal, O., Svátek, V. (2017). The Ten-Year OntoFarm and its Fertilization within the Onto-Sphere. Web Semantics: Science, Services and Agents on the World Wide Web, 43, 46-53.</i></p>-->
+
+<h2>Results</h2>
+<!--<p>Preliminary results are <a href="../results/conference/">available</a>.</p>-->
+<!-- <p>Unfortunately, there is a delay in the evaluation process. Results will be available on the 8th of October.</p> -->
+<!-- <p>Participants were contacted about their preliminary results. Complete results will be available soon during next week (29th September - 3rd October).</p> -->
+
+<!--Further evaluation methods and details are in progress and will be ready soon.-->
+Results will be available according to the <a href="#schedule">schedule</a>.</p>
+
+<h2>Data set</h2>
+<a name="datasets">
+<p>Data set is available from this web-page (see below). <!-- You can either download them and try them on your own or you can directly use SEALS client. -->
+You can either download them and try them on your own, but, finally, you have to create a package or a Web service of your tool based on MELT (see <a href="http://oaei.ontologymatching.org/2024/melt/index.html">MELT evaluation for OAEI 2024</a>).
+<!--Both options are possible, however finally you have to wrap your tool against the SEALS client provided via the <a href="../index.html#schedule">OAEI main page</a> and run this client against the Conference testsuite.--> 
+For running the Conference testsuite you will have to specify the following input parameters:</p>
+
+<p>
+<div class="testsuite">
+<span class="title">Conference Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">conference</span></li>
+	<li>Version-ID: <span class="testsuiteid">conference-v1</span></li>
+</ul>
+</div>
+</p>
+
+<p>Additionally, we have three <b>experimental</b> test cases with regard to matching the cross-domain DBpedia ontology to three OntoFarm ontologies. We merely focus on entities of DBpedia ontology (dbo) from DBpedia namespace (therefore we prepared filtered <a href="data/dbpedia_2016-10-filtered.owl">DBpedia ontology</a>), i.e. http://dbpedia.org/ontology/ and three selected ontologies from OntoFarm: confof, ekaw, sigkdd.</p>
+
+<p>
+<div class="testsuite">
+<span class="title">Conference DBpedia Testsuite (subtrack)</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">conference</span></li>
+	<li>Version-ID: <span class="testsuiteid">conference-dbpedia</span></li>
+</ul>
+</div>
+</p>
+
+<p>Available reference alignments are below</p>
+<table border="1">
+<tbody><tr><td></td><td>Equiv</td></tr>
+<tr><td>confof</td><td><a href="data/summary_db_confOf_equiv.rdf">dbpedia_confOf</a></td></tr>
+<tr><td>ekaw</td><td><a href="data/summary_db_ekaw_equiv.rdf">dbpedia_ekaw</a></td></tr>
+<tr><td>sigkdd</td></td><td><a href="data/summary_db_sigkdd_equiv.rdf">dbpedia_sigkdd</a></td></tr>
+</tbody></table>
+
+<p><a href="data/conference.zip">The collection of ontologies</a> is dealing with <b>conference organization</b>. They have been developed within <a href="http://owl.vse.cz/ontofarm/">OntoFarm project</a>. 16 ontologies are included; the last one (linklings.owl) is in the OWL 2 profile. 
+Each of them is shortly described in the following table. Ontologies have been based upon three types of underlying resources:
+<ul>
+<li>actual conference (series) and its <b>web pages</b> (indicated in column <b>Type</b> with mark Web),</li>
+<li>actual <b>software tool</b> for conference organisation support (indicated in column <b>Type</b> with mark Tool),</li>
+<li><b>experience</b> of people with personal participation in organisation of actual conference (indicated in column <b>Type</b> with mark Insider).</li>
+</ul>
+<b>Name</b> is derived from name of conference or conference organisation tool. For downloading this ontology, just click on its name or you can download <a href="data/conference.zip"> all ontologies at once</a>.<br>
+<b>DL expressivity</b> was obtained by <a href="https://github.com/stardog-union/pellet">Pellet reasoner</a>.
+</p> 
+<table summary="Features of each ontology in dataset" border="1" cellspacing="0">
+<tr>
+<td class="head">Name</td><td class="head">Type</td><td class="head">Number of Classes</td><td class="head">Number of Datatype Properties</td>
+<td class="head">Number of Object Properties</td><td class="head">DL expressivity</td><td class="head">Related link</td>
+</tr>
+<tr>
+<td><a href="data/ekaw.owl">Ekaw</a></td><td>Insider</td><td>74</td><td>0</td><td>33</td><td>SHIN</td><td><a href="http://ekaw.vse.cz">http://ekaw.vse.cz</a></td>
+</tr>
+<tr>
+<td><a href="data/Conference.owl">Sofsem</a></td><td>Insider</td><td>60</td><td>18</td><td>46</td><td>ALCHIF(D)</td><td><a href="http://www.sofsem.cz">http://www.sofsem.cz</a></td>
+</tr>
+<tr>
+<td><a href="data/sigkdd.owl">Sigkdd</a></td><td>Web</td><td>49</td><td>11</td><td>17</td><td>ALEI(D)</td><td><a href="http://www.acm.org/sigs/sigkdd/kdd2006">http://www.acm.org/sigs/sigkdd/kdd2006</a></td>
+</tr>
+<tr>
+<td><a href="data/iasted.owl">Iasted</a></td><td>Web</td><td>140</td><td>3</td><td>38</td><td>ALCIN(D)</td><td><a href="http://iasted.com/conferences/2005/cancun/ms.htm">http://iasted.com/conferences/2005/cancun/ms.htm</a></td>
+</tr>
+<tr>
+<td><a href="data/MICRO.owl">Micro</a></td><td>Web</td><td>32</td><td>9</td><td>17</td><td>ALCOIN(D)</td><td><a href="http://www.microarch.org">www.microarch.org</a></td>
+</tr>
+<tr>
+<td><a href="data/confious.owl">Confious</a></td><td>Tool</td><td>57</td><td>5</td><td>52</td><td>SHIN(D)</td><td><a href="http://www.confious.com">http://www.confious.com</a></td>
+</tr>
+<tr>
+<td><a href="data/PCS.owl">Pcs</a></td><td>Tool</td><td>23</td><td>14</td><td>24</td><td>ALCIF(D)</td><td><a href="http://precisionconference.com">http://precisionconference.com</a></td>
+</tr>
+<tr>
+<td><a href="data/OpenConf.owl">OpenConf</a></td><td>Tool</td><td>62</td><td>21</td><td>24</td><td>ALCOI(D)</td><td><a href="http://www.zakongroup.com/technology/openconf.shtml">http://www.zakongroup.com/technology/openconf.shtml</a></td>
+</tr>
+<tr>
+<td><a href="data/confof.owl">ConfTool</a></td><td>Tool</td><td>38</td><td>23</td><td>13</td><td>SIN(D)</td><td><a href="http://www.conftool.net">http://www.conftool.net</a></td>
+</tr>
+<tr>
+<td><a href="data/crs_dr.owl">Crs</a></td><td>Tool</td><td>14</td><td>2</td><td>15</td><td>ALCIF(D)</td><td><a href="http://www.conferencereview.com">http://www.conferencereview.com</a></td>
+</tr>
+<tr>
+<td><a href="data/cmt.owl">Cmt</a></td><td>Tool</td><td>36</td><td>10</td><td>49</td><td>ALCIN(D)</td><td><a href="http://msrcmt.research.microsoft.com/cmt">http://msrcmt.research.microsoft.com/cmt</a></td>
+</tr>
+<tr>
+<td><a href="data/Cocus.owl">Cocus</a></td><td>Tool</td><td>55</td><td>0</td><td>35</td><td>ALCIF</td><td><a href="http://cocus.create-net.it/">http://cocus.create-net.it/</a></td>
+</tr>
+<tr>
+<td><a href="data/paperdyne.owl">Paperdyne</a></td><td>Tool</td><td>47</td><td>21</td><td>61</td><td>ALCHIN(D)</td><td><a href="http://www.paperdyne.com/">http://www.paperdyne.com/</a></td>
+</tr>
+<tr>
+<td><a href="data/edas.owl">Edas</a></td><td>Tool</td><td>104</td><td>20</td><td>30</td><td>ALCOIN(D)</td><td><a href="http://edas.info/">http://edas.info/</a></td>
+</tr>
+<tr>
+<td><a href="data/MyReview.owl">MyReview</a></td><td>Tool</td><td>39</td><td>17</td><td>49</td><td>ALCOIN(D)</td><td><a href="http://myreview.intellagence.eu/">http://myreview.intellagence.eu/</a></td>
+</tr>
+<tr>
+<td><a href="data/linklings.owl">Linklings</a></td><td>Tool</td><td>37</td><td>16</td><td>31</td><td>SROIQ(D)</td><td><a href="http://www.linklings.com/">http://www.linklings.com/</a></td>
+</tr>
+</table>
+<br>
+<!--<p>
+Note: Linklings ontology have been slightly changed wrt. replacement of xsd:date datatype (unsupported by OWL2) with xsd:dateTime. There are also other ontologies which use xsd:date datatype (Cmt, Iasted, Pcs, Sofsem and MyReview), however these ontologies have been made in OWL1. Thanks for reporting this bug to Ernesto Jimenez-Ruiz from Oxford, UK.
+</p>-->
+<p>
+These ontologies are in English. Based on this collection multilingual collection <a href="http://web.informatik.uni-mannheim.de/multifarm/">MultiFarm</a> have been made and included into the OAEI campaign as <a href="http://oaei.ontologymatching.org/2014/multifarm/index.html">MultiFarm track</a>. Further, three ontologies (Cmt, Ekaw and Sofsem) from this track has been added into the complex matching track.
+</p>
+
+<a name="modalities"><h2>Modalities</h2></a>
+
+<p>Participants will use MELT framework to deliver their results (see <a href="http://oaei.ontologymatching.org/2024/melt/index.html">MELT evaluation for OAEI 2024</a>). Alignments will be evaluated based on
+<ul>
+<li>crisp reference alignment,</li> 
+<li>its uncertain version (presented at ISWC 2014 [1]) and</li> 
+<li>logical reasoning evaluation based on violations of conservativity principle (published in ISWC 2014 and KAIS 2017 [2,3]).</li>
+<!-- <li>further modalities will be added soon ->
+<!-- <li>TODO: reference alignment considering hierarchy (hiearchical measures)-->
+</ul>
+<!-- 
+<p>Further, this year we plan to provide detail analysis in the following two ways</p>
+<ul>
+<li>with regard to the evaluation using crisp reference alignment we will inspect reasons of "False Positives";
+<li>with regard to the logical reasoning based evaluation we will inspect reasons of incoherent alignments due to generated correspondences. -->
+<!--* a) v části v obyčejné evaluaci - zjišťování důvodů "False Positive"
+
+* b) v části logické evaluace - sledování důvodů nekoherence způsobéné nalezenými mapováními
+</ul> -->
+
+<!-- We will provide summary results (micro average recall, precision and thresholded highest F1-measure) along with detail performance results for each ontology pair (test case) and comparison with tools' performance in last years.</p> -->
+
+<p>
+The confidence values for all matches in the crisp reference alignment are 1.0, while the uncertain version of the reference alignment has confidence values that reflect the degree of agreement of a group of twenty people on the validity of the match. 
+Crisp reference alignment contains 21 alignments (test cases), which corresponds to the complete alignment space between 7 ontologies (Cmt, ConfTool, Edas, Ekaw, Iasted, Sigkdd, Sofsem) from the data set. This is a subset of all ontologies within this track (16). Total number of possible test cases is hence 120. There are three variants of reference alignment:
+</p>
+<ul>
+<li>original reference alignment (<b>ra1</b>) which you can <a href="data/reference-alignment.zip">download</a> - if you use the data set please cite new paper about conference ontologies [4].</li>
+<li>entailed reference alignment (<b>ra2</b>) generated as a transitive closure computed on the original reference alignment (ra1). In order to obtain coherent reference alignment set,  conflicting correspondences have been inspected and resolved by evaluators. As a result the degree of correctness and completeness of ra2 is probaly slightly better than for ra1. However, the differences are relatively restricted. ra2 is not available.</li>
+<li><b>rar2</b> is a violation free version of reference alignment (ra2). First violating correspondences have been detected using approach from [2, 3] and then carefully resolved by an evaluator. 
+<!-- This is the first year of using this violation free reference alignment. -->
+</li>
+</ul>
+</p>
+
+<p>
+Furthermore, participants can directly submit their 'interesting individual correspondences' ('nuggets') which could represent complex correspondences to organizers of this conference track, for contacts please see below. These correspondences will be evaluated manually. There is also a track targetting complex correspondences see <a href="../complex/index.html">Complex</a>.
+</p>
+<!-- <a href="eval1.html">several evaluation methods</a>.</p> -->
+
+
+<h2><a name="schedule">Schedule</a></h2>
+
+The schedule is available at the <a href="../index.html#schedule">OAEI main page</a>.
+
+<h2>Organizers</h2>
+<ul>
+<li>Ondřej Zamazal (Prague University of Economics and Business, CZ), main contact for the track, ondrej dot zamazal at vse dot cz</li>
+<!--<li>Michelle Cheatham (Wright State University, USA)</li>-->
+<li>Jana Vataščinová (Prague University of Economics and Business, Prague, CZ)</li>
+<!-- <li>Alessandro Solimando (Universita di Genova, Italy) -->
+<li>Lu Zhou (Flatfee Corp, USA)
+</ul>
+
+<h2>References</h2>
+
+<p>[1] Michelle Cheatham, Pascal Hitzler: Conference v2.0: An Uncertain Version of the OAEI Conference Benchmark. International Semantic Web Conference (2) 2014: 33-48.</p>
+<p>[2] Alessandro Solimando, Ernesto Jiménez-Ruiz, Giovanna Guerrini:
+Detecting and Correcting Conservativity Principle Violations in Ontology-to-Ontology Mappings. International Semantic Web Conference (2) 2014: 1-16.</p>
+
+<p>[3] Alessandro Solimando, Ernesto Jiménez-Ruiz, Giovanna Guerrini:
+Minimizing conservativity violations in ontology alignments: algorithms and evaluation. Knowl. Inf. Syst. 51(3): 775-819 (2017)
+</p>
+<!--<p>[3] Alessandro Solimando, Ernesto Jiménez-Ruiz, Giovanna Guerrini: A Multi-strategy Approach for Detecting and Correcting Conservativity Principle Violations in Ontology Alignments. OWL: Experiences and Directions Workshop 2014 (OWLED 2014). 13-24.
+</p>
+-->
+<p>[4] Ondřej Zamazal, Vojtěch Svátek. The Ten-Year OntoFarm and its Fertilization within the Onto-Sphere. Web Semantics: Science, Services and Agents on the World Wide Web, 43, 46-53. 2017.</p>
+
+<div class="address">
+<div class="footer"><a href="http://oaei.ontologymatching.org/2024/conference/index.html">http://oaei.ontologymatching.org/2024/conference/index.html</a></div>
+<!--$Id$-->
+</div>
+</body></html>

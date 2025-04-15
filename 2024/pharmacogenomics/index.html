@@ -1,0 +1,187 @@
+
+<html><head><title>Ontology Alignment Evaluation Initiative::Pharmacogenomics Track</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css"></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="../index.html">
+Ontology Alignment Evaluation Initiative - OAEI-2024 Campaign</a>
+<a href="http://oaei.ontologymatching.org/"><img src="http://oaei.ontologymatching.org/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  
+</div>
+
+<h1>Pharmacogenomics Track</h1>
+
+<p>
+Task: The Pharmacogenomics Track (or PGx Track for short) involves n-ary tuples representing so-called "pharmacogenomic relationships" and their components of three distinct types: drugs, genetic factors, and phenotypes.
+Tuples are reified as instances of the class pgxo:PharmacogenomicRelationship.
+The goal of the track is to match these tuples (instance matching).
+</p>
+
+<p>
+Motivation: Pharmacogenomic tuples involve drugs, genetic factors, and phenotypes, and state that patients being treated by the specified drugs while having the specified genetic factors may experience the given phenotypes.
+Knowledge in pharmacogenomics is scattered across several resources, e.g., reference databases (<a href="https://www.pharmgkb.org/">PharmGKB</a>) or the biomedical literature.
+Hence, there is a need to build a consolidated view of the knowledge of this domain by aligning tuples from different sources.
+See [1] for a detailed motivation and [2] for a detailed task description.
+</p>
+
+<h2>Data sets</h2>
+<p>The data sets are available on <a href="https://doi.org/10.5281/zenodo.8419361">Zenodo</a>.
+You can either download them for local analysis and processing, or you can directly use the <a href="https://github.com/dwslab/melt">MELT toolkit</a>.
+</p>
+
+<p>
+<div class="testsuite">
+<span class="title">MELT:</span></br>
+<ul>
+	<li>Track pgxTrack = TrackRepository.Pharmacogenomics.V1;</li>
+</ul>
+</div>
+</p>
+
+<p>
+</p><div class="testsuite">
+<span class="title">SEALS:</span>
+<ul>
+  <li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">pharmacogenomics</span></li>
+  <li>Version-ID: <span class="testsuiteid">v1</span></li>
+</ul>
+</div>
+<p></p>
+
+<p>
+For the evaluation, we use a subset of the alignments available in <a href="https://pgxlod.loria.fr">PGxLOD</a> that have been created with the matching rules described in [3].
+</p>
+
+
+<h3>Task with 10 % of PGx relationships</h3>
+
+<ul>
+	<li>Alignments: 942
+	<ul>
+		<li>relatedMatch alignments: 83</li>
+		<li>sameAs alignments: 315</li>
+		<li>closeMatch alignments: 46</li>
+		<li>broadMatch alignments: 332</li>
+		<li>narrowMatch alignments: 166</li>
+	</ul>
+	</li>
+	<li>Entities to align in source: 2523</li>
+	<li>Triples in source: 211770</li>
+	<li>Entities to align in target: 2520</li>
+	<li>Triples in target: 208051</li>
+</ul>
+
+<h3>Task with 50 % of PGx relationships</h3>
+
+<ul>
+	<li>Alignments: 23938
+	<ul>
+		<li>relatedMatch alignments: 1500</li>
+		<li>sameAs alignments: 8636</li>
+		<li>closeMatch alignments: 1128</li>
+		<li>broadMatch alignments: 8047</li>
+		<li>narrowMatch alignments: 4627</li>
+	</ul>
+	</li>
+	<li>Entities to align in source: 12767</li>
+	<li>Triples in source: 459483</li>
+	<li>Entities to align in target: 12450</li>
+	<li>Triples in target: 450364</li>
+</ul>
+
+<h3>Task with 100 % of PGx relationships</h3>
+
+<ul>
+	<li>Alignments: 88569
+	<ul>
+		<li>relatedMatch alignments: 5318</li>
+		<li>sameAs alignments: 34510</li>
+		<li>closeMatch alignments: 3978</li>
+		<li>broadMatch alignments: 24097</li>
+		<li>narrowMatch alignments: 20666</li>
+	</ul>
+	</li>
+	<li>Entities to align in source: 25362</li>
+	<li>Triples in source: 691151</li>
+	<li>Entities to align in target: 25073</li>
+	<li>Triples in target: 687052</li>
+</ul>
+
+<h2>Examples</h2>
+
+<h3>Pharmacogenomic tuple encoding</h3>
+
+<p>Components (drugs, genetic factors, phenotypes) are associated with pharmacogenomic tuples through various properties from the <a href="https://pgxo.loria.fr">PGxO ontology</a> (e.g. pgxo:isAssociatedWith, pgxo:causes).
+These properties are organized in a hierarchy, with inverses, and/or symmetry.</p>
+<p>Two examples of pharmacogenomic tuples and their encoding are displayed below:<br />
+
+<img src="pgx-rel.png" width="700px" /><br />
+<img src="pgx-rel2.png" width="700px" />
+
+</p>
+
+<h3>Matching examples</h3>
+
+<p>
+    In the following example, the expected alignment is pgt_2 skos:broadMatch pgt_1 (denoted by pgt_2 < pgt_1) since the genetic factor causing pgt_2 is part of the one causing pgt_1, and the phenotype is caused by pgt_2 instead of only being associated with pgt_1.<br />
+    <img src="matching.png" width="700px" />
+</p>
+
+<p>
+    In the following example, we rely on hierarchies of ontology classes to detect that one tuple is more specific than the other because it involves a more specific phenotype.<br />
+    <img src="matching2.png" width="700px" />
+</p>
+
+
+
+<h2>Modalities</h2>
+
+<h3>Expected alignments</h3>
+
+<p>
+Only alignments between instances of the pgxo:PharmacogenomicRelationship class are expected.
+Four different types of alignments are considered:
+</p>
+
+<ul>
+    <li>owl:sameAs (=)</li>
+    <li>skos:closeMatch (Close)</li>
+    <li>skos:broadMatch (<)</li>
+    <li>skos:narrowMatch (>)</li>
+    <li>skos:relatedMatch (Related)</li>
+</ul>
+
+<h3>Evaluation</h3>
+
+<dl>
+    <dt>Fine-grained setting</dt>
+    <dd>Only alignments of the exact type expected in the reference are considered as correct. To illustrate, an alignment (e1, =, e2) where (e1, ~, e2) was expected will be considered as incorrect. Precision, Recall, and F1-score will be computed for each type of alignments.</dd>
+    <dt>Coarse-grained setting</dt>
+    <dd>Any type of alignment between entities expected to be aligned will be considered as correct. To illustrate, an alignment (e1, =, e2) where (e1, ~, e2) was expected will be considered as correct. Precision, Recall, and F1-score will be computed globally accordingly.</dd>
+</dl>
+
+<h2>Results available</h2>
+
+<p>The results are available on <a href="http://oaei.ontologymatching.org/2024/results/pharmacogenomics/index.html">the results page</a>.</p>
+
+<h2>Organizers</h2>
+<ul>
+<li><a href="https://pmonnin.github.io">Pierre Monnin</a> (Université Côte d’Azur, Inria, CNRS, I3S, France), main contact for the track, pierre dot monnin at inria dot fr</li>
+<li><a href="https://team.inria.fr/heka/fr/team-members/coulet/">Adrien Coulet</a> (Inria Paris, Centre de Recherche des Cordeliers, Inserm, Université Paris Cité, Sorbonne Université, Paris, France)</li>
+</ul>
+
+<h2><a name="references">References</a></h2>
+
+<p>[1] Pierre Monnin, Joël Legrand, Graziella Husson, Patrice Ringot, Andon Tchechmedjiev, Clément Jonquet, Amedeo Napoli, Adrien Coulet: PGxO and PGxLOD: a reconciliation of pharmacogenomic knowledge of various provenances, enabling further comparison. BMC Bioinformatics 20-S(4): 139:1-139:16 (2019) [<a href="https://doi.org/10.1186/s12859-019-2693-9">pdf</a>]</p>
+<p>[2] Pierre Monnin, Adrien Coulet: Matching pharmacogenomic knowledge: particularities, results, and perspectives. OM@ISWC 2022: 79-83 [<a href="https://ceur-ws.org/Vol-3324/om2022_STpaper3.pdf">pdf</a>]</p>
+<p>[3] Pierre Monnin, Miguel Couceiro, Amedeo Napoli, Adrien Coulet: Knowledge-Based Matching of n-ary Tuples. ICCS 2020: 48-56 [<a href="https://inria.hal.science/hal-02493067/document">pdf</a>]</p>
+
+
+<div class="address">
+<div class="footer"><a href="index.html">Pharmacogenomics Track</a></div>
+<!--$Id$-->
+</div>
+</body></html>

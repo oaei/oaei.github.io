@@ -1,0 +1,356 @@
+
+<!-- saved from url=(0050)https://oaei.ontologymatching.org/2024/results/ce/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Ontology Alignment Evaluation Initiative::Circular Economy (CE)</title>
+<link rel="stylesheet" type="text/css" href="./webCE_files/style.css">
+<style type="text/css">
+#Kopfbereich { position:absolute; top:20px; left:30px; }
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+<script type="text/javascript">
+
+<!-- array containg all data -->
+var data = new Array(
+"Matcha (0.9)","28","0.393","0.478","0.611",
+"LogMap (0.5)","23","0.391","0.439","0.5",
+"LogMapLt","29","0.379","0.468","0.611",
+);
+
+
+
+
+<!-- array in which the sorted data is located -->
+var sort_data = new Array(data.length);
+
+<!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
+<!-- below a certain upper heading -->
+var headings = new Array();
+  headings[0] = "Matcher";
+  headings[1] = "Size";
+  headings[2] = "Precision";
+  headings[3] = "F-Measure";
+  headings[4] = "Recall";
+
+<!-- determine the number of columns -->
+var columns = headings.length;
+var rows = data.length/columns;
+
+<!-- different heading formats according to the number of subheadings -->
+var headingColumnsFormatting = new Array(
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"6\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\""
+
+);
+
+<!-- set the style of all other columns-->
+var columnsFormatting = new Array(
+ "width=\"75\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\"",
+ "width=\"75\" bgcolor=\"#00FFFF\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\""
+);
+
+<!-- for every column the sort type is set, e.g. alphabetical if the column should be sorted alphabetically -->
+var columnSortTypes = new Array(
+ "alphabetical","star","numerical","numerical","numerical", "numerical", "numerical", "alphabetical"
+);
+
+<!-- table format -->
+var tableFormatting = "border=\"1\" style=\"border:solid 1px #808080\" cellspacing=\"0\"";
+
+<!-- load the arrow pictures -->
+var ArrowUp = "<img src=\"arrowUp.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDown = "<img src=\"arrowDown.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowUpSorted = "<img src=\"arrowUpSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDownSorted = "<img src=\"arrowDownSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+
+var sortedLine = "";
+
+<!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
+function createSortedLine(number,direction) {
+ sortedLine = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine += "<th " + columnsFormatting[0] + ">";
+
+  <!-- sort ascending and print the right arrow in red-->
+  if(direction == "ascending" && j == number) {
+   sortedLine += ArrowUpSorted + " ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  <!-- sort descending and print the right arrow in red--->
+  else if(direction == "descending" && j == number) {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine += " " + ArrowDownSorted;
+  }
+  <!-- print all other columns -->
+  else {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+ sortedLine += "<\/th>";
+ }
+ sortedLine += "<tr>";
+}
+
+<!-- function to really sort the columns according to a certain line number, type and direction -->
+function sortColumns(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ <!-- get the according data -->
+ for(var i = 0; i < rows; ++i)
+  columnsData[i] = dataToCompare[i] = data[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ <!--- determine and set the according index -->
+ var alreadySet = false;
+ for(i = 0; i < rows; ++i)
+  for(var j = 0; j < rows; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+   <!-- check whether the current j is already set as index to avoid problems with same numbers -->
+	for(var k=0; k<index.length; k++) {
+	 if(index[k]==j) alreadySet=true;
+	 }
+     if(alreadySet==false) index[i] = j;
+	 else alreadySet=false;
+   }
+
+ <!-- create the sorted line and write it -->
+ for(i = 0; i < rows; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data[i * columns + j] = data[index[i] * columns + j];
+ createSortedLine(number,direction);
+ writeTable(sort_data);
+}
+
+<!-- write the whole table with specified columns -->
+function writeTable(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+<!--  content += "<tr>"; -->
+  <!--for(var j = 0; j < headings.length; ++j) {-->
+
+<!--	for(var k = 1; k < headings[j].length; ++k)-->
+<!--		content += "<th " + headingColumnsFormatting[5] + ">" + headings[j][k] + "<\/th>"; -->
+
+<!--  } -->
+<!--  content += "<\/tr>";	-->
+ content += sortedLine;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows; ++i) {
+	  if(i%2 == 0) {
+          content += "<tr bgcolor=\"FFFFDD\">";
+      }
+	  else {
+          content += "<tr bgcolor=\"FFDDFF\">";
+      }
+
+  <!-- StringEquiv is the last row. 80=8*10 -->
+
+	  if(Array[i * columns] == data[72]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById)
+  document.getElementById("table").innerHTML = content;
+ else if(document.all)
+  document.all.table.innerHTML = content;
+ else if(document.layers) {
+  document.table.document.open();
+  document.table.document.write(content);
+  document.table.document.close();
+ }
+}
+<!-- sorting for numerical values-->
+function Numsort(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+    return a-b;
+}
+
+function starSort(a,b){
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	var result = Numsort(a,b);
+	return result;
+}
+
+<!-- sorting for inverse numerical values-->
+function NumsortInverse(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+	if(a=='X') {
+		return -1;
+	}
+	if(b=='X') {
+		return 1;
+	}
+	if(a=='T') {
+		return -1;
+	}
+	if(b=='T') {
+		return 1;
+	}
+    return b-a;
+}
+</script>
+</head>
+<body onload="createSortedLine(-1,&#39;&#39;); writeTable(data);">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="https://oaei.ontologymatching.org/2024/results/">Ontology
+  Alignment Evaluation Initiative - OAEI 2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="./webCE_files/oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"></a>
+<!--
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+-->
+</div>
+
+<h1>Results for OAEI 2024 - Circular Economy (CE) track</h1>
+
+<h2>Generated alignments</h2>
+
+<p>
+    We have collected all generated alignments and make them available in a zip-file via the following link.
+    These alignments are the raw results that the following report is based on.
+</p>
+
+<p><a href="https://oaei.ontologymatching.org/2024/results/ce/Ce-track-results-oaei-2024.zip">&gt;&gt;&gt; download raw results</a></p>
+
+
+<h2>Experimental setting</h2>
+
+<p>
+We conducted experiments by executing each system in its standard setting and we compare precision, F-measure, and recall.
+</p>
+
+<p>
+We used the MELT platform to execute our evaluations for all systems. Currently, the reported evaluation results are directly taken from the MELT platform.
+</p>
+
+<h2>Results</h2>
+<p>
+    This year, we had three participants: LogMap, LogMapLt, and Matcha. With regard to F1-Measure, MATCHA achieved the highest score. 
+    <!--
+POMAP++ with the previous version POMap in 2017, POMAP++ in 2018. The other one is FCAMap-KG with the previous version FCA_MAP in 2016, FCAMapX in 2018.
+-->
+</p>
+
+<center>
+<noscript>
+<p>Java-Script need to be enabled!</p>
+</noscript>
+<div id="table"><table border="1" style="border:solid 1px #808080" cellspacing="0"><thead><tr><th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Matcher</th><th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Size</th><th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Precision</th><th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">F-Measure</th><th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Recall</th></tr><tr><th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080"><a href="javascript:sortColumns(0,&#39;alphabetical&#39;,&#39;ascending&#39;)"><img src="./webCE_files/arrowUp.jpg" width="14" height="13" border="0" alt=""></a> <a href="javascript:sortColumns(0,&#39;alphabetical&#39;,&#39;descending&#39;)"><img src="./webCE_files/arrowDown.jpg" width="14" height="13" border="0" alt=""></a></th><th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080"><a href="javascript:sortColumns(1,&#39;star&#39;,&#39;ascending&#39;)"><img src="./webCE_files/arrowUp.jpg" width="14" height="13" border="0" alt=""></a> <a href="javascript:sortColumns(1,&#39;star&#39;,&#39;descending&#39;)"><img src="./webCE_files/arrowDown.jpg" width="14" height="13" border="0" alt=""></a></th><th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080"><a href="javascript:sortColumns(2,&#39;numerical&#39;,&#39;ascending&#39;)"><img src="./webCE_files/arrowUp.jpg" width="14" height="13" border="0" alt=""></a> <a href="javascript:sortColumns(2,&#39;numerical&#39;,&#39;descending&#39;)"><img src="./webCE_files/arrowDown.jpg" width="14" height="13" border="0" alt=""></a></th><th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080"><a href="javascript:sortColumns(3,&#39;numerical&#39;,&#39;ascending&#39;)"><img src="./webCE_files/arrowUp.jpg" width="14" height="13" border="0" alt=""></a> <a href="javascript:sortColumns(3,&#39;numerical&#39;,&#39;descending&#39;)"><img src="./webCE_files/arrowDown.jpg" width="14" height="13" border="0" alt=""></a></th><th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080"><a href="javascript:sortColumns(4,&#39;numerical&#39;,&#39;ascending&#39;)"><img src="./webCE_files/arrowUp.jpg" width="14" height="13" border="0" alt=""></a> <a href="javascript:sortColumns(4,&#39;numerical&#39;,&#39;descending&#39;)"><img src="./webCE_files/arrowDown.jpg" width="14" height="13" border="0" alt=""></a></th></tr><tr></tr></thead><tfoot></tfoot><tbody><tr bgcolor="FFFFDD"><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">Matcha (0.9)</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">28</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.393</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.478</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.611</td></tr><tr bgcolor="FFDDFF"><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMap (0.5)</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">23</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.391</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.439</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.5</td></tr><tr bgcolor="FFFFDD"><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMapLt</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">29</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.379</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.468</td><td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.611</td></tr></tbody></table></div>
+</center>
+    <p>
+        The table also shows the results for precision, F-measure, recall and the size of the alignments for the optimal threshold.
+        Regarding the recall, Matcha achieved the best score. LogMap and Matcha provide the correspondences with real-valued confidence. Therefore, we applied thresholding during evaluation.
+    </p>
+    <!--<p>
+    This year two systems produced coherent alignments which are LogMap and LogMapBio.
+    </p>-->
+
+
+<!--<h2>Conclusions</h2>
+<p>
+</p>-->
+
+
+<h3>Thresholded Evaluation</h3>
+<p>
+    LogMap and MATCHA use weights to score each pair in their generated alignments. To see if we can find an optimal threshhold for each system (below which the generated mappings would not be taken into consideration), we inspected the results.
+</p>
+
+<p>
+    The weights in LogMap's alignment range from 0.93 to 0.14 (with only one weight below 0.5). The mapping with the highest weight was a false positive, so was the mapping with the lowest weight. There were multiple matches with the second lower weight (0.5). These mappings were a mix of correct mappings and false positives. Based on these results, an optimal threshold for LogMap's results could be set to 0.5 (including) which is also the computed threshold with the highest F-measure.
+</p>
+<p>
+    In case of MATCHA, the weights of its results range between 1 and 0.600378464. Mappings with the highest weights were both correct and false positives. The correct mapping with the lowest weight was weighted to 0.65293388. This weight is just a little higher than the lowest weight. However, most true possitives have weights greater than 0.9. Based on these results, an optimal threshold for MATCHA's results could be set to 0.9 which is also the computed threshold with the highest F-measure.
+</p>
+<p>
+<p>
+    The table below repeats precision, F-measure, and recall for the matching systems with their threshold set.
+</p>
+
+<h3>False Positives</h3>
+<p>
+    Additionally, we analysed the false positives - alignments discovered by the tools which were evaluated as incorrect. The list of the false positives can be viewed <a href="./webCE_files/FPs.htm">here</a> in the following structure: entity 1 (E1), entity 2 (E2), individual tools - if the alignment was discovered by the tool, it is marked with an "x", and the reason why the alignment was discovered (Why Found).
+</p>
+<p>
+    We looked at the reasons why an alignment was discovered from a general point of view, and defined 4 reasons why they could have been chosen:
+</p>
+<ul>
+    <li>same name - concepts have identical names,</li>
+    <li>contains same word - names of the concepts include the same word or the word in another form,</li>
+    <li>similar string - names of the concepts include similar strings (e.g., trip, tip),</li>
+    <li>? - no obvious reason could be seen.</li>
+</ul>
+<p>
+    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated mappings based on similar strings. All three systems generated mappings where the same word was present in the entities names. Lastly, MATCHA produced 2 mappings where the reason isn't obvious. Below are some comments for individual tools and the reasons why they discovered the false positives:
+</p>
+<ul>
+    <li>LogMap (15 FPs) - same name (9x), contains same word (5x), similar string (1x),</li>
+    <li>LogMapLt (17 FPs) - same name (10x), contains same word (7x),</li>
+    <li>MATCHA (36 FPs) - same name (11x), contains same word (20x), similar string (3x), ? (2x) - many mappings not found by other tools.</li>
+</ul>
+<p>
+    As a possibly interesting observation, there were no false positives found which would be generated based on synonyms in entities names.
+</p>
+
+
+<h3>Contact</h3>
+
+
+  <p>This track is organized by 
+	<a>Jana Vataš&#269;inová</a>,
+	<a href="https://nb.vse.cz/~svabo/">Ond&#345;ej Zamazal</a>,
+	<a href="http://huanyuli.se/">Huanyu Li</a>,
+	<a href="https://liu.se/medarbetare/evabl45">Eva Blomqvist</a>, and
+	<a href="http://www.ida.liu.se/~patla00/">Patrick Lambrix</a>. 
+	If you have any problems working with the ontologies, any questions related to tool wrapping, or any suggestions related to the ce track, feel free to write an email oaei-ce [at] groups [dot] liu [dot] se.</p>
+	
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2024/results/ce/</div>
+</div>
+
+
+</body></html>

@@ -1,0 +1,130 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Ontology Alignment Evaluation Initiative::Anatomy</title>
+
+<!-- <link rel="stylesheet" type="text/css" href="http://oaei.ontologymatching.org/2015/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2022/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="./oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"></a>
+  <!--
+  <a href="http://www.seals-project.eu/">
+<img width="200px" src="./Seals-logo-5.png" style="clear:right;float:right; margin-left: 5pt; border-style:none;"></a>
+  -->
+
+</div>
+
+
+
+<h1>Anatomy</h1>
+
+
+<h2>General description</h2>
+
+<p>The Anatomy track consists of finding an alignment between the Adult Mouse Anatomy and a part of the NCI Thesaurus (describing the human anatomy). The task is placed in a domain where we find large, carefully designed ontologies that are described in technical terms. Besides their large size and a conceptualization that is only to a limited degree based on the use of natural language, they also differ from other ontologies with respect to the use of specific annotations and roles, e.g. the extensive use of the partOf relation. The manual harmonization of the ontologies leads to a situation, where we have a high number of rather trivial mappings that can be found by simple string comparison techniques. At the same time, we have a good share of non-trivial mappings that require a careful analysis and sometimes also medical background knowledge.</p>
+
+
+<!--
+<h2>Modalities</h2>
+-->
+
+<p>The anatomy track in 2024 consists of the default task to match the two ontologies of the anatomy track with the standard configuration of your matching system.</p>
+
+<p>In the past, we have evaluated matching systems with respect to their ability to exploit an input alignment (= partial reference alignment). We will include this modality of evaluation, in case it is requested prior to the final deadline by at least three participants. In case your tool offers such a functionality and you want it to be evaluated, please write a mail to the track organizers (mail see at the bottom of this page).</p><p>
+
+
+</p><p>The general schedule given at <a href="http://oaei.ontologymatching.org/2024/">the OAEI main page</a> is binding for the anatomy track. Moreover, you have to submit your wrapped tool as explained on the OAEI main page.</p>
+
+
+
+<h2>Results available</h2>
+
+<p>The preliminary results for OAEI have been generated and are available now (30.09.2024). <a href="http://oaei.ontologymatching.org/2024/results/anatomy/index.html"><b>Link to results page.</b></a></p>
+
+
+<h2><a name="datasets">Data sets</a></h2>
+
+<p>It is highly recommended that you run local tests to see whether your matching system can cope with the dataset. There are two options:</p>
+
+<p>(1) You can <a href="http://oaei.ontologymatching.org/2024/anatomy/anatomy-dataset.zip">download the whole dataset</a> and run your tests with this input data.</p>
+
+<p>(2) However, finally you have to create a package or a Web service of your tool based on MELT. For this purpose, a tutorial is linked via the OAEI 2024 page (<a href="http://oaei.ontologymatching.org/2024/melt/index.html">MELT evaluation instructions</a>). For running the Anatomy testsuite you will have to specify the following input parameters.</p>
+<!--
+<p>(2) However, finally you have to wrap your tool against the SEALS client provided via the OAEI main page and run this client against the Anatomy testsuite. For this purpose, a tutorial is linked via the OAEI 2021 page. For running the Anatomy testsuite you will have to specify the following input parameters.</p>
+-->
+
+<p>
+</p><div class="testsuite">
+<span class="title">Anatomy Testsuite</span>
+<ul>
+  <li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">anatomy_track</span></li>
+  <li>Version-ID: <span class="testsuiteid">anatomy_track-default</span></li>
+</ul>
+</div>
+<p></p>
+
+<!--
+<p>We recommend to wrap and test your tool with the SEALS client at an early stage!</p> This year we will get the support from the <a href="https://github.com/dwslab/melt" target="_blank">MELT framework</a> to facilitate the SEALS wrapping and evaluation.
+
+-->
+
+
+<h2>Related Links</h2>
+<ul>
+	<li>Webpage of <a href="http://oaei.ontologymatching.org/2019/anatomy/index.html">Anatomy Track 2019</a>
+		<ul><li><a href="http://oaei.ontologymatching.org/2019/results/anatomy/index.html">Results page 2019</a></li></ul>
+	</li>
+	<li>Webpage of <a href="http://oaei.ontologymatching.org/2020/anatomy/index.html">Anatomy Track 2020</a>
+		<ul><li><a href="http://oaei.ontologymatching.org/2020/results/anatomy/index.html">Results page 2020</a></li></ul>
+	</li>
+	<li>Webpage of <a href="http://oaei.ontologymatching.org/2021/anatomy/index.html">Anatomy Track 2021</a>
+		<ul><li><a href="http://oaei.ontologymatching.org/2021/results/anatomy/index.html">Results page 2021</a></li></ul>
+	</li>
+	<li>Webpage of <a href="http://oaei.ontologymatching.org/2022/anatomy/index.html">Anatomy Track 2022</a>
+		<ul><li><a href="http://oaei.ontologymatching.org/2022/results/anatomy/index.html">Results page 2022</a></li></ul>
+	</li>
+	<li>Webpage of <a href="http://oaei.ontologymatching.org/2023/anatomy/index.html">Anatomy Track 2023</a>
+		<ul><li><a href="http://oaei.ontologymatching.org/2023/results/anatomy/index.html">Results page 2023</a></li></ul>
+	</li>
+	<li>Homepage of <a href="http://oaei.ontologymatching.org/">OAEI</a></li>
+	<li>Homepage of <a href="http://oaei.ontologymatching.org/2024/index.html">OAEI 2024</a></li>
+</ul>
+
+<h2>Acknowledgements</h2>
+
+<p>Martin Ringwald and Terry Hayamizu (Mouse Genome Informatics - http://www.informatics.jax.org/) provided us with an intial reference mapping for the matching task of this track [1].</p>
+
+<p>Elena Beisswanger improved the datasets with respect to several problems (see also [2]).</p>
+
+
+<h2>Contact</h2>
+
+  <p>This track is organized by <a href="https://liu.se/medarbetare/minab62">Mina Abd Nikooie Pour</a>,
+	<a href="http://www.ida.liu.se/~huali50/">Huanyu Li</a>,
+	<a href="https://liu.se/medarbetare/yinli71">Ying Li</a> and
+	<a href="http://www.ida.liu.se/~patla00/">Patrick Lambrix</a>. If you have any problems working with the ontologies, any questions related to tool wrapping, or any suggestions related to the anatomy track, feel free to write an email to oaei-anatomy [at] ida [.] liu [.] se.</p>
+
+<h2>Bibliography</h2>
+
+<p>[1] Oliver Bodenreider, Terry F. Hayamizu, Martin Ringwald, Sherri De Coronado, Songmao Zhang. Of mice and men: Aligning mouse and human anatomies. Proceedings of the American Medical Informatics Association (AIMA) Annual Symposium, 2005.</p>
+
+<p>[2] Elena Beisswanger, Udo Hahn. Towards valid and reusable reference alignments - Ten basic quality checks for ontology alignments and their application to three different reference data sets. Journal of Biomedical Semantics, 2012.</p>
+
+<p>[3] Jerome Euzenat, Christian Meilicke, Heiner Stuckenschmidt, Pavel Shvaiko, Cassia Trojahn. Ontology Alignment Evaluation Initiative: Six Years of Experience. Journal of Data Semantics, 2011.</p>
+
+<p>[4] Dragisic Z, Ivanova V, Li H, Lambrix P, Experiences from the Anatomy track in the Ontology Alignment Evaluation Initiative, Journal of Biomedical Semantics 8:56, 2017.</p>
+
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2024/anatomy/</div>
+<!--$Id$-->
+</div>
+
+
+</body></html>

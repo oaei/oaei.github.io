@@ -1,0 +1,368 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Ontology Alignment Evaluation Initiative::Conference track|evaluation</title>
+
+
+<script type="text/javascript" src="./evaluation_files/jquery-latest.js"></script>
+<link rel="stylesheet" type="text/css" href="./evaluation_files/jquery.css">
+<script type="text/javascript" language="javascript" src="./evaluation_files/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="./evaluation_files/style.css">
+<style type="text/css" class="init">
+</style>
+<script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#tab-ra1-M1').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-ra1-M2').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-ra1-M3').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-ra2-M1').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-ra2-M2').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-ra2-M3').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-rar2-M1').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-rar2-M2').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+        $('#tab-rar2-M3').dataTable({
+        "paging":   false,
+        "info":     false
+            });
+    } );
+</script>
+<script src="./evaluation_files/prompt.js"></script></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024
+  Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="./evaluation_files/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  <img src="./evaluation_files/seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;" width="200px">
+</div>
+
+<h1>Details for the crisp reference alignment evaluation for the Conference track within OAEI 2024</h1>
+
+<p>
+Web page content
+</p>
+<ul>
+<li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#modalities">Evaluation Modalities</a>
+</li><li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">Evaluation Based on Crisp Reference Alignments</a>
+<ul>
+<li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#setting">Evaluation Setting and Tables Description</a>
+</li><li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ref-comparison">Comparison of OAEI 2023 to 2024</a>
+</li><li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#visualization">Results Visualization on Precision/Recall Triangular Graph for rar2-M3</a>
+</li><li><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#discussion">Discussion for Evaluation Based on Crisp Reference Alignments</a>
+</li></ul>
+</li></ul>
+
+<h2><a name="modalities">Evaluation Modalities</a></h2>
+
+
+<h3><a name="crisp-ra">Evaluation Based on Crisp Reference Alignments</a></h3>
+<p>
+We have three variants of crisp reference alignments (the confidence values for all matches are 1.0). They contain 21 alignments (test cases), which corresponds to the complete alignment space between 7 ontologies from the OntoFarm data set. This is a subset of all ontologies within this track (16) [4], see <a href="http://owl.vse.cz/ontofarm/"> OntoFarm data set web page</a>.
+</p>
+<ul>
+<li><b>ra1</b> is the original reference alignment which can be <a href="http://oaei.ontologymatching.org/2024/conference/data/reference-alignment.zip">downloaded</a>
+ - please let us know how you use this reference-alignment (outside the OAEI context) and data set (ondrej.zamazal at vse dot cz).
+</li><li><b>ra2</b> is an entailed reference alignment (ra2) generated as a transitive closure computed on the original reference alignment (ra1). In order to obtain coherent reference alignment set, conflicting correspondences have been inspected and resolved by evaluators. As a result, the degree of correctness and completeness of ra2 is probaly slightly better than for ra1. However, the differences are relatively restricted.
+</li><li><b>rar2</b> is a violation free version of reference alignment (ra2). First violating correspondences have been detected using approach from [2, 3] and then carefully resolved by an evaluator.
+</li></ul>
+
+<p>We provide three evaluation variants for each reference alignment</p>
+<ul>
+<li><b>M1</b> only contains classes,
+</li><li><b>M2</b> only contains properties,
+</li><li><b>M3</b> contains classes and properties, i.e. M3 = M1 + M2.
+</li></ul>
+
+<p>rar2 M3 is used as the main reference alignment for this year. It will also be used within the synthesis paper.</p>
+
+<table border="1">
+<tbody><tr><td></td><td>ra1</td><td>ra2</td><td>rar2</td></tr>
+<tr><td>M1</td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra1-M1">ra1-M1</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra2-M1">ra2-M1</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#rar2-M1">rar2-M1</a></td></tr>
+<tr><td>M2</td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra1-M2">ra1-M2</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra2-M2">ra2-M2</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#rar2-M2">rar2-M2</a></td></tr>
+<tr><td>M3</td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra1-M3">ra1-M3</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#ra2-M3">ra2-M3</a></td><td><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#rar2-M3">rar2-M3</a></td></tr>
+</tbody></table>
+
+<h4><a name="setting">Evaluation Setting and Tables Description</a></h4>
+<p>
+Regarding evaluation based on reference alignment, we first filtered out (from the generated alignments) all instance-to-any_entity and owl:Thing-to-any_entity correspondences prior to computing Precision/Recall/F1-measure/F2-measure/F0.5-measure because they are not contained in the reference alignment. In order to compute average Precision and Recall over all those alignments, we used absolute scores (i.e. we computed precision and 
+recall using absolute scores of TP, FP, and FN across all 21 test cases). This corresponds to micro average precision and recall. Therefore, the resulting numbers can slightly differ with those computed by the SEALS platform (macro average precision and recall). Then, we computed F1-measure in a standard way. Finally, we found the highest 
+average F1-measure with thresholding (if possible).
+</p>
+
+<p>
+In order to provide some context for understanding matchers performance, we included two simple string-based matchers as baselines. StringEquiv (it was called Baseline1 before) is a string matcher based on string equality applied on local names of entities which were lowercased before (this baseline was also used within anatomy track 2012) and edna 
+(string editing distance matcher) was adopted from benchmark track (wrt. performance it is very similar to the previously used baseline2).
+</p>
+
+<p>
+In the tables below, there are results of all 7 tools with regard to all combinations of evaluation variants with crisp reference alignments. There are precision, recall, F1-measure, F2-measure and F0.5-measure computed for the threshold that provides the highest average F1-measure computed for each matcher. F1-measure is the harmonic mean of precision and recall. F2-measure (for beta=2) weights recall higher than precision and F0.5-measure (for beta=0.5) weights precision higher than recall.
+</p>
+
+<!-- <p>Tools are ordered according to their highest average F1-measure. According to matcher's position with regard to two baselines it can be in one of three basic groups:</p> -->
+
+<h4><a name="ra1-M1">ra1-M1</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra1-M1x.png" alt="ra1-M1"> -->
+<div id="tab-ra1-M1_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra1-M1_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra1-M1"></label></div><table id="tab-ra1-M1" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M1" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.75</td><td> 0.68</td><td> 0.59</td><td> 0.53</td><td> 0.49</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.88</td><td> 0.76</td><td> 0.64</td><td> 0.55</td><td> 0.5</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.76</td><td> 0.74</td><td> 0.7</td><td> 0.67</td><td> 0.65</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.88</td><td> 0.78</td><td> 0.67</td><td> 0.59</td><td> 0.54</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.84</td><td> 0.76</td><td> 0.66</td><td> 0.58</td><td> 0.54</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.8</td><td> 0.78</td><td> 0.74</td><td> 0.71</td><td> 0.69</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.88</td><td> 0.79</td><td> 0.68</td><td> 0.59</td><td> 0.55</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.84</td><td> 0.79</td><td> 0.72</td><td> 0.66</td><td> 0.63</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.88</td><td> 0.78</td><td> 0.67</td><td> 0.59</td><td> 0.54</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ra1-M2">ra1-M2</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra1-M2x.png" alt="ra1-M2"> -->
+<div id="tab-ra1-M2_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra1-M2_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra1-M2"></label></div><table id="tab-ra1-M2" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M2" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.17</td><td> 0.18</td><td> 0.18</td><td> 0.19</td><td> 0.2</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.07</td><td> 0.05</td><td> 0.03</td><td> 0.02</td><td> 0.02</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.24</td><td> 0.24</td><td> 0.23</td><td> 0.22</td><td> 0.22</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.76</td><td> 0.5</td><td> 0.49</td><td> 0.48</td><td> 0.47</td><td> 0.46</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.79</td><td> 0.62</td><td> 0.5</td><td> 0.39</td><td> 0.31</td><td> 0.28</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.21</td><td> 0.18</td><td> 0.14</td><td> 0.12</td><td> 0.11</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ra1-M3">ra1-M3</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra1-M3x.png" alt="ra1-M3"> -->
+<div id="tab-ra1-M3_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra1-M3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra1-M3"></label></div><table id="tab-ra1-M3" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra1-M3" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.61</td><td> 0.57</td><td> 0.51</td><td> 0.47</td><td> 0.44</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.8</td><td> 0.68</td><td> 0.56</td><td> 0.47</td><td> 0.43</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.71</td><td> 0.67</td><td> 0.62</td><td> 0.58</td><td> 0.55</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.88</td><td> 0.74</td><td> 0.6</td><td> 0.51</td><td> 0.46</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.73</td><td> 0.67</td><td> 0.59</td><td> 0.53</td><td> 0.5</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.71</td><td> 0.7</td><td> 0.69</td><td> 0.68</td><td> 0.67</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.88</td><td> 0.75</td><td> 0.61</td><td> 0.52</td><td> 0.47</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.81</td><td> 0.75</td><td> 0.68</td><td> 0.61</td><td> 0.58</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.79</td><td> 0.7</td><td> 0.59</td><td> 0.51</td><td> 0.47</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ra2-M1">ra2-M1</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra2-M1x.png" alt="ra2-M1"> -->
+<div id="tab-ra2-M1_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra2-M1_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra2-M1"></label></div><table id="tab-ra2-M1" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M1" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.7</td><td> 0.63</td><td> 0.54</td><td> 0.48</td><td> 0.44</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.83</td><td> 0.71</td><td> 0.58</td><td> 0.5</td><td> 0.45</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.71</td><td> 0.68</td><td> 0.64</td><td> 0.61</td><td> 0.59</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.82</td><td> 0.72</td><td> 0.61</td><td> 0.52</td><td> 0.48</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.79</td><td> 0.7</td><td> 0.6</td><td> 0.53</td><td> 0.49</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.75</td><td> 0.72</td><td> 0.68</td><td> 0.65</td><td> 0.63</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.82</td><td> 0.73</td><td> 0.62</td><td> 0.54</td><td> 0.5</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.79</td><td> 0.73</td><td> 0.66</td><td> 0.6</td><td> 0.57</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.82</td><td> 0.72</td><td> 0.61</td><td> 0.52</td><td> 0.48</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ra2-M2">ra2-M2</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra2-M2x.png" alt="ra2-M2"> -->
+<div id="tab-ra2-M2_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra2-M2_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra2-M2"></label></div><table id="tab-ra2-M2" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M2" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.15</td><td> 0.15</td><td> 0.16</td><td> 0.17</td><td> 0.17</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.07</td><td> 0.05</td><td> 0.03</td><td> 0.02</td><td> 0.02</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.24</td><td> 0.24</td><td> 0.23</td><td> 0.22</td><td> 0.22</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.76</td><td> 0.5</td><td> 0.49</td><td> 0.48</td><td> 0.47</td><td> 0.46</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.79</td><td> 0.62</td><td> 0.5</td><td> 0.39</td><td> 0.31</td><td> 0.28</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.21</td><td> 0.18</td><td> 0.14</td><td> 0.12</td><td> 0.11</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ra2-M3">ra2-M3</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/ra2-M3x.png" alt="ra2-M3"> -->
+<div id="tab-ra2-M3_wrapper" class="dataTables_wrapper no-footer"><div id="tab-ra2-M3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-ra2-M3"></label></div><table id="tab-ra2-M3" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-ra2-M3" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.57</td><td> 0.53</td><td> 0.47</td><td> 0.43</td><td> 0.4</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.76</td><td> 0.64</td><td> 0.52</td><td> 0.43</td><td> 0.39</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.67</td><td> 0.63</td><td> 0.57</td><td> 0.53</td><td> 0.5</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.82</td><td> 0.68</td><td> 0.55</td><td> 0.46</td><td> 0.41</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.68</td><td> 0.62</td><td> 0.54</td><td> 0.48</td><td> 0.45</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.67</td><td> 0.66</td><td> 0.64</td><td> 0.62</td><td> 0.61</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.82</td><td> 0.69</td><td> 0.56</td><td> 0.48</td><td> 0.43</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.77</td><td> 0.71</td><td> 0.63</td><td> 0.57</td><td> 0.53</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.74</td><td> 0.65</td><td> 0.54</td><td> 0.47</td><td> 0.43</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="rar2-M1">rar2-M1</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/rar2-M1x.png" alt="rar2-M1"> -->
+<div id="tab-rar2-M1_wrapper" class="dataTables_wrapper no-footer"><div id="tab-rar2-M1_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-rar2-M1"></label></div><table id="tab-rar2-M1" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M1" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.7</td><td> 0.63</td><td> 0.56</td><td> 0.49</td><td> 0.46</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.83</td><td> 0.72</td><td> 0.61</td><td> 0.52</td><td> 0.48</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.7</td><td> 0.68</td><td> 0.66</td><td> 0.63</td><td> 0.62</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.82</td><td> 0.73</td><td> 0.63</td><td> 0.55</td><td> 0.51</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.78</td><td> 0.71</td><td> 0.62</td><td> 0.56</td><td> 0.52</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.73</td><td> 0.71</td><td> 0.69</td><td> 0.66</td><td> 0.65</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.82</td><td> 0.74</td><td> 0.64</td><td> 0.56</td><td> 0.52</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.78</td><td> 0.74</td><td> 0.68</td><td> 0.63</td><td> 0.6</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.82</td><td> 0.73</td><td> 0.63</td><td> 0.55</td><td> 0.51</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="rar2-M2">rar2-M2</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/rar2-M2x.png" alt="rar2-M2"> -->
+<div id="tab-rar2-M2_wrapper" class="dataTables_wrapper no-footer"><div id="tab-rar2-M2_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-rar2-M2"></label></div><table id="tab-rar2-M2" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M2" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.15</td><td> 0.16</td><td> 0.16</td><td> 0.17</td><td> 0.18</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.07</td><td> 0.05</td><td> 0.03</td><td> 0.02</td><td> 0.02</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.24</td><td> 0.24</td><td> 0.23</td><td> 0.22</td><td> 0.22</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.78</td><td> 0.53</td><td> 0.51</td><td> 0.48</td><td> 0.46</td><td> 0.44</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.79</td><td> 0.62</td><td> 0.51</td><td> 0.4</td><td> 0.32</td><td> 0.29</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.21</td><td> 0.18</td><td> 0.14</td><td> 0.12</td><td> 0.11</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="rar2-M3">rar2-M3</a></h4>
+<p><a href="https://oaei.ontologymatching.org/2024/results/conference/eval.html#crisp-ra">[back to explanation]</a></p>
+
+<!-- <img src="eval_data/rar2-M3x.png" alt="rar2-M3"> -->
+<div id="tab-rar2-M3_wrapper" class="dataTables_wrapper no-footer"><div id="tab-rar2-M3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-rar2-M3"></label></div><table id="tab-rar2-M3" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
+<thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
+
+<tr role="row" class="odd"><td class="sorting_1">TOMATO</td><td>0.0</td><td> 0.57</td><td> 0.53</td><td> 0.48</td><td> 0.44</td><td> 0.42</td></tr>
+<tr role="row" class="even"><td class="sorting_1">StringEquiv</td><td>0.0</td><td> 0.76</td><td> 0.65</td><td> 0.53</td><td> 0.45</td><td> 0.41</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">MDMapper</td><td>0.0</td><td> 0.66</td><td> 0.63</td><td> 0.59</td><td> 0.55</td><td> 0.53</td></tr>
+<tr role="row" class="even"><td class="sorting_1">OntoMatch</td><td>0.0</td><td> 0.82</td><td> 0.69</td><td> 0.56</td><td> 0.48</td><td> 0.43</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">LogMapLt</td><td>0.0</td><td> 0.68</td><td> 0.62</td><td> 0.56</td><td> 0.5</td><td> 0.47</td></tr>
+<tr role="row" class="even"><td class="sorting_1">MATCHA</td><td>0.0</td><td> 0.66</td><td> 0.65</td><td> 0.64</td><td> 0.64</td><td> 0.63</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">ALIN</td><td>0.0</td><td> 0.82</td><td> 0.7</td><td> 0.57</td><td> 0.48</td><td> 0.44</td></tr>
+<tr role="row" class="even"><td class="sorting_1">LogMap</td><td>0.0</td><td> 0.76</td><td> 0.71</td><td> 0.64</td><td> 0.59</td><td> 0.56</td></tr>
+<tr role="row" class="odd"><td class="sorting_1">edna</td><td>0.0</td><td> 0.74</td><td> 0.66</td><td> 0.56</td><td> 0.49</td><td> 0.45</td></tr>
+</tbody></table>
+</tbody></table></div>
+
+
+
+<h4><a name="ref-comparison">Comparison of OAEI 2023 and 2024</a></h4>
+<p>Table below summarizes performance results of eight tools that participated in the last 2 years of OAEI Conference track with regard to reference alignment rar2.</p>
+<img src="./evaluation_files/comparison1-rar2-M3.png" alt="Perfomance results summary OAEI 2024 and 2023">
+<p>
+Based on this evaluation, we can see that three of the matching tools (ALIN, LogMap, LogMapLt) did not change the results. TOMATO slightly decreased its F1-measure and recall. Matcha slightly increased all three, precision, F1-measure, and recall.
+</p>
+<img src="./evaluation_files/comparison2-rar2-M3.png" alt="Perfomance results summary OAEI 2024 and 2023">
+
+<h4><a name="visualization">Results visualization on precision/recall triangular graph based on the rar2-M3 reference alignment</a></h4>
+<p>
+All tools are visualized in terms of their performance regarding an average F1-measure in the figure below. Tools are represented as squares or triangles. Baselines are represented as circles. Horizontal line depicts level of precision/recall while values of average F1-measure are depicted by areas bordered by corresponding lines F1-measure=0.[5|6|7].
+</p>
+<img src="./evaluation_files/triangular_rar2_M3_2024.png" alt="precision/recall triangular graph for conference and F1-measure based on rar2-M3">
+
+<h4><a name="discussion">Discussion for Evaluation Based on Crisp Reference Alignments</a></h4>With regard to two baselines we can group tools according to matcher's position (above best edna baseline, above StringEquiv baseline, below StringEquiv baseline) sorted by F1-measure. Regarding tools position, all tools keep the same position in ra1-M3, ra2-M3 and rar2-M3. There are six matchers above edna baseline (GraphMatcher, SORBETMtch, LogMap, Matcha, ALIN, and OLaLa), three matchers above StringEquiv baseline (LogMapLt, AMD, and LSMatch), and two matchers below StringEquiv baseline (TOMATO, and PropMatch). Since rar2 is not only consistency violation free (as ra2) but also conservativity violation free, we consider the rar2 as main reference alignment for this year. It will also be used within the synthesis paper.
+<p></p>
+<p>
+Based on the evaluation variants M1 and M2, four matchers (ALIN, AMD, LSMatch, and SORBETMtch) do not match properties at all. On the other side, PropMatch does not match classes at all, while it dominates in matching properties.
+Naturally, this has a negative effect on the overall tools performance within the M3 evaluation variant.
+</p>
+
+
+<h2><a name="organizers">Organizers</a></h2>
+<ul>
+<li>Ondřej Zamazal (Prague University of Economics and Business, Czech republic), main contact for the track, ondrej dot zamazal at vse dot cz
+</li><li>Jana Vataščinová (Prague University of Economics and Business, Czech republic)
+</li><li>Lu Zhou (TigerGraph, USA)
+</li></ul>
+
+
+<h2><a name="references">References</a></h2>
+
+<p>[1] Michelle Cheatham, Pascal Hitzler: Conference v2.0: An Uncertain 
+Version of the OAEI Conference Benchmark. International Semantic Web 
+Conference (2) 2014: 33-48.</p>
+<p>[2] Alessandro Solimando, Ernesto Jiménez-Ruiz, Giovanna Guerrini:
+Detecting and Correcting Conservativity Principle Violations in 
+Ontology-to-Ontology Mappings. International Semantic Web Conference (2)
+ 2014: 1-16.</p>
+<p>[3] Alessandro Solimando, Ernesto Jiménez-Ruiz, Giovanna Guerrini: A 
+Multi-strategy Approach for Detecting and Correcting Conservativity 
+Principle Violations in Ontology Alignments. OWL: Experiences and 
+Directions Workshop 2014 (OWLED 2014). 13-24.
+</p>
+<p>[4] Ondřej Zamazal, Vojtěch Svátek. The Ten-Year OntoFarm and its 
+Fertilization within the Onto-Sphere. Web Semantics: Science, Services 
+and Agents on the World Wide Web, 43, 46-53. 2018.
+<!--<p>[5] Martin Šatra, Ondřej Zamazal. Towards Matching of Domain Ontologies to
+Cross-Domain Ontology: Evaluation Perspective. Ontology Matching 2020.</p>
+</p>-->
+
+</p><div class="address">
+<div class="footer"><a href="http://oaei.ontologymatching.org/2024/conference/index.html">http://oaei.ontologymatching.org/2024/conference/index.html</a></div>
+<!--$Id$-->
+</div>
+
+</body></html>

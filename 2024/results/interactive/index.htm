@@ -1,0 +1,849 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::Interactive</title>
+<link rel="stylesheet" type="text/css" href="http://oaei.ontologymatching.org/2016/style.css" />
+<style type="text/css">
+#Kopfbereich { position:absolute; top:20px; left:30px; }
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+<script type="text/javascript">
+
+<!-- array containg all data -->
+<!--corresponds to error rate 0.0-->
+var anatomy0 = new Array(
+	"ALIN", "404.602","1350.4","0.986","0.878","0.929","0.678","0.983","0.726","0.835","0.438","0.986","0.878","0.929","262","699","194.4","504.8","0.0","0.0","1.0","1.0",
+	"LogMap", "6.225", "1299.0", "0.988", "0.846", "0.912", "0.595", "0.915", "0.848", "0.88", "0.602", "0.988", "0.846", "0.912", "388", "1164", "287.0", "877.0", "0.0", "0.0", "1.0", "1.0",
+);
+
+
+<!--corresponds to error rate 0.1-->
+var anatomy1 = new Array(
+	"ALIN","389.404","1372.5","0.953","0.863","0.905","0.655","0.983","0.726","0.835","0.438","0.986","0.876","0.928","235","626","170.6","392.4","45.9","17.8","0.79","0.957",
+	"LogMap","5.859","1302.9","0.967","0.831","0.894","0.567","0.915","0.848","0.88","0.602","0.97","0.802","0.878","388","1164","259.0","788.4","88.6","28.0","0.745","0.966",
+);
+
+<!--corresponds to error rate 0.2-->
+var anatomy2 = new Array(
+	"ALIN","385.036","1397.0","0.924","0.851","0.886","0.648","0.983","0.726","0.835","0.438","0.986","0.88","0.93","235","629","154.0","350.8","87.0","37.7","0.64","0.903",
+	"LogMap","6.004","1309.8","0.951","0.822","0.881","0.549","0.915","0.848","0.88","0.602","0.951","0.761","0.846","388","1164","230.2","698.2","178.8","56.8","0.563","0.925",
+);
+
+<!--corresponds to error rate 0.3-->
+var anatomy3 = new Array(
+	"ALIN","389.896","1403.1","0.904","0.836","0.869","0.62","0.983","0.726","0.835","0.438","0.986","0.878","0.929","221","590","130.9","288.0","116.2","55.7","0.53","0.838",
+	"LogMap","6.018","1319.5","0.937","0.816","0.873","0.538","0.915","0.848","0.88","0.602","0.926","0.726","0.814","388","1164","194.7","616.0","261.0","92.3","0.428","0.87",
+);
+
+var conference0 = new Array(
+	"ALIN","131.573","0.915","0.702","0.794","0.874","0.456","0.599","0.915","0.702","0.794","187","557","71.1","486.2","0.0","0.0","1.0","1.0",
+	"LogMap","36.452","0.886","0.61","0.723","0.801","0.58","0.67","0.886","0.61","0.723","82","246","49.0","197.0","0.0","0.0","1.0","1.0",
+);
+
+var conference1 = new Array(
+	"ALIN","128.666","0.753","0.664","0.705","0.874","0.456","0.599","0.926","0.724","0.812","181","537","59.5","423.5","46.7","7.4","0.562","0.984",
+	"LogMap","36.333","0.851","0.597","0.702","0.801","0.58","0.67","0.859","0.578","0.691","82","246","44.0","178.6","18.4","5.0","0.71","0.973",
+);
+
+var conference2 = new Array(
+	"ALIN","130.747","0.631","0.64","0.635","0.874","0.456","0.599","0.935","0.748","0.831","179","531","52.2","372.6","94.2","12.6","0.356","0.969",
+	"LogMap","36.532","0.824","0.593","0.69","0.801","0.58","0.67","0.829","0.545","0.657","82","246","39.8","158.8","38.2","9.2","0.506","0.946",
+);
+
+var conference3 = new Array(
+	"ALIN","132.794","0.539","0.612","0.573","0.874","0.456","0.599","0.942","0.767","0.846","176","522","43.6","320.0","139.6","19.2","0.236","0.944",
+	"LogMap","36.290","0.797","0.585","0.675","0.801","0.58","0.67","0.808","0.518","0.631","82","246","34.5","138.5","58.5","14.5","0.37","0.908",
+);
+
+var largeBio0 = new Array(
+"AML","0.943","0.905","0.771","0.754","0.845","0.819","0.943","0.771","0.845","10217","10217","5126","5091","0","0","2877",
+"LogMap","0.971","0.903","0.725","0.714","0.826","0.794","0.971","0.725","0.826","27436","27436","17050","10386","0","0","3803",
+"ServOMBI*","1.000","0.965","0.737","0.735","0.847","0.833","1.000","0.737","0.847","21416","9424","8685","739","0","0","726"
+);
+
+var largeBio1 = new Array(
+"AML","0.931","0.905","0.761","0.754","0.835","0.819","0.944","0.769","0.845","10217","10217","4624","4658","485","450","2913",
+"LogMap","0.939","0.903","0.701","0.714","0.798","0.794","0.944","0.704","0.803","28890","28890","15753","10659","1181","1297","3963",
+"ServOMBI*","0.995","0.965","0.666","0.735","0.796","0.833","1.000","0.716","0.832","22920","9502","8063","726","85","628","695"
+);
+
+var largeBio2 = new Array(
+"AML","0.917","0.905","0.753","0.754","0.824","0.819","0.944","0.769","0.845","10217","10217","4196","4081","1049","891","2930",
+"LogMap","0.915","0.903","0.684","0.714","0.778","0.794","0.907","0.676","0.771","30426","30426","14286","10707","2669","2764","3912",
+"ServOMBI*","0.987","0.965","0.592","0.735","0.739","0.833","1.000","0.688","0.813","23968","9541","7431","661","192","1257","713"
+);
+
+var largeBio3 = new Array(
+"AML","0.906","0.905","0.745","0.754","0.815","0.819","0.943","0.771","0.845","10217","10217","3737","3637","1537","1306","2959",
+"LogMap","0.898","0.903","0.681","0.714","0.769","0.794","0.868","0.649","0.739","31504","31504","13035","10147","4307","4015","3874",
+"ServOMBI*","0.983","0.965","0.523","0.735","0.681","0.833","1.000","0.660","0.792","25580","9600","6818","652","256","1874","618"
+);
+
+
+<!-- array in which the sorted data is located -->
+<!--var sort_data = new Array(data.length);-->
+
+<!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
+<!-- below a certain upper heading -->
+
+var anatomyHeadings = new Array("Tool","Run Time (sec)","Size","Precision","Recall","F-measure","Recall+","Precision Non Inter","Recall Non Inter","F-measure Non Inter","Recall+ Non Inter","Precision Oracle","Recall Oracle","F-measure Oracle","Total Requests","Distinct Mappings","True Positives","True Negatives","False Positives","False Negative","Precision","Negative Precision");
+
+<!-- var conferenceHeadings = new Array("Tool","Precision","Precision non","Recall","Recall non","F-measure","F-measure non","Precision Oracle","Recall Oracle","F-measure Oracle","Total Requests","Distinct Mappings","True Positives","True Negatives","False Positives","False Negatives","Run Time");
+ -->
+var conferenceHeadings = new Array("Tool","Run Time (sec)","Precision","Recall","F-measure","Precision Non Inter","Recall Non Inter","F-measure Non Inter","Precision Oracle","Recall Oracle","F-measure Oracle","Total Requests","Distinct Mappings","True Positives","True Negatives","False Positives","False Negative","Precision","Negative Precision");
+
+var largeBioHeadings = new Array("Tool","Precision","Precision non","Recall","Recall non","F-measure","F-measure non","Precision Oracle","Recall Oracle","F-measure Oracle","Total Requests","Distinct Mappings","True Positives","True Negatives","False Positives","False Negatives","Run Time");
+
+<!-- determine the number of columns -->
+<!--var columns = headings.length; -->
+<!--var rows = data.length/columns; -->
+
+<!-- different heading formats according to the number of subheadings -->
+var headingColumnsFormatting = new Array(
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"6\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\""
+
+);
+
+<!-- set the style of all other columns-->
+var columnsFormatting = new Array(
+ "width=\"75\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\"",
+ "width=\"75\" bgcolor=\"#00FFFF\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\""
+);
+
+<!-- for every column the sort type is set, e.g. alphabetical if the column should be sorted alphabetically -->
+var conferenceSortTypes = new Array(
+ "alphabetical","numerical","numerical","numerical","numerical","numerical","numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical","numerical", "numerical", "numerical", "numerical", "numerical"
+);
+
+var largeBioSortTypes = new Array(
+ "alphabetical","numerical","numerical","numerical","numerical","numerical","numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical","numerical", "numerical", "numerical"
+);
+
+var anatomySortTypes = new Array(
+ "alphabetical","numerical","numerical","numerical","numerical","numerical","numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical", "numerical"
+);
+
+<!-- table format -->
+var tableFormatting = "border=\"1\" style=\"border:solid 1px #808080\" cellspacing=\"0\"";
+
+<!-- load the arrow pictures -->
+var ArrowUp = "<img src=\"arrowUp.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowDown = "<img src=\"arrowDown.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowUpSorted = "<img src=\"arrowUpSorted.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowDownSorted = "<img src=\"arrowDownSorted.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+
+<!--var sortedLine = "";-->
+
+function stringifyArray(Array){
+	var arrayAsString = "[";
+	for(var i=0;i < Array.length;i++)
+	{
+		arrayAsString+="'" + Array[i] + "'";
+		if(!((i+1) == Array.length))
+		{
+		arrayAsString+=","
+		}
+	}
+
+	arrayAsString+= "]";
+	return arrayAsString;
+}
+
+
+<!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
+function createSortedLine(number,headings,direction,array,divElementIDToWrite,columnSortTypes) {
+ var sortedLine = "<tr>";
+ var columns = headings.length;
+ var rows = array.length/columns;
+ for(var j = 0; j < columns; ++j) {
+  sortedLine += "<th " + columnsFormatting[0] + ">";
+
+  <!-- sort ascending and print the right arrow in red-->
+  if(direction == "ascending" && j == number) {
+   sortedLine += ArrowUpSorted + " ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ","+ columns+","+rows+",'"+columnSortTypes[j] + "','descending'," + stringifyArray(array) + "," + stringifyArray(headings) + ",'" + divElementIDToWrite + "'," + stringifyArray(columnSortTypes) + ")\">" + ArrowDown + "</a>";
+  }
+  <!-- sort descending and print the right arrow in red--->
+  else if(direction == "descending" && j == number) {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ","+ columns+","+rows+",'"+ columnSortTypes[j] + "','ascending'," + stringifyArray(array) + "," + stringifyArray(headings) + ",'" + divElementIDToWrite + "'," + stringifyArray(columnSortTypes) + ")\">" + ArrowUp + "</a>";
+   sortedLine += " " + ArrowDownSorted;
+  }
+  <!-- print all other columns -->
+  else {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ","+ columns+","+rows+",'"+  columnSortTypes[j] + "','ascending'," + stringifyArray(array) + "," +  stringifyArray(headings) + ",'" + divElementIDToWrite + "'," + stringifyArray(columnSortTypes) + ")\">" + ArrowUp + "</a> ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ","+ columns+","+rows+",'"+  columnSortTypes[j] + "','descending'," + stringifyArray(array) + "," +  stringifyArray(headings) + ",'" + divElementIDToWrite + "'," + stringifyArray(columnSortTypes) + ")\">" + ArrowDown + "</a><\/td>";
+  }
+ sortedLine += "<\/th>";
+ }
+ sortedLine += "<tr>";
+ return sortedLine;
+}
+
+<!-- function to really sort the columns according to a certain line number, type and direction -->
+function sortColumns(number,columns,rows,type,direction,array,headings,divElementIDToWrite,columnSortTypes) {
+ var sort_data = new Array();
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ <!-- get the according data -->
+ for(var i = 0; i < rows; ++i)
+  columnsData[i] = dataToCompare[i] = array[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ <!--- determine and set the according index -->
+ var alreadySet = false;
+ for(i = 0; i < rows; ++i)
+  for(var j = 0; j < rows; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+   <!-- check whether the current j is already set as index to avoid problems with same numbers -->
+	for(var k=0; k<index.length; k++) {
+	 if(index[k]==j) alreadySet=true;
+	 }
+     if(alreadySet==false) index[i] = j;
+	 else alreadySet=false;
+   }
+
+ <!-- create the sorted line and write it -->
+ for(i = 0; i < rows; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data[i * columns + j] = array[index[i] * columns + j];
+ <!--createSortedLine(number,headings,direction,array,divElementIDToWrite);-->
+ writeTable(sort_data,headings,number,direction,divElementIDToWrite,columnSortTypes);
+}
+
+<!-- write the whole table with specified columns -->
+function writeTable(array,headings,number,direction,divElementIDToWrite,columnSortTypes) {
+ columns = headings.length;
+ rows=array.length/columns;
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+<!--  content += "<tr>"; -->
+  <!--for(var j = 0; j < headings.length; ++j) {-->
+
+<!--	for(var k = 1; k < headings[j].length; ++k)-->
+<!--		content += "<th " + headingColumnsFormatting[5] + ">" + headings[j][k] + "<\/th>"; -->
+
+<!--  } -->
+<!--  content += "<\/tr>";	-->
+ content += createSortedLine(number,headings,direction,array,divElementIDToWrite,columnSortTypes);
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows; ++i) {
+	  if(i%2 == 0) {
+          content += "<tr bgcolor=\"FFFFDD\">";
+      }
+	  else {
+          content += "<tr bgcolor=\"FFDDFF\">";
+      }
+	  if(array[i * columns] == array[14]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+	  if(array[i * columns] == array[28]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ var element = document.getElementById(divElementIDToWrite);
+ if(element!=null)
+ {
+  document.getElementById(divElementIDToWrite).innerHTML = content;
+ }
+ else if(document.all)
+ {
+  document.all.table.innerHTML = content;
+  }
+ else if(document.layers) {
+  document.table.document.open();
+  document.table.document.write(content);
+  document.table.document.close();
+ }
+}
+<!-- sorting for numerical values-->
+function Numsort(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+    return a-b;
+}
+
+function starSort(a,b){
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	var result = Numsort(a,b);
+	return result;
+}
+
+<!-- sorting for inverse numerical values-->
+function NumsortInverse(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+	if(a=='X') {
+		return -1;
+	}
+	if(b=='X') {
+		return 1;
+	}
+	if(a=='T') {
+		return -1;
+	}
+	if(b=='T') {
+		return 1;
+	}
+    return b-a;
+}
+</script>
+<title>table</title>
+</head>
+<!--<body onLoad="createSortedLine(-1,'',data); writeTable(data);">-->
+ <body onLoad="writeTable(anatomy0,anatomyHeadings,-1,'','anatomy0',anatomySortTypes);writeTable(anatomy1,anatomyHeadings,-1,'','anatomy1',anatomySortTypes);writeTable(anatomy2,anatomyHeadings,-1,'','anatomy2',anatomySortTypes);writeTable(anatomy3,anatomyHeadings,-1,'','anatomy3',anatomySortTypes);writeTable(conference0,conferenceHeadings,-1,'','conference0',conferenceSortTypes);writeTable(conference1,conferenceHeadings,-1,'','conference1',conferenceSortTypes);writeTable(conference2,conferenceHeadings,-1,'','conference2',conferenceSortTypes);writeTable(conference3,conferenceHeadings,-1,'','conference3',conferenceSortTypes);writeTable(largeBio0,largeBioHeadings,-1,'','largeBio0',largeBioSortTypes);writeTable(largeBio1,largeBioHeadings,-1,'','largeBio1',largeBioSortTypes);writeTable(largeBio2,largeBioHeadings,-1,'','largeBio2',largeBioSortTypes);writeTable(largeBio3,largeBioHeadings,-1,'','largeBio3',largeBioSortTypes);">
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <br/>
+  <br/>
+  <br/>
+  <!--
+  <img  width="150px" src="http://oaei.ontologymatching.org/oaeismall.jpg" style="clear:left;float:left; margin-left: 1pt; border-style:none;"/></a>
+  <img width="150px" src="http://oaei.ontologymatching.org/oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  -->
+  <img  width="150px" src="../../../oaeismall.jpg" style="clear:left;float:left; margin-left: 1pt; border-style:none;"/></a>
+  <img width="150px" src="../../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+ <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+<br/>
+<center>
+
+<h1>Results for OAEI 2024 - Interactive Track</h1>
+</center>
+<br/>
+<br/>
+
+<!-- UNCOMMENT for the final version of the page <p><i>The following content is (mainly) based on the final version of the interactive section in the OAEI results paper.<br/> If you notice any kind of error (wrong numbers, incorrect information on a matching system) do not hesitate to contact us.</i></p> -->
+
+<br/>
+<h2>Description</h2>
+
+<p>The growth of the ontology alignment area in the past ten years has led to the development of many ontology alignment tools.
+After several years of experience in the OAEI, we observed that the results only slightly improved in terms of the
+alignment quality (precision/recall resp. F-measure). Based on this insight, it is clear that fully automatic ontology matching
+approaches slowly reach an upper bound of the alignment quality they can achieve. A work by <a href="#references">(Jimenez-Ruiz et al., 2012)</a> has shown
+that simulating user interactions with 30% error rate during the alignment process has led to the same results as non-interactive matching.
+Thus, in addition to the validation of the automatically generated alignments by domain experts, we believe that there is
+further room for improving the quality of the generated alignments by incorporating user interaction. User involvement during
+the matching process has been identified as one of the challenges in front of the ontology alignment community by <a href="#references">(Shvaiko et al., 2013)</a>
+and user interaction with a system is an integral part of it.</p>
+
+<p>At the same time, with the tendency of increasing ontology sizes, the alignment problem also grows.
+It is not feasible for a user to, for instance validate all candidate mappings generated by a system, i.e.,
+tool developers should aim at reducing unnecessary user interventions. All required efforts of the human have
+to be taken into account and it has to be in an appropriate proportion to the result.
+Thus, besides the quality of the alignment, other measures like the number of interactions are interesting and meaningful
+to decide which matching system is best suitable for a certain matching task. All other OAEI tracks focus on
+fully automatic matching and semi-automatic matching is not evaluated although such systems already exist, e.g.,
+overview in <a href="#references">(Ivanova et al., 2015)</a>. As long as the evaluation of such systems is not driven forward,
+it is hardly possible to systematically compare the quality of interactive matching approaches.</p>
+
+<br/>
+<h2>Datasets</h2>
+<p>
+<!--
+In this 5th edition of the Interactive track we use four OAEI datasets, namely Conference, Anatomy, Phenotype and Large Biomedical Ontologies (LargeBio).
+The Conference dataset covers 16 ontologies describing the domain of conference organization.
+We only use the test cases for which an alignment is publicly available (altogether 21 alignments/tasks).
+
+The Anatomy dataset includes two ontologies (1 task), the <a href="http://www.informatics.jax.org/searches/AMA_form.shtml">Adult Mouse Anatomy</a> (AMA) ontology and a part of the <a href="http://ncit.nci.nih.gov/">National Cancer Institute Thesaurus</a> (NCI) describing the human anatomy.
+The Phenotype dataset has four ontologies which are the <a href="http://bioportal.bioontology.org/ontologies/HP">Human Phenotype Ontology (HPO)</a>,
+the <a href="http://bioportal.bioontology.org/ontologies/MP">Mammalian Phenotype Ontology (MP)</a>,
+the <a href="http://bioportal.bioontology.org/ontologies/DOID">Human Disease Ontology (DOID)</a>, and
+the <a href="http://bioportal.bioontology.org/ontologies/ORDO">Orphanet and Rare Diseases Ontology (ORDO)</a>.
+
+Finally, the LargeBio consists of 6 tasks with different sizes ranging from tens to hundreds of thousands classes and aims at finding alignments between the <a href="http://sig.biostr.washington.edu/projects/fm/">Foundational Model of Anatomy</a> (FMA),
+<a href="http://www.ihtsdo.org/index.php?id=545">SNOMED CT</a>,
+and the <a href="http://ncit.nci.nih.gov/">National Cancer Institute Thesaurus</a> (NCI).
+</p>
+<p>
+The quality of the generated alignments in the Conference, Anatomy and LargeBio tracks has been constantly increasing but in most cases only by a small amount (by a few percent).
+For example, in the Conference track in 2013, the best system according to F-measure was YAM++ with 70% <a href="#references">(Cuenca Grau et al., 2013)</a>. On the other hand, while
+the best result according to F-measure for the Anatomy track was achieved last year by AML with 94% there has been very little improvement over previous few campaigns
+(only few percent). This shows that there is room for improvement, which could be filled by interactive means.
+</p>
+-->
+In this 12th edition of the Interactive track we use two OAEI datasets, namely Anatomy and Conference.
+The Anatomy dataset includes two ontologies (1 task), the <a href="http://www.informatics.jax.org/searches/AMA_form.shtml">Adult Mouse Anatomy</a> (AMA) ontology and a part of the <a href="http://ncit.nci.nih.gov/">National Cancer Institute Thesaurus</a> (NCI) describing the human anatomy.
+The Conference dataset covers 16 ontologies describing the domain of conference organization.
+We only use the test cases for which an alignment is publicly available (altogether 21 alignments/tasks).
+</p>
+<p>
+The quality of the generated alignments in the Anatomy and Conference tracks has been constantly increasing but in most cases only by a small amount (by a few percentage points).
+For example, in the Conference track in 2013, the best system according to F-measure was YAM++ with 70% <a href="#references">(Cuenca Grau et al., 2013)</a>. On the other hand, while
+the best result according to F-measure for the Anatomy track was achieved by AML in 2021 with 94.6% there has been very little improvement over previous few campaigns
+(only a few percentage points). This shows that there is room for improvement, which could be filled by interactive means.
+</p>
+
+<h2>Experimental Setting</h2>
+<p>
+The interactive matching track was organized at OAEI 2024 for the twelfth time.
+The goal of this evaluation is to simulate interactive matching (see <a href="#references">(Paulheim et al., 2013)</a>, <a href="#references">(Dragisic et al., 2016)</a> and <a href="#references">(Li et al., 2020)</a>),
+where a human expert is involved to validate mappings found by the matching system.
+In the evaluation, we look at how interacting with the user improves the matching results.
+The SEALS client was modified to allow interactive matchers to ask an Oracle.
+The interactive matcher can present a correspondence to the Oracle, which then tells the system whether the correspondence is right or wrong.
+Since 2016, we have extended this functionality - a matcher can present simultaneously several correspondences to the Oracle.
+Since 2015, in addition to emulating the perfect user, we have considered domain experts with variable error rates which reflects a more realistic scenario where a (simulated) user does not necessarily provide a correct answer.
+We experiment with three different error rates, 0.1, 0.2 and 0.3. The errors were randomly introduced into the reference alignment with given rates.
+</p>
+<p>
+	<!--
+The evaluations of the Anatomy and Conference datasets were run with 8GB RAM allocated to AML and LogMap, and 16GB RAM allocated to ALIN (as needed).
+-->
+Each system was run ten times and the final result of a system for each error rate represents the average of these runs. This is the same configuration that was used in the non-interactive version of the Anatomy track and runtimes in the interactive version of this track are therefore comparable.
+For the <a href="http://oaei.ontologymatching.org/2014/conference/eval.html">Conference dataset<a/> with the ra1 alignment, we considered macro-average of precision and recall of different ontology pairs, while the number of interactions represents the total number of interactions in all tasks. Finally, the ten runs are averaged.
+
+</p>
+
+<h2>Results</h2>
+
+The results are presented for each dataset separately. Columns "Precision Oracle", "Recall Oracle" and "F-measure Oracle" across all tables for all datasets that follow below
+contain the evaluation results "according to the Oracle", meaning against the Oracle's alignment (i.e., the reference alignment as modified by the randomly introduced errors). They represent the
+precision, recall, and F-measure of the matching tool as if the Oracle's answers were all correct and show the impact of the Oracle's errors on the tool.
+The "Total Requests" column represents the number of distinct user interactions with the tool,
+where each interaction can contain one or more mappings that could be analyzed simultaneously. The mappings that are not conflicting are counted individually;
+and if more than three mappings are given, they are all counted independently, regardless of whether they are conflicting. This value is given in the "Distinct Mappings" column.
+The next four columns represent the true positives, true negatives, false positives and false negatives out of all distinct mappings requests. The "Precision" and "Negative Precision" columns are the
+precision and negative precision of the Oracle itself, i.e., respectively the fraction of positive and negative answers given by the Oracle that are correct.
+The "Precision" value affects the true positives and false positives, and the "Negative Precision" value affects the true negatives and false negatives.
+
+<table>
+  <tr>
+    <th>Measure</th>
+    <th>Description</th>
+	<th>Meaning for the evaluation</th>
+  </tr>
+  <tr>
+    <td><b>Precision, Recall, F-measure</b></td>
+    <td>Measure the tool's performance against the fixed reference alignment.</td>  <!-- , letting us know in absolute terms how the tools performed in the matching problem -->
+    <td>Show in absolute terms how the tool performed in the matching problem.</td>
+  </tr>
+  <tr>
+    <td><b>Precision Oracle, Recall Oracle and F-measure Oracle</b></td>
+    <td>Measure the tool's performance against the reference as modified by the Oracle's errors.</td> <!-- , letting us know how the tool is impacted by the errors (only directly vs also indirectly or in other words linearly vs supra-linearly). -->
+    <td>Show how the tool is impacted by the errors.</td>
+  </tr>
+  <tr>
+    <td><b>Precision and Negative Precision</b></td>
+    <td>Measure the performance of the Oracle itself.</td> <!-- , letting us know what type of errors the Oracle made, and thus explain the performance of the tool when faced with these errors -->
+    <td>Show what type of errors the Oracle made, and thus explain the performance of the tool when faced with these errors.</td>
+  </tr>
+</table>
+<noscript>
+<p>Java-Script need to be enabled!</p>
+</noscript>
+
+ <br/>
+ <h3>Anatomy Track</h3>
+
+  <p>
+  The four tables below present the results for the Anatomy dataset with four different error rates.
+  The first two columns in each of the tables present the run time (in seconds) and the size of the alignment.
+  The next eight columns present the precision, recall, F-measure and recall+ obtained from the interactive and non-interactive tracks for the Anatomy dataset.
+  The measure recall+ indicates the amount of detected non-trivial equivalence correspondences.
+  To calculate it, the trivial correspondences (those with the same normalized label including those in the oboInOwlnamespace as well) have been removed as well as correspondences expressing relations different from equivalence.
+  The meaning of the other columns is described above at the beginning of the Results section.
+  Fig. 1 shows the time intervals between the questions to the user/Oracle for the different systems and error rates for the ten runs (the runs are depicted with different colors).
+  </p>
+
+
+ <h4>Error Rate 0.0</h4>
+ <div id="anatomy0"></div>
+ <h4>Error Rate 0.1</h4>
+ <div id="anatomy1"></div>
+ <h4>Error Rate 0.2</h4>
+ <div id="anatomy2"></div>
+ <h4>Error Rate 0.3</h4>
+ <div id="anatomy3"></div>
+
+
+ <p>
+ We first compare the performance of the two systems with an <b>all-knowing Oracle</b> (0.0 error rate), in terms of precision, recall, F-measure and recall+, to the results obtained in the non-interactive Anatomy track ("Precision", "Recall", "F-measure", "Recall+", "Precision Non Inter", "Recall Non Inter", "F-measure Non Inter" and	"Recall+ Non Inter").
+ The effect of introducing interactions with the Oracle/user is mostly pronounced for the ALIN system and especially for its recall measure - ALIN has a 15.2 percentage points increase
+<!--
+ The opposite side is XMap - it benefits the least from the interaction with the Oracle.
+ XMap differs with less than 0.2 percentage points in terms of precision, recall, F-measure and 0.6 percentage points regarding recall+ from the non-interactive runs.
+-->
+ <!--At the same time, AML's recall increases with less than 1 percentage points--> whereas LogMap's recall decreases a little bit.
+
+ User interactions affect the precision measure differently - it brings increases for all systems, and it is most advantageous for LogMap which precision increases with around 7.3 percentage points.
+ Consequently, ALIN's F-measure increases the most (from 0.835 to 0.929), the F-measure for LogMap  <!--and AML--> slightly changes.
+ <!--AML has the highest  F-measure for this error rate as well as for the rest of the measured error rates.-->
+
+ It is worth noting that ALIN detects more trivial correspondences in the non-interactive track ("Recall+ Non Inter" = 0.438), introducing user interactions led to detecting some non-trivial correspondences ("Recall+" = 0.678).
+
+<!--
+ Thus it seems that ALIN is relying only on user interaction to generate non-trivial mappings.
+-->
+ Thus it seems that ALIN is slightly relying on user interaction to generate non-trivial mappings.
+ <!--The recall+ slightly improves for AML with around 1.2 percentage points.-->
+
+ In terms of the alignment size and the number of total requests, 
+ LogMap generates 1299 correspondences in 388 requests (3.34 times), which shows similar results as last year. 
+ Whereas ALIN generates 1350 correspondences in 262 requests (5.154 times). 
+ <!--AML generates the largest alignment with 1455 correspondences by 189 requests (7.69 times). ALIN and LogMap show slightly similar results in which ALIN generates 1413 correspondences in 514 requests (2.74 times), and LogMap generates 1299 correspondences in 388 requests (3.34 times).-->
+
+ <p>
+ </p>
+ With the introduction of an erroneous Oracle/user and <b>moving towards higher error rates</b>, the systems' performances start to deteriorate in comparison to the all-knowing Oracle slightly.
+ We can observe that the change in the error rate influences the systems differently in comparison to the non-interactive results.
+  <!--AML's performance with an all-knowing Oracle is better on all measures. To compare the interactive results with non-interactive results, the F-measure drops in the 0.2 and 0.3 cases, while the recall stays higher than the non-interactive results for all error rates except for 0.3.-->
+ LogMap's performance with an all-knowing Oracle is better on all measures. The F-measure in the 0.3 case drops below the non-interactive results, while the precision stays higher in all error rates.
+ 
+ <!--LogMap behaves similarly - the F-measure in the 0.3 case drops below the non-interactive results, while the precision stays higher in all error rates.-->
+
+ <!--ALIN's F-measure and recall is higher for all error rates in comparison to its non-interactive results. Its F-measure stays higher than the non-interactive results for all error rates except for 0.3 and its precision drops already in the 0.1 case.
+-->
+ ALIN's F-measure and recall are higher for all error rates in comparison to its non-interactive results, but its precision drops already in the 0.1 case.
+ 
+ Overall the F-measure drops with about 6 percentage points for ALIN from error rate 0.0 to 0.3 and with around 4.6 percentage points for LogMap.
+ One observation from the recall+ in the interactive and non-interactive tracks, ALIN has higher numbers in the interactive track for all error rates which means they generated more non-trivial mappings.
+ <!--AML's recall+ in interactive tracks drops below that in non-interactive track in 0.2 case.
+
+ The recall+ of LogMap in the interactive track is slightly higher than that in non-interactive only for all-knowing Oracle.-->
+
+ Now let us examine how the precision and recall are affected when moving from error rate 0.0 to 0.3 in connection to the values in the last two columns - <b>"Precision" and "Negative Precision"</b>.
+ The "Precision" value drops more than the value for "Negative Precision" for ALIN and LogMap. ALIN has 47 percentage points and 16.2 percentage points drop for "Precision" and "Negative Precision" respectively. While LogMap drops 57.2 and 13.
+ Taking into account that the "Precision" impacts precision and "Negative Precision" impacts recall we would expect that the precision drops more than recall for ALIN and LogMap.
+ This is actually observed - ALIN's precision and recall drop with respectively 8.2 percentage points and 4.2 percentage points while LogMap's - with around 5.1 and 3 percentage points.
+ Another observation is connected to the values in the <b>"Precision Oracle" and "Recall Oracle"</b> columns.
+ ALIN's values are approximately constant, which means that the impact of the errors is linear. 
+ <!--But ALIN has an obvious decrease on precision oracle in error rate 0.3.
+ In this case though, the drop in the recall is undoubtedly due to the fact that it decreases the number of queries with the error rate and thus captures less mappings in total.
+-->
+ LogMap, as the last year, has a noticeable drop in both "Precision Oracle" and "Recall Oracle" which indicates a supralinear impact of errors.
+ </p>
+
+  <p>
+  The <b>size of the alignments</b> produced by LogMap and ALIN both slightly increases with the increasing error rates. <!--For ALIN, it slightly increases from 0 to 0.2 but drops in 0.3 case.
+  <!--
+  The same trend is observed for the number of total and distinct mappings requests that ALIN makes to the user - when the error rate increases the number of questions to the user decreases.
+  The numbers of total requests and distinct mappings for AML increase with the error rate grows from 0 to 0.3.
+-->
+  The numbers of total requests and distinct mappings for ALIN decrease from 0.0 to 0.3. The two numbers for LogMap are same through the different error rates.
+  <!-- Different from AML containing one mapping in one user interaction and not asking the user the same question twice as the value of total requests and distinct mappings are almost equal, ALIN combines several mappings in one request to the user.
+ 
+ 
+  Furthermore, different from last year, LogMap asks the relationships of ">", "<" and "=" in each request.
+  This is why the number of distinct mappings (1164) is more than the number of total requests (388).
+-->
+<!--
+  This is also the reason why the precision and negative precision in last two columns from the table drop 57 percentage points and 12% around than 35% and 25% in 2016 respectively as the error rate increases.
+-->
+
+  Another difference is observed in the ratio of correct to incorrect requests made to the Oracle (<b>"True Positives" and "True Negatives"</b>).
+
+  In the case of an all-knowing Oracle, all the systems make more incorrect than correct requests. The ratios of correct and incorrect requests of ALIN and LogMap are 0.385, 0.327 respectively.
+ LogMap and ALIN keep almost the same ratios in different error rates.
+  <!--
+  However, as the error rate increases, ALIN makes slightly more correct requests with the ratios 0.3, 0.3, 0.31 in error rates 0.1, 0.2 and 0.3 respectively.
+  </p>
+  -->
+
+ <p>
+ For an interactive system, the <b>time intervals</b> at which the user is involved in an interaction are important.
+ Fig. 1 presents a comparison between the systems regarding the time periods at which the system presents a question to the user.
+ Across the ten runs and different error rates, the LogMap mean requests intervals are around 0.01 ms.
+ The average of ALIN's mean intervals is 9.3 ms.
+ While there are no significant deviations of this value for LogMap, several outliers are observed for ALIN.
+ For the <b>run time</b> between the different error rates, there is no significant change for LogMap and ALIN. LogMap generates alignments in less than a minute.
+</p>
+
+ <p>
+   The <b>take away</b> of the above analysis is that the two systems perform better with an all-knowing Oracle than in the non-interactive Anatomy track in terms of F-measure.
+   For ALIN, all three measures of the interactive track are higher in 0.0 error-rate than the non-interactive one.
+     <!--For AML all three measures (precision, recall, and F-measure) are higher in the Interactive track with 0.0 and 0.1 error rates than in the non-interactive,--> 
+   <!--For LogMap the recall in the 0.0 case is almost same as its non-interactive recall and drops under it in the 0.1 error rate.--> 
+   For LogMap the recall in the 0.0 case is already lower than its non-interactive recall.
+   The growth of the error rate impacts different measures in the different systems.
+   The impact of the Oracle errors is linear for ALIN and supralinear for LogMap.
+   The ratio of correct to incorrect questions to the Oracle is different in the three systems and further changes with the increasing error rates which could be an indicator of different strategies to handle user errors.
+ </p>
+
+ <h4>Comparison to 2023</h4>
+ <p>
+   <!--
+  The participants this year are partly same as in 2017 and 2018.
+-->
+
+  LogMap has participated in the track since it has been established in 2013.
+  ALIN has participated since 2016.
+  LogMap shows similar results to the results of 2023.
+  For ALIN, there is a significant decrease in total requests and distinct mappings,  which dues to the introduction of ChatGPT, improvement of the lexical analyzers as well as the increased threshold for filtering out mappings.
+  <!--Both ALIN and LogMap show similar results to the results of 2022.
+   For ALIN, there is a slightly increasing trend in terms of recall, F-measure, recall+, the number of requests and the number of distinct mappings but a decrease in Precision with the introduction of an erroneous Oracle.
+  ALIN has a strategy to standardize the terms with grammars, which contributes to the increase on the number of distinct mappings. -->
+   <!-- In addition, the precision and recall of ALIN also increase over the all-knowing Oracle and the different error rates and ALIN shows similar results in F-measure and recall+.
+ALIN is the only system that makes more correct requests against incorrect requests as the error rate increases.-->
+  Similarly to the last year, the impact of the Oracle's errors is linear for ALIN and supralinear for LogMap.
+  </p>
+ <figure style="text-align:center;">
+  <img src="anatomy_boxplot_per_error_rate_multiple_runs.png"><br/>
+  <figcaption style="font-size:22px;margin: 40px 0 0 0;">Fig1. The Y axis depicts the time intervals between the requests to the user/Oracle (whiskers: Q1-1,5IQR, Q3+1,5IQR, IQR=Q3-Q1).
+  The labels under the system names show the average number of requests and the mean time between the requests for the ten runs.</figcaption>
+ </figure>
+
+ <h3>Conference Track</h3>
+ <p>The four tables below present the results for the Conference dataset with four different error rates. The columns are described above at the beginning of the Results section. Fig. 2 shows the average requests intervals per task (21 tasks in total per run) between the questions to the user/Oracle for the different systems and error rates for all tasks and the ten runs (the runs are depicted with different colors). The first number under the system name is the average number of requests and the second number is the average period of the average requests intervals for all tasks and runs. </p>
+ <h4>Error Rate 0.0</h4>
+ <div id="conference0"></div>
+ <h4>Error Rate 0.1</h4>
+ <div id="conference1"></div>
+ <h4>Error Rate 0.2</h4>
+ <div id="conference2"></div>
+ <h4>Error Rate 0.3</h4>
+ <div id="conference3"></div>
+
+ <figure style="text-align:center;">
+	<img src="conference_boxplot_per_error_rate_multiple_runs_aver_aver_Y_aver.png">
+	<figcaption style="font-size:22px;margin: 40px 0 0 0;">Fig2. The Y axis depicts the average time between the requests per task in the Conference dataset (whiskers: Q1-1,5IQR, Q3+1,5IQR, IQR=Q3-Q1).
+  The labels under the system names show the average number of requests and the mean time between the requests (calculated by taking the average of the average request intervals per task) for the ten runs and all tasks.</figcaption>
+ </figure>
+
+<p>
+When systems are evaluated using an<b> all-knowing Oracle</b>, all the participants present a higher F-measure than the one they obtained non-interactively.
+ALIN shows the greatest improvement, with around 19.5 percentage points increase in F-measure, and also the highest F-measure in absolute terms when questioning the Oracle.
+<!-- AML and LogMap improved by 5.1 and 3.7 percentage points respectively. -->
+The substantial improvement of ALIN is mostly supported by gains in recall (around 24.6 percentage points), whereas LogMap shows more balanced improvements.
+</p>
+<p>
+When an <b>error rate is introduced</b>, ALIN is the system that is more severely affected, losing around 8.9, 7 and 6.2 percentage points in F-measure with each increase in error rate.
+On the other hand, LogMap is resilient, with losses between 2.1 percentage points and 1.5 percentage point.
+<!--In the tests with error rates 0.1, 0.2, and 0.3, AML produced the highest F-measure.-->
+
+When comparing the systems' performance across the different error rates with their non-interactive results, we note that the precision drops earlier than the recall.
+ALIN's recall is higher than its non-interactive results even in the 0.3 (its relatively low recall in the non-interactive track also contributes to this result), but the precision drops already for the smallest error rate.
+<!--AML's precision drops under the non-interactive results in the 0.2 case, while the recall drops under the non-interactive results in the 0.3 case.-->
+LogMap's precision drops in the 0.3 case while its recall stays almost the same as the non-interactive results.
+
+<!-- As indicated by the F-measure the decrease in the systems performance is significant when moving towards higher error rates especially for ALIN.  -->
+<!--The larger drop in <b>"Precision"</b> than <b>"Negative Precision"</b> values between the 0.0 and 0.3 error rates explains the larger decrease in precision (around 41.6, 9.5 and 9 percentage points) than the decrease in recall (around 9.6, 4.8 and 2.5 percentage points) for all three systems (ALIN, AML, and LogMap).-->
+The larger drop in <b>"Precision"</b> than <b>"Negative Precision"</b> values between the 0.0 and 0.3 error rates explains the larger decrease in precision (around 37.6, 8.9 percentage points) than the decrease in recall (around 9, 2.5 percentage points) for all systems (ALIN, LogMap)
+
+The impact of Oracle errors (<b>"Precision Oracle"</b> and <b>"Recall Oracle"</b> columns) on the systems' behavior for the Conference dataset is similar to the impact of the errors on their behavior for the Anatomy dataset - it is linear for ALIN and supralinear for LogMap.
+</p>
+
+<p>
+The number of <b>total requests</b> posed by each system is different.
+LogMap poses the lower number (82 for every test), <!--while on average, AML poses around 245, -->whereas ALIN poses around 180 total requests on average.
+<!--
+The novel feature of analysing multiple mappings at once was apparently used by two systems, ALIN, which is querying one or more individual mappings for each interaction, and LogMap, which contains three mappings in one request.
+-->
+Analysing the values for the <b>"True Positives" and "True Negatives"</b> we observe that the systems mainly ask the Oracle about incorrect mappings (true negatives) - in the 0.0 case the ratio is 0.114 and 0.2487 for ALIN and LogMap respectively.
+This ratio almost stays the same for ALIN and LogMap when the error rate increases. <!--While this ratio of AML increases to 0.35 in the test with error rate 0.3, which indicates AML starts to ask more positive questions as the error rate increases.-->
+
+<b>Time between requests</b> is low for all systems.
+And the total run time between the error rates are almost the same.
+</p>
+<p>
+The <b>take away</b> of the above analysis is that all systems, perform better on all measures with an all-knowing Oracle than in the non-interactive Conference track. In the 0.1 error rate, LogMap still performs better on all measures, while ALIN's precision drops below its non-interactive precision.
+ <!--Its F-measure, however, stays higher than the non-interactive value over all error rates except error rate 0.3 due to the improvement in the recall.-->
+
+</p>
+<h4>Comparison to 2023</h4>
+<p>
+  <!--
+The participants this year are partly the same systems as in 2018.
+-->
+The variation trends with respect to precision, recall, and F-measure in each system between interactive and non-interactive are similar. <!--ALIN shows an increase on all measures-->
+The influence due to the different error rates among these measures is also similar. 
+LogMap has similar results in comparison to the last year.
+As previously mentioned, the introduction of ChatGPT has led to a slightly decrease in total requests and distinct mappings for ALIN.
+<!--Both ALIN and LogMap have similar results in comparison to the last year.
+AML and LogMap have similar results in comparison to the last year.
+ALIN has a slightly decrease on all measures as error rate increases.-->
+
+<!--
+ALIN withdraws the additional criteria for the automatic classification of mappings at the beginning of its execution which brings a decrease in precision for the conference dataset same as last year.
+
+ALIN has created new techniques to automatic classification of mappings at the beginning of its execution which brings a decrease in precision and total requests for the conference dataset same as last year.
+
+Regarding the requests to the Oracle, LogMap has a decrease in total requests from 140 around in 2016 to 82 in 2017 which contributes the increase in the percentage of correct requests.
+Since LogMap contains three questions which are ">", "<" and "=" relationships in each requests, it causes the higher decreases on precision and negative precision as the error rate increases.
+-->
+
+
+</p>
+
+
+
+<h2>Discussion</h2>
+<p>
+While LogMap makes use of user interactions exclusively in the post-matching steps to filter their candidate mappings, ALIN can also add new candidate mappings to its initial set.
+LogMap requests feedback on only selected mapping candidates (based on their similarity patterns or their involvement in unsatisfiabilities). LogMap presents three mappings to the user <!--while AML only presents one mapping at a time to the user-->.
+ALIN also employs the new feature similar to LogMap - analysing several mappings simultaneously - and can present up to three mappings together to the user if a full entity name in a candidate mapping is the same as another entity name in another candidate mapping.<!-- It can add and remove candidate mappings as a result of the user interaction. -->
+The difference between ALIN and LogMap is the latter contains three questions (">", "<" and "=") for every candidate mapping.
+</p>
+<p>
+With the all-knowing Oracle all systems, perform better than their non-interactive results for both datasets.
+Although systems' performance deteriorates when moving towards larger error rates there are still benefits from the user interaction - some of the systems' measures stay above their non-interactive values even for the larger error rates.
+For the Anatomy dataset different measures are affected in the different systems in comparison to their non-interactive results; for the Conference dataset the precision drops under the non-interactive values faster than the recall.
+The drop in precision and recall for all systems is larger for the Conference dataset than for the Anatomy dataset with the increasing error rates.
+</p>
+<p>
+The impact of the Oracle's errors is linear for ALIN and supralinear for LogMap for both datasets.
+One difference between the two datasets is the ratio of correct to incorrect requests to the Oracle.
+There is a clear trend for all three systems in the Conference dataset, the ratio stays around and under 0.5 for all error rates.
+In the Anatomy dataset the ratio changes differently for each system.
+</p>
+
+
+<!-- <p>
+This year is the first time we have considered a non-perfect domain expert, i.e., a domain expert which can provide wrong answers. As expected, the performance of the systems deteriorated with the increase of the error rate. However, an interesting observation is that the errors had different impact on different systems reflecting the different interactive strategies employed by the systems. In some cases erroneous answers from the Oracle had the highest impact on the recall, in other cases on the precision, and in others still both measures were significantly affected. Also interesting is the fact that the impact of the errors was linear in some systems and supralinear in others, as reflected by their performance in relation to the Oracle alignment. A supralinear impact of the errors indicates that the system is making inferences from the user and thus deciding on the classification of multiple mapping candidates based on user feedback about only one mapping. This is an effective strategy for reducing the burden on the user, but alas leaves the matching system more susceptible to user errors. An extreme example of this is JarvisOM on the Anatomy dataset, as it uses an active-learning approach based on solely 7 user requests, and consequently is profoundly affected when faced with user errors given the size of the Anatomy dataset alignment. Curiously, this system behaves very differently in the Conference dataset, showing a linear impact of the errors, as in this case 7 requests (which is the average number it makes per task) represent a much more substantial portion of the Conference alignments (~50%) and thus leads to less inferences and consequently less impact of errors.
+</p>
+<p>
+Apart from JarvisOM, the other systems all make use of user interactions exclusively in post-matching steps to filter their candidate mappings. LogMap and AML both request feedback on only selected mapping candidates (based on their similarity patterns or their involvement in unsatisfiabilities). By contrast, ServOMBI employs the user to validate all its mapping candidates (after two distinct matching stages), which corresponds to user validation rather than interactive matching. Consequently, it makes a much greater number of user requests than the other systems, and in being the system most dependent on the user, is also the one most affected by user errors.
+</p>
+<p>
+With regard still to the number of user requests, it is interesting to note that both ServOMBI and LogMap generally increased the number of requests with the error, whereas AML and JarvisOM kept their number approximately constant. The increase is natural, as user errors can lead to more complex decision trees when interaction is used in filtering steps and inferences are drawn from the user feedback (such as during alignment repair) which leads to an increased number of subsequent requests. JarvisOM is not affected by this because it uses interaction during matching and makes a fixed 7-8 requests per matching task, whereas AML prevents it by employing a maximum query limit and stringent stopping criteria.
+</p>-->
+<p>
+Two models for system response times are frequently used in the literature <a href="#references">(Dabrowski et al., 2011)</a>: Shneiderman and Seow take different approaches to categorize the response times.
+Shneiderman takes task-centred view and sort out the response times in  four categories according to task complexity: typing, mouse movement (50-150 ms),
+simple frequent tasks (1 s), common tasks (2-4 s) and complex tasks	(8-12 s). He suggests that the user is more tolerable to delays with
+the growing complexity of the task at hand. Unfortunately no clear definition is given for how to define the task complexity.
+Seow's model looks at the problem from a user-centred perspective by considering the user expectations towards the execution of a task: instantaneous (100-200 ms),
+immediate (0.5-1 s), continuous (2-5 s), captive (7-10 s);
+Ontology alignment is a cognitively demanding task and can fall into the third or fourth categories in both models.
+In this regard the response times (request intervals as we call them above) observed with both the Anatomy and Conference dataset fall into the tolerable and acceptable response times, and even into the first categories, in both models.
+The request intervals for LogMap are less than 1 ms for both datasets. ALIN's request intervals are 40 ms for the Anatomy dataset on average and less than 1 ms for the Conference dataset.
+<!--AML's request intervals are around 4ms for the Anatomy dataset and less than 1 ms for the Conference dataset.
+ The same applies for the average requests intervals for the 6 tasks in the LargeBio dataset. -->
+<!-- The average request intervals for the Conference dataset are lower than those discussed for the Anatomy dataset. --> It could be the case however that the user could not take advantage of very low response times because the task complexity may result in higher user response time
+(analogically it measures the time the user needs to respond to the system after the system is ready).
+</p>
+
+
+
+<a name="references">
+<h2>References</h2>
+</a>
+<p>
+  Ernesto Jimenez-Ruiz, Bernardo Cuenca Grau, Yujiao Zhou, Ian Horrocks. "Large-scale Interactive Ontology Matching:
+  Algorithms and Implementation". ECAI 2012. <a href="https://www.cs.ox.ac.uk/files/4801/LogMap_ecai2012.pdf">[pdf]</a>
+<p>
+
+<p>
+    Pavel Shvaiko, J&eacute;r&ocirc;me Euzenat. "Ontology matching: state of the art and future challenges". Knowledge and Data Engineering 2013.
+    <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6104044&tag=1">[publisher page]</a>
+</p>
+
+<p>
+    Valentina Ivanova, Patrick Lambrix, Johan &Aring;berg. "Requirements for and evaluation of user support for large-scale ontology alignment". ESWC 2015.
+   <a href="http://link.springer.com/chapter/10.1007%2F978-3-319-18818-8_1">[publisher page]</a>
+   </p>
+<p>
+    Bernardo Cuenca Grau , Zlatan Dragisic , Kai Eckert & et al. "Results of the Ontology Alignment Evaluation Initiative 2013"
+    OM 2013. <a href="http://oaei.ontologymatching.org/2013/results/oaei2013.pdf">[pdf]</a>
+    </p>
+
+
+
+<p>
+  Heiko Paulheim, Sven Hertling, Dominique Ritze. "Towards Evaluating Interactive Ontology Matching Tools".
+  ESWC 2013. <a href="http://eswc-conferences.org/sites/default/files/papers2013/paulheim.pdf">[pdf]</a>
+  </p>
+
+<p>
+Zlatan Dragisic, Valentina Ivanova, Patrick Lambrix, Daniel Faria, Ernesto Jimenez-Ruiz and Catia Pesquita. "User validation in ontology alignment".
+ISWC 2016. <a href="http://www.cs.ox.ac.uk/files/8268/oaei-user-interactive-track.pdf">[paper]</a>
+<a href="../../interactive/oaei-user-interactive-track-extended-version.pdf">[technical report]</a>
+</p>
+
+
+<p>
+  Huanyu Li, Zlatan Dragisic, Daniel Faria, Valentina Ivanova, Ernesto Jimenez-Ruiz, Patrick Lambrix and Catia Pesquita. "User validation in ontology alignment: functional assessment and impact".
+  The Knowledge Engineering Review, 2020. <a href="https://doi.org/10.1017/S0269888919000080">[DOI]</a>
+  </p>
+
+
+
+
+
+<p>
+ Jim Dabrowski, Ethan V. Munson. "40 years of searching for the best computer system response time". Interacting with Computers 2011.
+ <a href="http://www.sciencedirect.com/science/article/pii/S0953543811000579">[publisher page]</a>
+</p>
+
+<h2>Contact</h2>
+
+<p>This track is currently organized by
+<a href="https://liu.se/medarbetare/yinli71/">Ying Li</a>,
+<a href="https://liu.se/medarbetare/minab62">Mina Abd Nikooie Pour</a>,
+<a href="http://www.ida.liu.se/~huali50/">Huanyu Li</a>,
+<!--<a href="http://xldb.fc.ul.pt/~dfaria/"></a>Daniel Faria</a>,-->
+Daniel Faria,
+<a href="https://www.city.ac.uk/people/academics/ernesto-jimenez-ruiz">Ernesto Jimenez Ruiz</a>,
+<a href="http://www.ida.liu.se/~patla00/">Patrick Lambrix</a>,
+and
+<a href="http://www.di.fc.ul.pt/~catiapesquita/">Catia Pesquita</a>.
+
+If you have any problems working with the ontologies or any suggestions
+related to this track, feel free to write an email to  ying [dot] li [at] liu [dot] se</p>
+
+<br />
+
+<h2>Acknowledgements</h2>
+
+
+<p>We thank Zlatan Dragisic and Valentina Ivanova for their contributions in setting up this track.</p>
+
+<p>We thank Dominique Ritze and Heiko Paulheim, the organisers of
+the <a href="../../2013/interactive/">2013</a> and <a href="../../2014/interactive/">2014</a> editions
+of this track, who were very helpful in the setting up of the 2015 edition.
+</p>
+
+<p>
+The track is partially supported by the <a href="http://www.optique-project.eu/">Optique</a> project.
+</p>
+
+<!-- <h2>References</h2>
+Jiménez-Ruiz, E., Grau, B. C., & Yujiao, Z. (2011). LogMap 2.0: towards logic-based, scalable and interactive ontology matching. Proceedings of the 4th International Workshop on Semantic Web Applications and Tools for the Life Sciences, (S. 45-46).<br/><br/>
+Paulheim, H., Hertling, S., & Ritze, D. (2013). Towards Evaluating Interactive Ontology Matching Tools. Proceedings of the 10th Extended Semantic Web Conference, (S. 31-45).<br/><br/>
+Ritze, D. & Paulheim, H. (2011). Towards an automatic parameterization of ontology matching tools based on example mappings. Proceesings of the 6th Ontology Matching Workshop, (S.37-48).<br/><br/>
+ -->
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+<html><head><title>Ontology Alignment Evaluation Initiative::Pharmacogenomics Track | Evaluation</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="../index.html">
+Ontology Alignment Evaluation Initiative - OAEI-2024 Campaign</a>
+<a href="http://oaei.ontologymatching.org/"><img src="http://oaei.ontologymatching.org/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  
+</div>
+
+<h1>Results for OAEI 2024 - Pharmacogenomics Track</h1>
+
+<h2>Matching systems</h2>
+
+We evaluated the following systems that registered for the track:
+
+<ul>
+<li>logmap-bio-melt</li>
+<li>logmap-kg-melt</li>
+<li>logmap-lite-melt</li>
+<li>logmap-melt</li>
+</ul>
+
+<h2>Alignment results</h2>
+
+Unfortunately, none of these systems were successful in producing alignments between reified n-ary tuples. We identify the main reason as the absence of labels for n-ary tuples since providing labels allows to produce alignments. However, when labels are present, altering neighborhoods does not impact the produced alignments, showing that only labels are taken into account. 
+Recall that n-ary tuples are reifed as abstract entities because RDF does not allow n-ary relations. Hence, their labels are seldom present but their neighbors play a crucial role in their identity. 
+This makes us conclude that submitted systems may not be perfectly adequate to the task of matching pharmacogenomic knowledge as they appear to rely only on labels and disregard neighbors.
+
+<h2>Organizers</h2>
+<ul>
+<li><a href="https://pmonnin.github.io">Pierre Monnin</a> (Université Côte d’Azur, Inria, CNRS, I3S, France), main contact for the track, pierre dot monnin at inria dot fr</li>
+<li><a href="https://team.inria.fr/heka/fr/team-members/coulet/">Adrien Coulet</a> (Inria Paris, Centre de Recherche des Cordeliers, Inserm, Université Paris Cité, Sorbonne Université, Paris, France)</li>
+</ul>
+
+<div class="address">
+<div class="footer"><a href="index.html">Pharmacogenomics Track | Evaluation</a></div>
+<!--$Id$-->
+</div>
+</body></html>

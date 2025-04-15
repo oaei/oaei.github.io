@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::MultiFarm</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+<img width="150px" src="../../oaeismall.jpg" style="float:right; margin-left: 15pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="150px" src="../../seals-logo.jpg" style="clear:right;float:right; margin-left: 15pt; border-style:none;"/></a>
+  <a href="http://web.informatik.uni-mannheim.de/multifarm/">
+<img width="150px" src="images/mf-logo.jpg" style="clear:right;float:right; margin-left: 15pt; border-style:none;"/></a>
+  </a>
+</div>
+
+<!--<div class="yellowbar">The results of the OAEI 2024, for the MultiFarm track are available <a href="../results/multifarm/index.html">here</a></div>-->
+
+<h1>MultiFarm</h1>
+
+<p>
+The goal of this track is to evaluate the ability of systems to deal with ontologies in different natural languages. It serves the
+purpose of evaluating the strengths and the weaknesses of matchers and measuring their progress, with a focus on multilingualism. 
+</p>
+
+<a name="schedule"/> 
+<h2>Schedule</h2> 
+
+<p>The schedule is that of <a href="../index.html#schedule">OAEI 2024</a></p> 
+
+<!--
+<a name="results"/> 
+<h2>Evaluation campaign results</h2>
+<p>The results of the OAEI 2024, for the MultiFarm track are available <a href="../results/multifarm/index.html">here</a>
+-->
+
+<a name="datasets"/> 
+<h2>Data set</h2>
+<p>
+The original MultiFarm data set is composed of a set of 7 ontologies of the Conference domain (Cmt, Conference, ConfOf, Edas, Ekaw, Iasted, Sigkdd), translated into 8 languages (+English) -- Chinese (cn), Czech (cz), Dutch (nl), French (fr), German (de), Portuguese (pt), Russian (ru), Spanish (es) -- and the corresponding cross-lingual alignments between them. This data set is based on the OntoFarm data set, which has been used successfully for several years in the <a href="http://oaei.ontologymatching.org/2024/conference/index.html">Conference track</a> of the OAEI campaigns. For details on Multifarm, please refer to the <a href="http://www.irit.fr/recherches/MELODI/multifarm/">MultiFarm web page</a>.</p>
+
+<!--
+<p>Last year, the data set has evolved (refer to the <a href="http://www.irit.fr/recherches/MELODI/multifarm/">MultiFarm web page</a> for details): <p>
+<ul>
+   <li>Arabic translations have been provided <span style="color:red">(some problems with ontology identifiers have been fixed in 02.09.2015)</span>.</li>
+   <li>Italian translations will be used for blind evaluation.</li>
+   <li>Bugs and translation issues have been fixed.</li> 
+</ul>
+-->
+
+<p>You can download the open dataset and run your tests with this input data. However, finally you have to create a package or a Web service of your tool based on MELT (see <a href="https://dwslab.github.io/melt/matcher-evaluation/client">MELT evaluation instructions</a>).  For running the Multifarm testsuite you will have to specify the following input parameters:</p>
+
+<p>
+<div class="testsuite">
+<span class="title">MultiFarm identifiers (testing data set)</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid"><b>multifarm</b></span></li>
+	<li>Version-ID: <span class="testsuiteid"><b>[pair-language]</b>-<b>v2</b></span></li>
+</ul>
+</div>
+</p>
+
+<p>
+The <b>[pair-language]</b> refers to one of the 45 different language pairs: ar-cn, ar-cz, ar-de, ar-en, ar-es, ar-fr, ar-nl, ar-pt, ar-ru, cn-cz, cn-de, cn-en, cn-es, cn-fr, cn-nl, cn-pt, cn-ru, cz-de, cz-en, cz-es, cz-fr, cz-nl, cz-pt, cz-ru, de-en, de-es, de-fr, de-nl, de-pt, de-ru, en-es, en-fr, en-nl, en-pt, en-ru, es-fr, es-nl, es-pt, es-ru, fr-nl, fr-pt, fr-ru, nl-pt, nl-ru, pt-ru. For instance, ar-cn refers to the test cases involving the Arabic and Chinese languages while cn-cz refers to the test cases involving the Chinese and Czech languages. For each pair, 25 alignments involving the ontologies Cmt, Conference, ConfOf, Iasted and Sigkdd are available. As described below, edas and ekaw ontologies are used for blind evaluation. 
+</p>
+
+<h2>Evaluation modalities and criteria</h2>
+<p>
+As previous years, in order to perform a <b>blind evaluation</b>, the translations of edas and ekaw ontologies are not available in the current testing data set described above.</p> 
+<p>
+Evaluation is based on the well-know measures of precision, recall and F-measure. We compute as well runtime.  
+</p>
+
+<a name="test"/> 
+<h2>Testing your tool</h2>
+<p>
+Please, refer to the <a href="http://oaei.ontologymatching.org/2017/seals-eval.html">instructions</a> on how you can test your tools using the test data. Following those instructions, you have to use the MultiFarm data set identifiers indicated above.
+</p>
+
+<p>
+We encourage you to use the <a href="http://alignapi.gforge.inria.fr/">Alignment API</a> for manipulating and generating your alignments, and, in particular, for computing evaluation of your results. We use the API in order to compute the evaluation results. 
+</p> 
+
+<a name="contact"/> 
+<h3>Contacts</h3>
+
+<p>This track is organized by Beyza Yaman, Sarika Jain and Cassia Trojahn dos Santos. If you have any problems working with the ontologies, any questions or suggestions,
+feel free to write an email to beyza [.] yaman [at] adaptcentre [.] ie, jasarika [at] nitkkr [.] ac [.] in,  and cassia [.] trojahn [at] irit [.] fr.</p>
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2024/multifarm</div>
+</div>
+</body>
+</html>
+

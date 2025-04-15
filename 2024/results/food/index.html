@@ -1,0 +1,146 @@
+
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::Anatomy</title>
+<link rel="stylesheet" type="text/css" href="http://oaei.ontologymatching.org/2019/style.css" />
+<style type="text/css">
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+
+</head>
+<body >
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI 2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+
+</div>
+
+<h1>Results of Evaluation for the Food Nutritional Composition track within OAEI 2024</h1>
+
+<p>This is the third year the Food Nutritional Composition (FNC) track participates in an OAEI campaign. We are glad to be part of it and would like to thank everyone who has supported us along the way.</p>
+
+<h2>Participating systems</h2>
+
+<p>
+    This year three systems registered on this track, each of which was used for evaluation with the test case of the Food benchmark :
+</p>
+<ul>
+    <li>LogMap</li>
+    <li>LogMapLite</li>
+    <li>Matcha</li>
+</ul>
+
+<h2>Generated alignments</h2>
+<p>We have collected all generated alignments and made them available in a zip-file via the following link. These alignments are the raw results that the following report is based on.</p>
+<p><a href="oaei2024_food_track_results.zip">&gt;&gt;&gt; download raw results</a></p>
+
+
+<h2>Results</h2>
+
+<p>
+The following results were obtained for the participating matching systems in the OAEI campaign 2024 within the FNC track.
+</p>
+
+
+<p>Results for "equal" relation (Test case food v2):</p>
+<table>
+    <tr>
+        <th>System</th>
+        <td>Correspondences</td>
+        <td>Precision</td>
+        <td>Recall</td>
+        <td>F1-Measure</td>
+        <td>Time [s]</td>
+    </tr>
+    <tr>
+        <th>LogMapLite</th>
+        <td>15</td>
+        <td>0.1333</td>
+        <td>0.0274</td>
+        <td>0.0454</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <th>LogMap</th>
+        <td>15</td>
+        <td>0.1333</td>
+        <td>0.0274</td>
+        <td>0.0454</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <th>Matcha</th>
+        <td>360</td>
+        <td>0.0611</td>
+        <td>0.3013</td>
+        <td>0.1016</td>
+        <td>47</td>
+    </tr>
+</table>
+
+<p>Results for "subclass" relation (Test Case food v2sub):</p>
+
+<table>
+    <tr>
+        <th>System</th>
+        <td>Correspondences</td>
+        <td>Precision</td>
+        <td>Recall</td>
+        <td>F1-Measure</td>
+        <td>Time [s]</td>
+    </tr>
+    <tr>
+        <th>LogMapLite</th>
+        <td>15</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <th>LogMap</th>
+        <td>15</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>17</td>
+    </tr>
+    <tr>
+        <th>Matcha</th>
+        <td>360</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>49</td>
+    </tr>
+</table>
+
+<p>The test case food v2 evaluates matching systems regarding their capability to find "equal" (=), correspondences between the CIQUAL ontology and the SIREN ontology. 
+    The test case food v2sub evaluates matching systems regarding their capability to find "subclass" relation (<) between the CIQUAL ontology and the SIREN ontology. 
+    All evaluated systems compute the alignment in less than a minute except OLaLa. LogMapLite stands out for its very fast calculation time of 6s. LogMap and LogMapLite have better precision than  Matcha. However, LogMap’s recall is 10 times less than Matcha’s one. Matcha is the best performing participant in the FNC test case in terms of recall and F1-measure.
+    </p>
+<h2>Conclusion</h2>
+<p>Unfortunately, none of the evaluated matchers finds all reference correspondences correctly.
+    LogMapLite stands out for its very fast computing speed.
+    Matcha obtains the best results for the FNC application.
+    The usage of background knowledge available in CIQUAL and SIREN ontologies in terms of food description based on FoodON concepts [1] should be considered in future OAEI campaigns .
+    </p>
+<h3>Contact</h3>
+
+<p>This track is organized by Liliana Ibanescu, Patrice Buche and Julien Cufi. If anything is unclear, if you have any comments on the Food track, feel free to write an email to patrice.buche[at] inrae[.] fr or julien.cufi[at] inrae[.] fr.
+</p>
+
+<h3>Reference</h3>
+<p>[1] Patrice Buche, Julien Cufi, St&eacute;phane Dervaux, Juliette Dibie-Barthelemy, Liliana Ibanescu et al. How to Manage Incompleteness of Nutritional Food Sources?: A solution using FoodOn as pivot ontology International Journal of Agricultural and Environmental Information Systems, IGI Global, 2021, 12 (4), pp.1-26. (10.4018/IJAEIS.20211001.oa4) https://hal.archives-ouvertes.fr/hal-03372310</p>
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2023/results/food/</div>
+</div>
+</body>
+</html>

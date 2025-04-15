@@ -1,0 +1,379 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::Anatomy</title>
+<link rel="stylesheet" type="text/css" href="http://oaei.ontologymatching.org/2019/style.css" />
+<style type="text/css">
+#Kopfbereich { position:absolute; top:20px; left:30px; }
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+<script type="text/javascript">
+
+<!-- array containg all data -->
+var data = new Array(
+"Matcha","42","1485","0.951","0.941","0.931","0.82","-",
+"TOMATO","2154","572","0.955","0.523","0.36","0.024","-",
+"MDMapper","121","1441","0.926","0.903","0.881","0.703","-",
+"ALIN","370","1156","0.984","0.851","0.75","0.489","-",
+"LogMap","12","1402","0.917","0.881","0.848","0.602","+",
+"LogMapBio","1346","1549","0.888","0.898","0.908","0.757","+",
+"LogMapLite","2","1147","0.962","0.828","0.728","0.288","-",
+"StringEquiv","-","946","0.997","0.766","0.622","0.000","-"
+);
+
+
+
+
+<!-- array in which the sorted data is located -->
+var sort_data = new Array(data.length);
+
+<!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
+<!-- below a certain upper heading -->
+var headings = new Array();
+  headings[0] = "Matcher";
+  headings[1] = "Runtime";
+  headings[2] = "Size";
+  headings[3] = "Precision";
+  headings[4] = "F-Measure";
+  headings[5] = "Recall";
+  headings[6] = "Recall+";
+  headings[7] = "Coherent";
+
+<!-- determine the number of columns -->
+var columns = headings.length;
+var rows = data.length/columns;
+
+<!-- different heading formats according to the number of subheadings -->
+var headingColumnsFormatting = new Array(
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"6\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\""
+
+);
+
+<!-- set the style of all other columns-->
+var columnsFormatting = new Array(
+ "width=\"75\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\"",
+ "width=\"75\" bgcolor=\"#00FFFF\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\""
+);
+
+<!-- for every column the sort type is set, e.g. alphabetical if the column should be sorted alphabetically -->
+var columnSortTypes = new Array(
+ "alphabetical","star","numerical","numerical","numerical", "numerical", "numerical", "alphabetical"
+);
+
+<!-- table format -->
+var tableFormatting = "border=\"1\" style=\"border:solid 1px #808080\" cellspacing=\"0\"";
+
+<!-- load the arrow pictures -->
+var ArrowUp = "<img src=\"arrowUp.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDown = "<img src=\"arrowDown.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowUpSorted = "<img src=\"arrowUpSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDownSorted = "<img src=\"arrowDownSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+
+var sortedLine = "";
+
+<!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
+function createSortedLine(number,direction) {
+ sortedLine = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine += "<th " + columnsFormatting[0] + ">";
+
+  <!-- sort ascending and print the right arrow in red-->
+  if(direction == "ascending" && j == number) {
+   sortedLine += ArrowUpSorted + " ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  <!-- sort descending and print the right arrow in red--->
+  else if(direction == "descending" && j == number) {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine += " " + ArrowDownSorted;
+  }
+  <!-- print all other columns -->
+  else {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+ sortedLine += "<\/th>";
+ }
+ sortedLine += "<tr>";
+}
+
+<!-- function to really sort the columns according to a certain line number, type and direction -->
+function sortColumns(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ <!-- get the according data -->
+ for(var i = 0; i < rows; ++i)
+  columnsData[i] = dataToCompare[i] = data[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ <!--- determine and set the according index -->
+ var alreadySet = false;
+ for(i = 0; i < rows; ++i)
+  for(var j = 0; j < rows; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+   <!-- check whether the current j is already set as index to avoid problems with same numbers -->
+	for(var k=0; k<index.length; k++) {
+	 if(index[k]==j) alreadySet=true;
+	 }
+     if(alreadySet==false) index[i] = j;
+	 else alreadySet=false;
+   }
+
+ <!-- create the sorted line and write it -->
+ for(i = 0; i < rows; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data[i * columns + j] = data[index[i] * columns + j];
+ createSortedLine(number,direction);
+ writeTable(sort_data);
+}
+
+<!-- write the whole table with specified columns -->
+function writeTable(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+<!--  content += "<tr>"; -->
+  <!--for(var j = 0; j < headings.length; ++j) {-->
+
+<!--	for(var k = 1; k < headings[j].length; ++k)-->
+<!--		content += "<th " + headingColumnsFormatting[5] + ">" + headings[j][k] + "<\/th>"; -->
+
+<!--  } -->
+<!--  content += "<\/tr>";	-->
+ content += sortedLine;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows; ++i) {
+	  if(i%2 == 0) {
+          content += "<tr bgcolor=\"FFFFDD\">";
+      }
+	  else {
+          content += "<tr bgcolor=\"FFDDFF\">";
+      }
+
+  <!-- StringEquiv is the last row. 64=8*8 -->
+
+	  if(Array[i * columns] == data[56]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById)
+  document.getElementById("table").innerHTML = content;
+ else if(document.all)
+  document.all.table.innerHTML = content;
+ else if(document.layers) {
+  document.table.document.open();
+  document.table.document.write(content);
+  document.table.document.close();
+ }
+}
+<!-- sorting for numerical values-->
+function Numsort(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+    return a-b;
+}
+
+function starSort(a,b){
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	var result = Numsort(a,b);
+	return result;
+}
+
+<!-- sorting for inverse numerical values-->
+function NumsortInverse(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+	if(a=='X') {
+		return -1;
+	}
+	if(b=='X') {
+		return 1;
+	}
+	if(a=='T') {
+		return -1;
+	}
+	if(b=='T') {
+		return 1;
+	}
+    return b-a;
+}
+</script>
+</head>
+<body onLoad="createSortedLine(-1,''); writeTable(data);">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI 2024 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+<!--
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+-->
+</div>
+
+<h1>Results for OAEI 2024 - Anatomy track</h1>
+
+<h2>Generated alignments</h2>
+
+<p>
+    We have collected all generated alignments from the participating systems for this track and make them available in a zip-file via the following link.
+    These alignments are the raw results that the following report is based on.
+</p>
+
+<p><a href="oaei2024-anatomy-alignments.zip">&gt;&gt;&gt; download raw results (alignments)</a></p>
+
+
+<h2>Experimental setting</h2>
+
+<p>
+We conducted experiments by executing each system in its standard setting and we compare precision, F-measure, recall and recall+.
+The measure recall+ indicates the amount of detected non-trivial correspondences.
+The matched entities in a non-trivial correspondence do not have the same normalized label.
+</p>
+
+<p>
+We ran the matchers on a machine with 16GB RAM installed. As last three years, we used the MELT platform to execute our evaluations for all systems except ALIN and MDMapper that we used the SEALS client.
+</p>
+<p>
+As in earlier years, we slightly changed the way how precision and recall are computed, i.e., the results generated by the MELT and SEALS clients vary in some cases by 0.5% compared to the results presented below. In particular, we removed trivial correspondences in the oboInOwlnamespace like
+<br>
+<br>
+<i>http://...oboInOwl#Synonym = http://...oboInOwl#Synonym</i>
+<br>
+<br>
+as well as correspondences expressing relations different from equivalence.
+Using the Pellet reasoner we also checked whether the generated alignment is coherent, i.e., there are no unsatisfiable concepts when the ontologies are merged with the alignment.
+
+</p>
+
+<h2>Results</h2>
+<p>
+    In the following, we analyze all participating systems that could generate an alignment.
+    The listing comprises of 7 entries. LogMap participated with different versions, namely LogMap, LogMapBio, and a lightweight version LogMapLite that uses only some core components as previous years.
+    There are two systems, TOMATO and MDMapper participating in the anatomy track this year for the first time (TOMATO has previously participated in other track of the OAEI). The rest of the systems have participated in OAEI for more than two years.
+    <!--
+POMAP++ with the previous version POMap in 2017, POMAP++ in 2018. The other one is FCAMap-KG with the previous version FCA_MAP in 2016, FCAMapX in 2018.
+-->
+From the systems participating this year, Matcha, ALIN and LogMap (all versions) participated last year as well.
+LogMap is a constant participant since 2011 and ALIN joined in 2016. Matcha has been participating since 2022.
+For more details, we refer the reader to the papers presenting the systems.
+Thus, this year we have 5 different systems (not counting different versions) which generated an alignment.
+
+</p>
+
+<center>
+<noscript>
+<p>Java-Script need to be enabled!</p>
+</noscript>
+<div id="table"></div>
+</center>
+<p>
+    This year 3 out of 7 systems were able to achieve the alignment task in less than 100 seconds (they require between 2 and 42 seconds to match the ontologies).
+    These are LogMapLite, LogMap and Matcha. 
+    In 2023 and 2022 , there were 5 out of 9 and 4 out of 10 systems respectively which generated an alignment in this time frame.
+    Similarly to the last 12 years, LogMapLite has the shortest run time (2 seconds).
+    The table shows that there is no correlation between the required time for running and the quality of the generated alignment in specific metric.
+    This result has also been observed in previous OAEI campaigns.
+    </p>
+    <p>
+        The table also shows the results for F-measure, recall+ and the size of the alignments.
+        Regarding F-measure, the top 3 ranked systems are Matcha, MDMapper and LogMapBio.
+		Among these, Matcha achieved the highest F-measure (0.941) which is the same as last year.
+		This year, the systems that participated last year did not show any increase in F-measure.
+        <!--
+            Other long-term participants in the track showed comparable results in terms of F-measure to their results last year and at least as good as the results of the best systems in OAEI 2007-2010.
+        -->
+		
+		Regarding recall+, Matcha, LogMap and LogMapLite show similar results as earlier.
+		MDMapper as a new system in 2024 shows high value for recall+ (0.703).
+		Regarding the number of correspondences, Matcha, LogMap and LogMapLite		
+		computed a similar number of correspondences as last year. 
+		
+		
+		Compared with last year's results, ALIN generated 3 and LogMapBio generated 29 less correspondences, respectively. 
+        </p>
+        This year 6 out of 7 systems achieved a F-measure higher than the baseline which is based on (normalized) string equivalence (StringEquiv in the table). 
+        Among these 6 systems, MDMapper is a new participant.
+
+<!--Regarding systems participating in the anatomy track this year for the second time, SANOM shows increases in F-measure from 0.828 to 0.865 and Recall+ from 0.419 to 0.632 respectively, KEPLER and Lily keep the same performance, both POMAP++ (POMap in 2017) and FCAMapX (FCA_Map in 2016) have decreases in F-measure and Recall+.
+-->
+</p>
+<p>
+    This year two systems produced coherent alignments which are LogMap and LogMapBio which is same as last year.
+    </p>
+
+
+<h2>Conclusions</h2>
+
+
+<p>
+    The number of participating systems varies between the years. In 2024, there are 2 and 3 participants less than the number of participants in 2023 and 2022 respectively.
+	
+    <!--In 2019, there are two less participants than in 2018, but one more than that in 2017.
+    -->
+    As noted earlier there are newly-joined systems as well as long-term participants.
+    </p>
+    <p>
+    This year, Matcha sets the top result for the anatomy track with respect to the F-measure (same as last year), followed by MDMapper and LogMapBio.
+    </p>
+<!--
+<h3>Acknowledgements</h3>
+
+<p><i>
+We would like to thank <b>Christian Meilicke</b> for his advices and support with the organization of this track.
+</i>
+</p>
+-->
+<h3>Contact</h3>
+
+<p>This track is organized by 
+	<a href="https://liu.se/en/employee/minab62">Mina Abd Nikooie Pour</a>,
+    <a href="http://www.ida.liu.se/~huali50/">Huanyu Li</a>,
+    <a href="https://liu.se/en/employee/yinli71">Ying Li</a>, 
+    and <a href="http://www.ida.liu.se/~patla00/">Patrick Lambrix</a>. If you have any problems working with the ontologies, any questions related to tool wrapping, or any suggestions related to the anatomy track, feel free to write an email to oaei-anatomy [at] ida [.] liu [.] se.</p>
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2024/results/anatomy/</div>
+</div>
+</body>
+</html>

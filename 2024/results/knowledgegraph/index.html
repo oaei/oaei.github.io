@@ -1,0 +1,583 @@
+
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::KG track | evaluation</title>
+<link rel="stylesheet" type="text/css" href="https://oaei.ontologymatching.org/2024/style.css" />
+</head>
+
+<body>
+
+
+<div class="header">
+    <a style="color: grey; line-height: 5mm;" href="https://oaei.ontologymatching.org/2023/">Ontology Alignment Evaluation Initiative - OAEI-2023 Campaign</a>
+    <a href="http://oaei.ontologymatching.org/"><img src="https://oaei.ontologymatching.org/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+    <a href="http://www.seals-project.eu/"><img  width="200px" src="https://oaei.ontologymatching.org/seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+    <a href="http://dbkwik.webdatacommons.org"><img width="170px" src="https://oaei.ontologymatching.org/2023/knowledgegraph/icon.png" style="clear:right;float:right; margin-left: 5pt; border-style:none;margin-top: 15pt;"></a>
+</div>
+
+<h1>Results for OAEI 2024 - Knowledge Graph Track</h1>
+
+<h2>Matching systems</h2>
+
+As a pre-test, we executed all systems submitted to OAEI (even if they are not registered for the track) on a very small matching example (<a href="http://oaei.ontologymatching.org/2019/results/knowledgegraph/small_test.zip">dataset</a>) 
+with a similar structure and shape like the real knowledge graphs (in fact, they are a small subset of them).
+
+It showed that not all matching systems are able to complete this small task due to exceptions or other failures.
+The following matching systems produced an exception:
+<ul>
+    <li>ALIN (Nullpointer - similar to last year)</li>
+    <li>TOMATO (produced error)</li>
+</ul>
+
+Thus, we executed the following systems:
+<ul>
+    <li>BaselineAltLabel</li>
+    <li>BaselineLabel</li>
+    <li>LogMapLt</li>
+    <li>LogMap</li>
+    <li>Matcha</li>
+</ul>
+
+The <a href="http://oaei.ontologymatching.org/2021/results/knowledgegraph/kgBaselineMatchers.zip">source code for the baseline matchers</a> is available.
+The <i>baselineLabel</i> matcher matches all resources which share the same <i>rdfs:label</i>. (in case multiple resources share the same label, all of them are matched).
+<i>BaselineAltLabel</i> is additionally using <i>skos:altLabel</i>. Again, in cases where multiple resources share a common label, all those resources are matched in a cross product manner.
+
+<h2>Experimental setting</h2>
+
+The evaluation is executed on a virtual machine(VM) with 32GB of RAM and 16 vCPUs (2.4 GHz).
+The operating system is debian 9 with <a href="https://packages.debian.org/stretch/openjdk-8-jre">openjdk version "1.8.0_265"</a>.
+</br></br>
+We used the <a href="https://github.com/dwslab/melt">MELT toolkit</a> for the evaluation
+which internally uses the SEALS client (version 7.0.5) to execute matcher packaged with SEALS.
+Matching systems which use the web packaging, are executed with the <a href="https://github.com/dwslab/melt/blob/master/matching-base/src/main/java/de/uni_mannheim/informatik/dws/melt/matching_base/external/http/MatcherHTTPCall.java">MatcherHTTPCall</a> class.
+
+
+The reported times includes the environment preparation of SEALS as well as the file upload to the docker container (the start of the container is not timed).
+The alignments were evaluated based on Precision, Recall and F-Measure for classes, properties and instances (each in isolation).
+Our partial gold standard consist of 1:1 mappings extracted from links contained in wiki pages (cross wiki links).
+The schema was matched by ontology experts.
+We assume that in each knowledge graph, only one representation of one concept exists.
+This means if we have the mapping <i><A, B, %, 1.0></i> in our gold standard we can count the mapping <i><A, B', %, 1.0></i> as a false positive 
+(the assumption here is that in the seconds knowledge graph no similar concept to B exists).
+The value of false negatives is only increased if we have a 1:1 mapping and it is not found by a matcher.
+The <a href="https://github.com/dwslab/melt/tree/master/examples/kgEvalCli">source code for generating the evaluation</a> results is also available.
+
+<p>
+We imposed a maximum execution time of 12h per task, however, that time limit was never exceeded.
+
+<h2>Generated dashboard / CSV file</h2>
+We also generated an online dashboard with the help of the <a href="https://github.com/dwslab/melt">MELT framework</a>.
+Have a look at the <a href="knowledge_graph_dashboard.html">knowledge graph results here</a> (it may take some seconds to load due to 200 000 correspondences).
+</br>
+Moreover, we also generated a <a href="alignmentCube.zip">CSV file</a> which allows to analyze each matcher on a correspondence level.
+This should help matcher developers to increase the matcher performance.
+
+<h2>Alignment results</h2>
+The <a href="knowledgegraph-alignments.zip">generated alignment files are also available</a>.
+
+
+<h2>Results overview</h2>
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center"/>
+<colgroup align="center"/>
+<colgroup align="center"/>
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<thead valign="top">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th colspan="4">class</th>
+      <th colspan="4">property</th>
+      <th colspan="4">instance</th>
+      <th colspan="4">overall</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="header">
+        <th>System</td><th>Time</td><th>#testcases</td>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+    </tr>
+    <tr class="odd">
+        <td>BaselineAltLabel</td><td align="right">00:11:37</td><td>5</td>
+<td>16.4</td><td>1.00 (1.00)</td><td>0.71 (0.71)</td><td>0.59 (0.59)</td>
+<td>47.8</td><td>0.99 (0.99)</td><td>0.76 (0.76)</td><td>0.66 (0.66)</td>
+<td>4674.8</td><td>0.89 (0.89)</td><td>0.84 (0.84)</td><td>0.80 (0.80)</td>
+<td>4739.0</td><td>0.89 (0.89)</td><td>0.84 (0.84)</td><td>0.80 (0.80)</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td><td align="right">00:11:27</td><td>5</td>
+<td>16.4</td><td>1.00 (1.00)</td><td>0.71 (0.71)</td><td>0.59 (0.59)</td>
+<td>47.8</td><td>0.99 (0.99)</td><td>0.76 (0.76)</td><td>0.66 (0.66)</td>
+<td>3641.8</td><td>0.95 (0.95)</td><td>0.80 (0.80)</td><td>0.71 (0.71)</td>
+<td>3706.0</td><td>0.95 (0.95)</td><td>0.80 (0.80)</td><td>0.71 (0.71)</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td><td align="right">00:56:43</td><td>5</td>
+<td>19.4</td><td>0.93 (0.93)</td><td>0.80 (0.80)</td><td>0.71 (0.71)</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>4012.4</td><td>0.90 (0.90)</td><td>0.78 (0.78)</td><td>0.69 (0.69)</td>
+<td>4031.8</td><td>0.90 (0.90)</td><td>0.77 (0.77)</td><td>0.68 (0.68)</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td><td align="right">64:48:07</td><td>4</td>
+<td>23.0</td><td>0.80 (1.00)</td><td>0.55 (0.69)</td><td>0.43 (0.54)</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>6653.8</td><td>0.73 (0.91)</td><td>0.67 (0.84)</td><td>0.62 (0.78)</td>
+<td>6676.8</td><td>0.73 (0.92)</td><td>0.66 (0.83)</td><td>0.61 (0.76)</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td><td align="right">38:48:16</td><td>5</td>
+<td>23.8</td><td>0.97 (0.97)</td><td>0.87 (0.87)</td><td>0.80 (0.80)</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>249510.0</td><td>0.55 (0.55)</td><td>0.63 (0.63)</td><td>0.86 (0.86)</td>
+<td>249533.8</td><td>0.55 (0.55)</td><td>0.63 (0.63)</td><td>0.84 (0.84)</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td><td align="right">02:28:53</td><td>5</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>0.0</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+<td>24.6</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td><td>0.00 (0.00)</td>
+    </tr>
+</tbody>
+<caption>
+Aggregated results per matcher, divided into class, property, instance, and overall alignments. 
+Time is displayed as HH:MM:SS. Column <i>#testcases</i> indicates the number of testcases where the tool is able to generate (non empty) alignments.
+Column <i>size</i> indicates the averaged number of system correspondences.
+Two kinds of results are reported: (1) those not distinguishing empty and erroneous (or not generated) alignments,
+and (2) those considering only non empty alignments (value between parenthesis).
+</caption>
+</table>
+
+
+
+<h2>Test case specific results</h2>
+
+
+<h3>Overall results</h3>
+This result table shows the overall performance (without dividing into class, property or instance) of the matchers for each test case.
+
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center"/>
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<thead valign="top">
+    <tr>
+        <th></th>
+        <th colspan="4">marvelcinematicuniverse-marvel</th>
+        <th colspan="4">memoryalpha-memorybeta</th>
+        <th colspan="4">memoryalpha-stexpanded</th>
+        <th colspan="4">starwars-swg</th>
+        <th colspan="4">starwars-swtor</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="header">
+        <th></th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+    </tr>
+    <tr class="odd">
+        <td>BaselineAltLabel</td>
+        <td>2574</td><td>0.86</td><td>0.76</td><td>0.68</td>
+        <td>13514</td><td>0.88</td><td>0.89</td><td>0.89</td>
+        <td>3230</td><td>0.88</td><td>0.90</td><td>0.92</td>
+        <td>1712</td><td>0.92</td><td>0.74</td><td>0.63</td>
+        <td>2665</td><td>0.92</td><td>0.91</td><td>0.90</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td>
+        <td>1879</td><td>0.90</td><td>0.69</td><td>0.56</td>
+        <td>10552</td><td>0.95</td><td>0.85</td><td>0.77</td>
+        <td>2582</td><td>0.98</td><td>0.90</td><td>0.83</td>
+        <td>1245</td><td>0.96</td><td>0.68</td><td>0.53</td>
+        <td>2272</td><td>0.95</td><td>0.89</td><td>0.84</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td>
+        <td>2255</td><td>0.84</td><td>0.59</td><td>0.46</td>
+        <td>11648</td><td>0.89</td><td>0.82</td><td>0.76</td>
+        <td>2491</td><td>0.88</td><td>0.81</td><td>0.75</td>
+        <td>1577</td><td>0.94</td><td>0.79</td><td>0.68</td>
+        <td>2188</td><td>0.94</td><td>0.84</td><td>0.75</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>16688</td><td>0.90</td><td>0.83</td><td>0.77</td>
+        <td>3577</td><td>0.94</td><td>0.88</td><td>0.82</td>
+        <td>2807</td><td>0.91</td><td>0.74</td><td>0.62</td>
+        <td>3635</td><td>0.91</td><td>0.87</td><td>0.83</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td>
+        <td>1131107</td><td>0.04</td><td>0.08</td><td>0.70</td>
+        <td>59596</td><td>0.58</td><td>0.71</td><td>0.90</td>
+        <td>13870</td><td>0.68</td><td>0.78</td><td>0.93</td>
+        <td>19026</td><td>0.71</td><td>0.75</td><td>0.80</td>
+        <td>24070</td><td>0.73</td><td>0.81</td><td>0.90</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td>
+        <td>11</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>31</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>34</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>15</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>32</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+<h3>Class results</h3>
+
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center"/>
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<thead valign="top">
+    <tr>
+        <th></th>
+        <th colspan="4">marvelcinematicuniverse-marvel</th>
+        <th colspan="4">memoryalpha-memorybeta</th>
+        <th colspan="4">memoryalpha-stexpanded</th>
+        <th colspan="4">starwars-swg</th>
+        <th colspan="4">starwars-swtor</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="header">
+        <th></th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+    </tr>
+    <tr class="odd">
+        <td>BaselineAltLabel</td>
+        <td>8</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>19</td><td>1.00</td><td>0.44</td><td>0.29</td>
+        <td>19</td><td>1.00</td><td>0.63</td><td>0.46</td>
+        <td>9</td><td>1.00</td><td>0.57</td><td>0.40</td>
+        <td>27</td><td>1.00</td><td>0.89</td><td>0.80</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td>
+        <td>8</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>19</td><td>1.00</td><td>0.44</td><td>0.29</td>
+        <td>19</td><td>1.00</td><td>0.63</td><td>0.46</td>
+        <td>9</td><td>1.00</td><td>0.57</td><td>0.40</td>
+        <td>27</td><td>1.00</td><td>0.89</td><td>0.80</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td>
+        <td>10</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>21</td><td>0.88</td><td>0.64</td><td>0.50</td>
+        <td>26</td><td>0.78</td><td>0.64</td><td>0.54</td>
+        <td>12</td><td>1.00</td><td>0.89</td><td>0.80</td>
+        <td>28</td><td>1.00</td><td>0.85</td><td>0.73</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>23</td><td>1.00</td><td>0.44</td><td>0.29</td>
+        <td>27</td><td>1.00</td><td>0.70</td><td>0.54</td>
+        <td>12</td><td>1.00</td><td>0.75</td><td>0.60</td>
+        <td>30</td><td>1.00</td><td>0.85</td><td>0.73</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td>
+        <td>8</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>36</td><td>0.91</td><td>0.80</td><td>0.71</td>
+        <td>32</td><td>1.00</td><td>0.82</td><td>0.69</td>
+        <td>12</td><td>1.00</td><td>0.89</td><td>0.80</td>
+        <td>31</td><td>0.92</td><td>0.86</td><td>0.80</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+<h3>Property results</h3>
+
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center"/>
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<thead valign="top">
+    <tr>
+        <th></th>
+        <th colspan="4">marvelcinematicuniverse-marvel</th>
+        <th colspan="4">memoryalpha-memorybeta</th>
+        <th colspan="4">memoryalpha-stexpanded</th>
+        <th colspan="4">starwars-swg</th>
+        <th colspan="4">starwars-swtor</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="header">
+        <th></th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+    </tr>
+    <tr class="odd">
+        <td>BaselineAltLabel</td>
+        <td>7</td><td>1.00</td><td>0.53</td><td>0.36</td>
+        <td>41</td><td>1.00</td><td>0.51</td><td>0.34</td>
+        <td>46</td><td>0.97</td><td>0.80</td><td>0.68</td>
+        <td>42</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>103</td><td>1.00</td><td>0.94</td><td>0.89</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td>
+        <td>7</td><td>1.00</td><td>0.53</td><td>0.36</td>
+        <td>41</td><td>1.00</td><td>0.51</td><td>0.34</td>
+        <td>46</td><td>0.97</td><td>0.80</td><td>0.68</td>
+        <td>42</td><td>1.00</td><td>1.00</td><td>1.00</td>
+        <td>103</td><td>1.00</td><td>0.94</td><td>0.89</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+
+
+<h3>Instance results</h3>
+
+<table border="2" frame="sides" rules="groups" align="center">
+<colgroup align="center"/>
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<colgroup align="center" span="4" />
+<thead valign="top">
+    <tr>
+        <th></th>
+        <th colspan="4">marvelcinematicuniverse-marvel</th>
+        <th colspan="4">memoryalpha-memorybeta</th>
+        <th colspan="4">memoryalpha-stexpanded</th>
+        <th colspan="4">starwars-swg</th>
+        <th colspan="4">starwars-swtor</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="header">
+        <th></th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+        <th>Size</th><th>Prec.</th><th>F-m.</th><th>Rec.</th>
+    </tr>
+    <tr class="odd">
+        <td>BaselineAltLabel</td>
+        <td>2559</td><td>0.86</td><td>0.76</td><td>0.68</td>
+        <td>13454</td><td>0.88</td><td>0.89</td><td>0.89</td>
+        <td>3165</td><td>0.88</td><td>0.90</td><td>0.93</td>
+        <td>1661</td><td>0.92</td><td>0.74</td><td>0.62</td>
+        <td>2535</td><td>0.92</td><td>0.91</td><td>0.90</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td>
+        <td>1864</td><td>0.90</td><td>0.69</td><td>0.56</td>
+        <td>10492</td><td>0.95</td><td>0.85</td><td>0.77</td>
+        <td>2517</td><td>0.98</td><td>0.91</td><td>0.84</td>
+        <td>1194</td><td>0.95</td><td>0.67</td><td>0.52</td>
+        <td>2142</td><td>0.95</td><td>0.89</td><td>0.84</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td>
+        <td>2245</td><td>0.84</td><td>0.60</td><td>0.46</td>
+        <td>11627</td><td>0.89</td><td>0.82</td><td>0.76</td>
+        <td>2465</td><td>0.88</td><td>0.82</td><td>0.77</td>
+        <td>1565</td><td>0.94</td><td>0.80</td><td>0.69</td>
+        <td>2160</td><td>0.94</td><td>0.86</td><td>0.78</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>16665</td><td>0.90</td><td>0.83</td><td>0.77</td>
+        <td>3550</td><td>0.94</td><td>0.89</td><td>0.84</td>
+        <td>2795</td><td>0.91</td><td>0.75</td><td>0.63</td>
+        <td>3605</td><td>0.91</td><td>0.89</td><td>0.87</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td>
+        <td>1131099</td><td>0.04</td><td>0.08</td><td>0.70</td>
+        <td>59560</td><td>0.58</td><td>0.71</td><td>0.90</td>
+        <td>13838</td><td>0.67</td><td>0.79</td><td>0.96</td>
+        <td>19014</td><td>0.71</td><td>0.76</td><td>0.81</td>
+        <td>24039</td><td>0.73</td><td>0.82</td><td>0.94</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+        <td>0</td><td>0.00</td><td>0.00</td><td>0.00</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+<h3>Runtime</h3>
+
+<table border="2" frame="sides" rules="groups" align="center">
+
+<thead valign="top">
+    <tr>
+        <th></th>
+        <th>marvelcinematicuniverse-marvel</th>
+        <th>memoryalpha-memorybeta</th>
+        <th>memoryalpha-stexpanded</th>
+        <th>starwars-swg</th>
+        <th>starwars-swtor</th>
+    </tr>
+</thead>
+
+<tbody>
+    <tr class="odd">
+        <td>BaselineAltLabel</td>
+        <td>00:02:45</td>
+        <td>00:01:54</td>
+        <td>00:01:11</td>
+        <td>00:02:54</td>
+        <td>00:02:50</td>
+    </tr>
+    <tr class="even">
+        <td>BaselineLabel</td>
+        <td>00:02:40</td>
+        <td>00:01:50</td>
+        <td>00:01:11</td>
+        <td>00:02:52</td>
+        <td>00:02:51</td>
+    </tr>
+    <tr class="odd">
+        <td>LogMap</td>
+        <td>00:31:16</td>
+        <td>00:05:46</td>
+        <td>00:03:33</td>
+        <td>00:08:20</td>
+        <td>00:07:46</td>
+    </tr>
+    <tr class="even">
+        <td>LogMapLt</td>
+        <td>00:00:00</td>
+        <td>14:06:00</td>
+        <td>09:46:10</td>
+        <td>20:50:04</td>
+        <td>20:05:53</td>
+    </tr>
+    <tr class="odd">
+        <td>Matcha</td>
+        <td>33:25:54</td>
+        <td>02:40:41</td>
+        <td>00:38:32</td>
+        <td>01:13:56</td>
+        <td>00:49:11</td>
+    </tr>
+    <tr class="even">
+        <td>MDMapper</td>
+        <td>00:38:47</td>
+        <td>00:23:26</td>
+        <td>00:13:45</td>
+        <td>00:36:54</td>
+        <td>00:35:59</td>
+    </tr>
+</tbody>
+</table>
+
+
+
+
+<h2>Organizers</h2>
+<ul>
+<li><a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/sven-hertling/">Sven Hertling</a> (University of Mannheim, Germany), main contact for the track, sven at informatik dot uni-mannheim dot de</li>
+<li><a href="http://www.heikopaulheim.com/">Heiko Paulheim</a> (University of Mannheim, Germany)</li>
+</ul>
+
+<h2><a name="references">References</a></h2>
+<p>[1] Sven Hertling, Heiko Paulheim: The knowledge graph track at OAEI : Gold standards, baselines, and the golden hammer bias. ESWC 2020. [<a href="https://madoc.bib.uni-mannheim.de/54181/1/main.pdf">pdf</a>]</p>
+<p>[2] Sven Hertling, Heiko Paulheim: DBkWik: A Consolidated Knowledge Graph from Thousands of Wikis. International Conference on Big Knowledge 2018. [<a href="http://data.dws.informatik.uni-mannheim.de/dbkwik/ICBK2018_dbkwik.pdf">pdf</a>]</p>
+<p>[3] Alexandra Hofmann, Samresh Perchani, Jan Portisch, Sven Hertling, and Heiko Paulheim. DBkWik: Towards Knowledge Graph Creation from Thousands of Wikis. International Semantic Web Conference (Posters & Demos) 2017. [<a href="http://data.dws.informatik.uni-mannheim.de/dbkwik/iswc2017_poster_dbkwik.pdf">pdf</a>]</p>
+
+
+<div class="address">
+    <div class="footer"><a href="http://oaei.ontologymatching.org/2023/knowledgegraph/index.html">http://oaei.ontologymatching.org/2023/knowledgegraph/index.html</a></div>
+</div>
+
+</body>
+</html>

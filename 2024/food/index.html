@@ -1,0 +1,91 @@
+<html><head><title>Ontology Alignment Evaluation Initiative::Food track</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css"></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2024/">Ontology
+  Alignment Evaluation Initiative - OAEI-2024
+  Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="../../oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  <a href="http://www.seals-project.eu/">
+  <img  width="200px" src="../../seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<!--<div class="yellowbar">The results of the OAEI 2024, for the Complex track are available <a href="../results/complex/index.html">here</a></div>-->
+
+
+<h1>Food Nutritional Composition</h1>
+
+<h2>General description</h2>
+
+<p>This track consists of finding alignments between food concepts from CIQUAL, the French food nutritional composition database, and food concepts from SIREN (food v2 with MELT and SEALS, see below) or there direct super classes (food v2sub). Foods from both databases are described in LanguaL, a well-known multilingual thesaurus using faceted classification.</p>
+
+<h2>Dataset description</h2>
+
+<h3>CIQUAL</h3>
+
+<p>CIQUAL is the French food nutritional composition database. It is managed by ANSES, the French Agency for Food, Environmental and Occupational Health and Safety. The food concepts description from CIQUAL 2017 version is available as a dataset in an <a href="https://doi.org/10.15454/6CEYU3">OWL representation</a> [1]. It includes 2,807 foods, of which 1,797 are fully described using LanguaL.</p>
+
+<h3>SIREN</h3>
+
+<p>SIREN (is the Scientific Information and Retrieval Exchange Network) is a dataset indexed by LanguaL, available here: http://langual.org/langual_indexed_datasets.asp. It's <a href="https://doi.org/10.15454/5LLGVY">OWL representation is published</a> [1].</p>
+
+<h3>LanguaL</h3>
+
+<p>LanguaL stands for "Langua aLimentaria" or "language of food".LanguaL is a well-known multilingual thesaurus using faceted classification. More than 40,000 foods used in food composition databases are described using LanguaL.</p>
+
+<p>LanguaL is based on the following hypothesis: </p>
+
+<p>i) any food can be systematically described using a combination of characteristics; </p>
+
+<p>ii) these characteristics can be categorized into viewpoints, composed of one or several facets, and coded for computer processing; </p>
+
+<p>iii) the resulting food description codes can be used to retrieve food data from Food Composition DataBases (FCDBs);</p>
+
+<p>The hierarchy of characteristics is present in the <a href="https://doi.org/10.15454/5LLGVY">SIREN OWL representation</a>, and the root is identified by the uri http://purl.obolibrary.org/obo/FOODON_00000</p>
+
+
+<p>
+<div class="testsuite">
+<span class="title">MELT:</span></br>
+<ul>
+	<li>Track food = TrackRepository.Food.V2;</li>
+    <li>Track foodsub = TrackRepository.Food.V2SUB;</li>
+</ul>
+</div>
+</p>
+
+<p>
+</p><div class="testsuite">
+<span class="title">SEALS:</span>
+<ul>
+  <li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">food</span></li>
+  <li>Version-ID: <span class="testsuiteid">v2</span> or <span class="testsuiteid">v2sub</span></li>
+</ul>
+</div>
+<p></p>
+
+<a name="schedule"><h2>Schedule</h2></a>
+
+The schedule is available at the <a href="../index.html#schedule">OAEI main page</a>.
+
+<h4>Evaluation modalities</h4>
+
+<p>The correspondences output by the systems will be automatically compared to a gold standard.</p>
+
+<h2>Organizers</h2>
+
+<p>This track is organized by Patrice Buche (https://cv.archives-ouvertes.fr/patrice-buche), Liliana Ibanescu(https://www6.inra.fr/mia-paris/Equipes/Membres/Liliana-Ibanescu), Julien Cufi (https://cv.hal.science/julien-cufi) with the support of Cassia Trojahn. </p>
+
+<h2>References</h2>
+
+<p>[1] Patrice Buche, Julien Cufi, Stéphane Dervaux, Juliette Dibie-Barthelemy, Liliana Ibanescu et al. How to Manage Incompleteness of Nutritional Food Sources?: A solution using FoodOn as pivot ontology 
+International Journal of Agricultural and Environmental Information Systems, IGI Global, 2021, 12 (4), pp.1-26. ⟨10.4018/IJAEIS.20211001.oa4⟩ https://hal.archives-ouvertes.fr/hal-03372310</p>
+
+
+<div class="address">
+<div class="footer"><a href="http://oaei.ontologymatching.org/2024/food/index.html">http://oaei.ontologymatching.org/2024/food</a></div>
+<!--$Id$-->
+</div>
+</body></html>
