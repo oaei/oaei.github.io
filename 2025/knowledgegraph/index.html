@@ -1,0 +1,159 @@
+
+<html><head><title>Ontology Alignment Evaluation Initiative::Knowledge Graph Track</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../style.css"></head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="../index.html">
+Ontology Alignment Evaluation Initiative - OAEI Campaign</a>
+<a href="http://oaei.ontologymatching.org/"><img src="https://oaei.ontologymatching.org/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  <a href="https://dwslab.github.io/melt/matcher-packaging/seals">
+  <img  width="200px" src="https://oaei.ontologymatching.org/seals-logo.jpg" alt="OAEI" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="https://project-hobbit.eu/outcomes/hobbit-platform/">
+  <img width="170px" src="../hobbit/hobbit.png" style="clear:right;float:right; margin-left: 5pt; border-style:none;"></a>
+  <a href="http://dbkwik.webdatacommons.org">
+  <img width="170px" src="./icon.png" style="clear:right;float:right; margin-left: 5pt; border-style:none;margin-top: 15pt;"></a>
+  
+</div>
+
+<h1>Knowledge Graph Track</h1>
+
+<p>
+The Knowledge Graph Track contains isolated knowledge graphs with instance and schema data. 
+The goal of the task is to match <b>both</b> the instances and the schema. 
+The knowledge graphs were created in the course of the <a href="http://dbkwik.webdatacommons.org/">DBkWik</a> by running the <a href="https://github.com/dbpedia/extraction-framework">DBpedia extraction framework</a> on Wikis from the <a href="https://www.wikia.com/">Fandom</a> Wiki hosting platform. 
+The evaluation process of the Knowledge Graph Track will be supported by MELT toolkit.
+
+<h2>Data set</h2>
+<a name="datasets">
+<p>The data set is available from this Web page (see below). 
+You can either download them for local analysis and processing, or you can directly use the <a href="https://github.com/dwslab/melt">MELT toolkit</a> which contains many OAEI tracks
+and allows for fast and fine-grained evaluation (<a href="https://dwslab.github.io/melt/track-repository">test case coordinates are also online</a>).
+</p>
+<p>
+<div class="testsuite">
+<span class="title">MELT track repository:</span></br>
+<ul>
+	<li>Track kgTrack = TrackRepository.Knowledgegraph.V4;</li>
+</ul>
+
+</div>
+For running the Knowledge Graph test suite in SEALS, you will have to specify the following input parameters:
+<div class="testsuite">
+<span class="title">Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://oaei.webdatacommons.org/tdrs/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">knowledgegraph</span></li>
+	<li>Version-ID: <span class="testsuiteid">v4</span></li>
+</ul>
+</div>
+<br/>
+<!--div class="testsuite">
+<span class="title">Hobbit Testsuite</span></li>
+<ul>
+	<li>Benchmark API: <span class="testsuiteid">bench:knowledgegraph</span></li>
+</ul>
+</div-->
+</p>
+
+<p>
+For the evaluation, we use a gold standard of correspondences both on the schema and the instance level. 
+While the schema level correspondences were created by experts, the instance correspondences were 
+extracted from the "External links" section of the wiki pages.
+Due to the large amount of instances and classes this gold standard is only a <b>partical gold standard</b>.
+</p>
+
+<p>
+The following table describes the knowledge graphs and the sources they were created from:
+</p> 
+<table border="1" cellspacing="0">
+<tr><td class="head">Source</td>             <td class="head">Source URL</td>            <td class="head">Language</td><td class="head">Hub</td><td class="head">Topic</td><td class="head">#Instances</td><td class="head">#Properties</td><td class="head">#Classes</td><td class="head">Dump</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Star Wars Wiki</td>                 <td><a href="http://starwars.wikia.com">http://starwars.wikia.com</a></td>                    <td>en</td> <td>Movies</td>   <td>Entertainment</td>  <td align="right">145,033</td>   <td align="right">700</td>    <td align="right">269</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/starwars-swg/component/source/">rdf/xml</a></td></tr>
+<tr><td>The Old Republic Wiki</td>          <td><a href="http://swtor.wikia.com">http://swtor.wikia.com</a></td>                          <td>en</td> <td>Games</td>    <td>Gaming</td>         <td align="right">4,180</td>    <td align="right">368</td>     <td align="right">101</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/starwars-swtor/component/target/">rdf/xml</a></td></tr>
+<tr><td>Star Wars Galaxies Wiki</td>        <td><a href="http://swg.wikia.com">http://swg.wikia.com</a></td>                              <td>en</td> <td>Games</td>    <td>Gaming</td>         <td align="right">9,634</td>    <td align="right">148</td>     <td align="right">67</td>  <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/starwars-swg/component/target/">rdf/xml</a></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Marvel Database</td>                <td><a href="http://marvel.wikia.com">http://marvel.wikia.com</a></td>                                  <td>en</td> <td>Comics</td> <td>Comics</td>         <td align="right">210,996</td>    <td align="right">139</td>    <td align="right">186</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/marvelcinematicuniverse-marvel/component/target/">rdf/xml</a></td></tr>
+<tr><td>Marvel Cinematic Universe Wiki</td> <td><a href="http://marvelcinematicuniverse.wikia.com">http://marvelcinematicuniverse.wikia.com</a></td><td>en</td> <td>Movies</td> <td>Entertainment</td>  <td align="right">17,187</td>   <td align="right">147</td>   <td align="right">55</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/marvelcinematicuniverse-marvel/component/source/">rdf/xml</a></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Memory Alpha</td>                   <td><a href="http://memory-alpha.wikia.com">http://memory-alpha.wikia.com</a></td>              <td>en</td> <td>TV</td>     <td>Entertainment</td>  <td align="right">45,828</td>    <td align="right">325</td>     <td align="right">181</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/memoryalpha-stexpanded/component/source/">rdf/xml</a></td></tr>
+<tr><td>Star Trek Expanded Universe</td>    <td><a href="http://stexpanded.wikia.com">http://stexpanded.wikia.com</a></td>                  <td>en</td> <td>TV</td>     <td>Entertainment</td>  <td align="right">13,426</td>    <td align="right">202</td>     <td align="right">283</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/memoryalpha-stexpanded/component/target/">rdf/xml</a></td></tr>
+<tr><td>Memory Beta</td>                    <td><a href="http://memory-beta.wikia.com">http://memory-beta.wikia.com</a></td>                <td>en</td> <td>Books</td>  <td>Entertainment</td>  <td align="right">51,323</td>    <td align="right">423</td>     <td align="right">240</td> <td><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/memoryalpha-memorybeta/component/target/">rdf/xml</a></td></tr>
+
+</table>
+
+</br></br>
+
+Each dump contains the following output files of the DBpedia Extraction Framework, similar to <a href="https://wiki.dbpedia.org/downloads-2016-10#h96554-1">DBpedia</a> (combined in one single rdf/xml file):
+
+<table border="1" cellspacing="0">
+<tr><td class="head">Name</td>              <td class="head">Comment</td> <td class="head">Example/Preview</td></tr>
+<tr><td>anchor-text</td>                  <td>(wiki page, dbkwik:wikiPageWikiLinkText>, text) triples</br>text appears as link text of the wiki page</td>          <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/anchor-text.txt">preview</a></td>
+<tr><td>article-categories</td>           <td>(wiki page, dct:subject, category) triples </td>                                                                     <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/article-categories.txt">preview</a></td>
+<tr><td>category-labels</td>              <td>(category, rdfs:label, label) triples </td>                                                                          <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/category-labels.txt">preview</a></td>
+<tr><td>disambiguations</td>              <td>(wiki page, dbkwik:wikiPageDisambiguates, wiki page) triples</td>                                                    <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/disambiguations-redirected.txt">preview</a></td>
+<tr><td>external-links</td>               <td>(wiki page, dbkwik:wikiPageExternalLink, url) triples. </br>all links to external uri</td>                           <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/external-links.txt">preview</a></td>
+<tr><td>images</td>                       <td>triples with foaf:depiction, foaf:thumbnail, dc:rights</td>                                                          <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/images.txt">preview</a></td>
+<tr><td>infobox-properties</td>           <td>extracted triples from infoboxes</br>uri of property: http://dbkwik.webdatacommons.org/{wiki}/property/{name} </td>  <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/infobox-properties-redirected.txt">preview</a></td>
+<tr><td>infobox-property-definitions</td> <td>defines the type of properties to be rdf:Property and </br> contains corresponding labels</td>                       <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/infobox-property-definitions.txt">preview</a></td>
+<tr><td>infobox-template-type</td>        <td>(wiki page, rdf:type, class) triples, where template name contains "infobox"</td>                                    <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/template-type.txt">preview</a></td>
+<tr><td>infobox-template-type-definitions</td> <td>defines the type of properties to be rdf:Property and </br> contains corresponding labels</td>                  <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/template-type-definitions.txt">preview</a></td>
+<tr><td>labels</td>                       <td>(wiki page, rdfs:label, label) triples</br>the label is usually the title of the wiki page</td>                      <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/labels.txt">preview</a></td>
+<tr><td>long-abstracts</td>               <td>(wiki page, dbkwik:abstract, abstract) triples</br>the abstract is the text until the toc or first header.</td>      <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/long-abstracts.txt">preview</a></td>
+<tr><td>short-abstracts</td>              <td>(wiki page, rdfs:comment, comment) triples</br>short abstract between [200,600] <a href="https://github.com/dbpedia/extraction-framework/blob/master/core/src/main/scala/org/dbpedia/extraction/nif/WikipediaNifExtractor.scala#L87">see extractor</a> </td>                    <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/short-abstracts.txt">preview</a></td>
+<tr><td>skos-categories</td>              <td>skos:prefLabel and skos:broader of categories</br>(category tree) </td>                                              <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/skos-categories.txt">preview</a></td>
+<tr><td>template-type</td>                <td>(wiki page, rdf:type, class) triples</td>                                                                            <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/template-type.txt">preview</a></td>
+<tr><td>template-type-definitions</td>    <td>label and type of classes. </td>                                                                                     <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/template-type-definitions.txt">preview</a></td>
+<tr><td>page-links</td>                   <td>(wiki page, dbkwik:wikiPageWikiLink, wiki page) triples</br>represents any link between two pages</td>               <td><a target="_blank" href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph_example/page-links.txt">preview</a></td>
+
+</table>
+
+</br></br>
+This year there are the following test cases:
+<ul>
+    <li><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/starwars-swg/component/reference.xml">starwars-swg</a></li>
+    <li><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/starwars-swtor/component/reference.xml">starwars-swtor</a></li>
+    </br>
+    <li><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/marvelcinematicuniverse-marvel/component/reference.xml">marvelcinematicuniverse-marvel</a></li>
+    </br>
+    <li><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/memoryalpha-memorybeta/component/reference.xml">memoryalpha-memorybeta</a></li>
+    <li><a href="http://oaei.webdatacommons.org/tdrs/testdata/persistent/knowledgegraph/v3/suite/memoryalpha-stexpanded/component/reference.xml">memoryalpha-stexpanded</a></li>
+</ul>
+
+An example for the matching task is depicted below. Schema alignments are shown in blue, while instance alignments are shown in red:</br>
+<img src="example.png" width="700px"></img>
+
+<a name="modalities"><h2>Modalities</h2></a>
+
+<p>The alignments will be evaluated based on Precision, Recall and F-Measure.
+We will compare the overall performance, as well as the performance on instance and schema level in isolation.
+</br>
+The matching system does not need to match instances of classes "http://dbkwik.webdatacommons.org/ontology/Image" and skos:Concept. 
+These are only included to help the system to find good matches.
+For the evaluation it doesn't make a difference because instances of these classes are not evaluated at all.
+</p>
+
+
+<h2><a name="schedule">Schedule</a></h2>
+
+The schedule is available at the <a href="../index.html#schedule">OAEI main page</a>.
+
+<h2>Organizers</h2>
+<ul>
+<li><a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/sven-hertling/">Sven Hertling</a> (University of Mannheim, Germany), main contact for the track, sven at informatik dot uni-mannheim dot de</li>
+<li><a href="http://www.heikopaulheim.com/">Heiko Paulheim</a> (University of Mannheim, Germany)</li>
+</ul>
+
+<h2><a name="references">References</a></h2>
+
+<p>[1] Sven Hertling, Heiko Paulheim: The Knowledge Graph Track at OAEI - Gold Standards, Baselines, and the Golden Hammer Bias. Extended Semantic Web Conference (ESWC) 2020. [<a href="https://arxiv.org/pdf/2002.10283.pdf">pdf</a>]</p>
+<p>[2] Sven Hertling, Heiko Paulheim: DBkWik: A Consolidated Knowledge Graph from Thousands of Wikis. International Conference on Big Knowledge 2018. [<a href="http://data.dws.informatik.uni-mannheim.de/dbkwik/ICBK2018_dbkwik.pdf">pdf</a>]</p>
+<p>[3] Alexandra Hofmann, Samresh Perchani, Jan Portisch, Sven Hertling, and Heiko Paulheim. DBkWik: Towards Knowledge Graph Creation from Thousands of Wikis. International Semantic Web Conference (Posters & Demos) 2017. [<a href="http://data.dws.informatik.uni-mannheim.de/dbkwik/iswc2017_poster_dbkwik.pdf">pdf</a>]</p>
+
+
+<div class="address">
+<div class="footer"><a href="index.html">Knowledge Graph Track</a></div>
+<!--$Id$-->
+</div>
+</body></html>
